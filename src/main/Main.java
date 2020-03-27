@@ -10,6 +10,7 @@ import objects.AccountList;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
 
 public class Main extends Application {
 
@@ -22,10 +23,19 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
         File file = new File("Accounts");
-        AccountList accountList = new AccountList(file);
+
+        AccountList accountList = new AccountList();
+        accountList.toRead(file);
         FileWriter writer = new FileWriter(file);
+
+        accountList.updateAll();
+        accountList.updateTotalStock();
+
         //launch(args);
+
+        writer.write(accountList.toWrite());
+        writer.close();
     }
 }

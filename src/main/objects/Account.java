@@ -1,5 +1,7 @@
 package objects;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -34,7 +36,7 @@ public class Account {
      * @param created - Date of account Creation
      * @param isOld - Is it an old Housemate (if this is true this Account will only be displayed in Statistics)
      */
-    public Account(String name, int stock, int drankTotal,Date created, boolean isOld){
+    public Account(String name, int stock, int drankTotal, Date created, boolean isOld){
         this.name = name;
         this.stock = stock;
         this.created = created;
@@ -85,12 +87,12 @@ public class Account {
      * @return String
      */
     public String toWrite(){
-        String s1 = name + " - "
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        return name + " - "
                 + stock + " - "
                 + drankTotal + " - "
-                + created.toString() + " - "
+                + dateFormat.format(created) + " - "
                 + isOld;
-        return s1;
     }
 
     /**
@@ -98,21 +100,23 @@ public class Account {
      * @param line - String containing the data for an account
      * @return Account
      */
-    public static Account toRead(String line){
+    public static Account toRead(String line) throws ParseException {
         Scanner scanner = new Scanner(line);
         scanner.useDelimiter(" - ");
 
         String name = scanner.next();
         int stock = scanner.nextInt();
         int drankTotal = scanner.nextInt();
-        Date date = new Date(scanner.next());
+
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = format.parse(scanner.next());
+
         boolean isOld = true;
 
         String isOldS = scanner.nextLine();
         if(isOldS.equals("false")) isOld = false;
 
-        Account account = new Account(name, stock, drankTotal, date, isOld);
-        return account;
+        return new Account(name, stock, drankTotal, date, isOld);
     }
 
     /**
@@ -136,8 +140,7 @@ public class Account {
        int differenceDay = currentDay - dateDay;
 
        double TotalDays = differenceDay + 30.42*differenceMonth + 365.25*differenceYear;
-       double res = drankTotal/TotalDays;
-       return res;
+        return drankTotal/TotalDays;
     }
 
     /**
@@ -158,8 +161,7 @@ public class Account {
         int differenceMonth = currentMonth - dateMonth;
 
         double totalMonth = differenceMonth + 12*differenceYear;
-        double res  = drankTotal/totalMonth;
-        return res;
+        return drankTotal/totalMonth;
     }
 
     /**
