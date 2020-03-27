@@ -1,4 +1,4 @@
-package main.contollers;
+package contollers;
 
 public class Controller {
 }

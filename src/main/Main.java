@@ -5,6 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import objects.AccountList;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main extends Application {
 
@@ -17,7 +22,10 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) {
-        launch(args);
+    public static void main(String[] args) throws IOException {
+        File file = new File("Accounts");
+        AccountList accountList = new AccountList(file);
+        FileWriter writer = new FileWriter(file);
+        //launch(args);
     }
 }
