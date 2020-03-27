@@ -24,6 +24,10 @@ public class AccountList {
         return accounts.get(index);
     }
 
+    public boolean contains(Account account){
+        return accounts.contains(account);
+    }
+
     public int getTotalStock(){
         return this.totalStock;
     }
@@ -72,4 +76,16 @@ public class AccountList {
         }
     }
 
+    public void calculateBierVerlies(int actualStock, LinkedList<Account> people){
+        int verlies = totalStock - actualStock;
+        int lossPP = verlies/people.size();
+        for(Account a : people){
+            for(Account b : accounts){
+                if(a.equals(b)){
+                    int newStock = b.getStock()-lossPP;
+                    b.setStock(newStock);
+                }
+            }
+        }
+    }
 }
