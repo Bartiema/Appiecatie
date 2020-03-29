@@ -151,21 +151,39 @@ public class Controller implements Initializable {
             if(eventButton.equals(beerDrank0)){
                 accountList.beerDrank(0);
                 stockAcc0.setText(String.valueOf(accountList.get(0).getStock()));
+                if(accountList.get(0).getStock()<0){
+                    messageBoard.setText("Ga bier kopen met je hoofd");
+                }
             } else if(eventButton.equals(beerDrank1)){
                 accountList.beerDrank(1);
                 stockAcc1.setText(String.valueOf(accountList.get(1).getStock()));
+                if(accountList.get(1).getStock()<0){
+                    messageBoard.setText("Ga bier kopen met je hoofd");
+                }
             } else if(eventButton.equals(beerDrank2)){
                 accountList.beerDrank(2);
                 stockAcc2.setText(String.valueOf(accountList.get(2).getStock()));
+                if(accountList.get(2).getStock()<0){
+                    messageBoard.setText("Ga bier kopen met je hoofd");
+                }
             } else if(eventButton.equals(beerDrank3)){
                 accountList.beerDrank(3);
                 stockAcc3.setText(String.valueOf(accountList.get(3).getStock()));
+                if(accountList.get(3).getStock()<0){
+                    messageBoard.setText("Ga bier kopen met je hoofd");
+                }
             } else if(eventButton.equals(beerDrank4)){
                 accountList.beerDrank(4);
                 stockAcc4.setText(String.valueOf(accountList.get(4).getStock()));
+                if(accountList.get(4).getStock()<0){
+                    messageBoard.setText("Ga bier kopen met je hoofd");
+                }
             } else if(eventButton.equals(beerDrank5)){
                 accountList.beerDrank(5);
                 stockAcc5.setText(String.valueOf(accountList.get(5).getStock()));
+                if(accountList.get(5).getStock()<0){
+                    messageBoard.setText("Ga bier kopen feut");
+                }
             }
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
         }
@@ -208,4 +226,6 @@ public class Controller implements Initializable {
                 return false;
         }
     }
+
+
 }
