@@ -1,4 +1,4 @@
-package objects;
+package main.objects;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -114,7 +114,7 @@ public class Account {
         boolean isOld = true;
 
         String isOldS = scanner.nextLine();
-        if(isOldS.equals("false")) isOld = false;
+        if(isOldS.equals(" - false")) isOld = false;
 
         return new Account(name, stock, drankTotal, date, isOld);
     }

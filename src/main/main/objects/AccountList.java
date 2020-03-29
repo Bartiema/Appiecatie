@@ -1,4 +1,4 @@
-package objects;
+package main.objects;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -74,8 +74,14 @@ public class AccountList {
         for(Account a : accounts){
             stock += a.getStock();
         }
+        totalStock = stock;
     }
 
+    /**
+     * to Calculate bierverlies
+     * @param actualStock - the actual stock
+     * @param people - the people present
+     */
     public void calculateBierVerlies(int actualStock, LinkedList<Account> people){
         int verlies = totalStock - actualStock;
         int lossPP = verlies/people.size();
@@ -87,5 +93,10 @@ public class AccountList {
                 }
             }
         }
+    }
+
+    public void beerDrank(int index){
+        totalStock -= 1;
+        accounts.get(index).beerDrank();
     }
 }
