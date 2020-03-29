@@ -70,6 +70,49 @@ public class Controller implements Initializable {
     @FXML
     private Button beerDrank5;
 
+    //The misBeer button's
+    @FXML
+    private Button misBeer0;
+    @FXML
+    private Button misBeer1;
+    @FXML
+    private Button misBeer2;
+    @FXML
+    private Button misBeer3;
+    @FXML
+    private Button misBeer4;
+    @FXML
+    private Button misBeer5;
+
+    //The KratKoop Button's
+    @FXML
+    private Button kratKoop0;
+    @FXML
+    private Button kratKoop1;
+    @FXML
+    private Button kratKoop2;
+    @FXML
+    private Button kratKoop3;
+    @FXML
+    private Button kratKoop4;
+    @FXML
+    private Button kratKoop5;
+
+    //KratMis button's
+    @FXML
+    private Button misKrat0;
+    @FXML
+    private Button misKrat1;
+    @FXML
+    private Button misKrat2;
+    @FXML
+    private Button misKrat3;
+    @FXML
+    private Button misKrat4;
+    @FXML
+    private Button misKrat5;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         /*
@@ -145,7 +188,6 @@ public class Controller implements Initializable {
         resetMessageBoard();
         if(event.getSource() instanceof Button) {
             Button eventButton = (Button) event.getSource();
-            if(randomise((int)levelSlider.getValue())) messageBoard.setText("Trek een Spies Amice");
 
             //Updating the correct account
             if(eventButton.equals(beerDrank0)){
@@ -185,6 +227,7 @@ public class Controller implements Initializable {
                     messageBoard.setText("Ga bier kopen feut");
                 }
             }
+            if(randomise((int)levelSlider.getValue())) messageBoard.setText("Trek een Spies Amice");
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
         }
     }
@@ -227,5 +270,90 @@ public class Controller implements Initializable {
         }
     }
 
+    public void misBeerButtonClicked(ActionEvent event){
+        resetMessageBoard();
+        if(event.getSource() instanceof Button) {
+            Button eventButton = (Button) event.getSource();
 
-}
+            if(eventButton.equals(misBeer0)) {
+                accountList.misBeer(0);
+                stockAcc0.setText(String.valueOf(accountList.get(0).getStock()));
+            } else if(eventButton.equals(misBeer1)) {
+                accountList.misBeer(1);
+                stockAcc1.setText(String.valueOf(accountList.get(0).getStock()));
+            } else if(eventButton.equals(misBeer2)) {
+                accountList.misBeer(2);
+                stockAcc2.setText(String.valueOf(accountList.get(0).getStock()));
+            } else if(eventButton.equals(misBeer3)) {
+                accountList.misBeer(3);
+                stockAcc3.setText(String.valueOf(accountList.get(0).getStock()));
+            } else if(eventButton.equals(misBeer4)) {
+                accountList.misBeer(4);
+                stockAcc4.setText(String.valueOf(accountList.get(0).getStock()));
+            } else if(eventButton.equals(misBeer5)) {
+                accountList.misBeer(5);
+                stockAcc5.setText(String.valueOf(accountList.get(0).getStock()));
+            }
+            totalStock.setText(String.valueOf(accountList.getTotalStock()));
+            messageBoard.setText("Zieke feut die je bent");
+        }
+    }
+
+    public void misKratButtonClicked(ActionEvent event){
+        resetMessageBoard();
+        if(event.getSource() instanceof Button) {
+            Button eventButton = (Button) event.getSource();
+            messageBoard.setText("Zieke mega-feut die je bent");
+
+            if(eventButton.equals(misKrat0)){
+                accountList.misKrat(0);
+                stockAcc0.setText(String.valueOf(accountList.get(0).getStock()));
+            } else if(eventButton.equals(misKrat1)){
+                accountList.misKrat(1);
+                stockAcc1.setText(String.valueOf(accountList.get(1).getStock()));
+            } else if(eventButton.equals(misKrat2)){
+                accountList.misKrat(2);
+                stockAcc2.setText(String.valueOf(accountList.get(2).getStock()));
+            } else if(eventButton.equals(misKrat3)){
+                accountList.misKrat(3);
+                stockAcc3.setText(String.valueOf(accountList.get(3).getStock()));
+            } else if(eventButton.equals(misKrat4)){
+                accountList.misKrat(4);
+                stockAcc4.setText(String.valueOf(accountList.get(4).getStock()));
+            } else if(eventButton.equals(misKrat5)){
+                accountList.misKrat(5);
+                stockAcc5.setText(String.valueOf(accountList.get(5).getStock()));
+            }
+            totalStock.setText(String.valueOf(accountList.getTotalStock()));
+        }
+    }
+
+    public void kratKoopButtonClicked(ActionEvent event){
+        resetMessageBoard();
+        if(event.getSource() instanceof Button) {
+            Button eventButton = (Button) event.getSource();
+            messageBoard.setText("Mooie lul die je bent");
+
+            if(eventButton.equals(kratKoop0)){
+                accountList.kratKoop(0);
+                stockAcc0.setText(String.valueOf(accountList.get(0).getStock()));
+            } else if(eventButton.equals(kratKoop1)){
+                accountList.kratKoop(1);
+                stockAcc1.setText(String.valueOf(accountList.get(1).getStock()));
+            } else if(eventButton.equals(kratKoop2)){
+                accountList.kratKoop(2);
+                stockAcc2.setText(String.valueOf(accountList.get(2).getStock()));
+            } else if(eventButton.equals(kratKoop3)){
+                accountList.kratKoop(3);
+                stockAcc3.setText(String.valueOf(accountList.get(3).getStock()));
+            } else if(eventButton.equals(kratKoop4)){
+                accountList.kratKoop(4);
+                stockAcc4.setText(String.valueOf(accountList.get(4).getStock()));
+            } else if(eventButton.equals(kratKoop5)){
+                accountList.kratKoop(5);
+                stockAcc5.setText(String.valueOf(accountList.get(5).getStock()));
+            }
+            totalStock.setText(String.valueOf(accountList.getTotalStock()));
+        }
+    }
+ }

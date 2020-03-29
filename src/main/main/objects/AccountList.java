@@ -99,4 +99,19 @@ public class AccountList {
         totalStock -= 1;
         accounts.get(index).beerDrank();
     }
+
+    public void misBeer(int index){
+        totalStock += 1;
+        accounts.get(index).misBeer();
+    }
+
+    public void misKrat(int index){
+        totalStock -= 24;
+        accounts.get(index).misCrate();
+    }
+
+    public void kratKoop(int index){
+        totalStock += 24;
+        accounts.get(index).boughtCrate();
+    }
 }
