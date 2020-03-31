@@ -21,14 +21,8 @@
          </font></Button>
       <SplitMenuButton layoutX="655.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="145.0" text="Instellingen">
         <items>
-          <MenuItem fx:id="newFeut" mnemonicParsing="false" onAction="#newFeut" text="Nieuwe Feut">
-               <graphic>
-                  <TextField fx:id="newFeutTextField" />
-               </graphic></MenuItem>
-          <MenuItem fx:id="oudeLul" mnemonicParsing="false" onAction="#makeOudeLul" text="Oude lul">
-               <graphic>
-                  <TextField fx:id="oudeLulTextField" />
-               </graphic></MenuItem>
+          <MenuItem fx:id="newFeut" mnemonicParsing="false" text="Nieuwe Feut" />
+          <MenuItem fx:id="oudeLul" mnemonicParsing="false" onAction="#makeOudeLul" text="Oude lul" />
         </items>
          <font>
             <Font size="14.0" />

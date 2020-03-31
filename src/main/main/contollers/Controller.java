@@ -3,8 +3,9 @@ package main.contollers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import main.objects.Account;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import main.objects.AccountList;
 
 import java.io.File;
@@ -113,16 +114,16 @@ public class Controller implements Initializable {
     private Button misKrat5;
 
     //New Feut buttons
-    @FXML
-    private MenuItem newFeut;
-    @FXML
-    private TextField newFeutTextField;
+    //@FXML
+    //private MenuItem newFeut;
+    //@FXML
+    //private TextField newFeutTextField;
 
     //Oude lul buttons
-    @FXML
-    private MenuItem oudeLul;
-    @FXML
-    private TextField oudeLulTextField;
+    //@FXML
+    //private MenuItem oudeLul;
+    //@FXML
+    //private TextField oudeLulTextField;
 
 
     @Override
@@ -396,11 +397,8 @@ public class Controller implements Initializable {
         }
     }
 
-    /**
-     * New Feut Button
-     * makes a new account based on what is in the textfield
-     * @param event - event
-     */
+    /*
+
     public void newFeut(ActionEvent event) {
         if(newFeutTextField.getCharacters().toString().equals("")){
             Account feut = new Account("Feut");
@@ -423,4 +421,5 @@ public class Controller implements Initializable {
         setAllStocks();
         setNames();
     }
+    */
  }
