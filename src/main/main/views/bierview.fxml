@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: &quot;3c9ee0&quot;;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.contollers.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" style="-fx-background-color: &quot;3c9ee0&quot;;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.contollers.Controller">
    <children>
       <Button fx:id="turvenButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" text="Turven">
          <font>
@@ -40,7 +40,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Pane layoutX="14.0" layoutY="94.0" prefHeight="137.0" prefWidth="250.0" style="-fx-background-color: ffffff;">
+      <Pane layoutX="14.0" layoutY="94.0" prefHeight="185.0" prefWidth="250.0" style="-fx-background-color: ffffff;">
          <children>
             <Text layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
@@ -66,7 +66,7 @@
                </font></Label>
          </children>
       </Pane>
-      <Pane layoutX="275.0" layoutY="94.0" prefHeight="137.0" prefWidth="250.0" style="-fx-background-color: ffffff;">
+      <Pane layoutX="275.0" layoutY="94.0" prefHeight="185.0" prefWidth="250.0" style="-fx-background-color: ffffff;">
          <children>
             <Label fx:id="naamAcc1" layoutX="12.0" layoutY="5.0" text="Naam">
                <font>
@@ -88,7 +88,7 @@
                </font></Label>
          </children>
       </Pane>
-      <Pane layoutX="536.0" layoutY="94.0" prefHeight="137.0" prefWidth="250.0" style="-fx-background-color: ffffff;">
+      <Pane layoutX="530.0" layoutY="94.0" prefHeight="185.0" prefWidth="250.0" style="-fx-background-color: ffffff;">
          <children>
             <Label fx:id="naamAcc2" layoutX="9.0" layoutY="5.0" text="Naam">
                <font>
@@ -110,7 +110,7 @@
                </font></Label>
          </children>
       </Pane>
-      <Pane layoutX="14.0" layoutY="249.0" prefHeight="137.0" prefWidth="250.0" style="-fx-background-color: ffffff;">
+      <Pane layoutX="14.0" layoutY="287.0" prefHeight="185.0" prefWidth="250.0" style="-fx-background-color: ffffff;">
          <children>
             <Label fx:id="naamAcc3" layoutX="14.0" layoutY="5.0" text="Naam">
                <font>
@@ -122,17 +122,17 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Button fx:id="misBeer3" layoutY="97.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisBier" />
-            <Button fx:id="beerDrank3" layoutY="39.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Bier Gepakt" />
-            <Button fx:id="misKrat3" layoutX="125.0" layoutY="97.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisKrat" />
-            <Button fx:id="kratKoop3" layoutX="125.0" layoutY="39.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
+            <Button fx:id="misBeer3" layoutY="135.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="50.0" prefWidth="125.0" text="MisBier" />
+            <Button fx:id="beerDrank3" layoutY="65.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="70.0" prefWidth="125.0" text="Bier Gepakt" />
+            <Button fx:id="misKrat3" layoutX="125.0" layoutY="135.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="50.0" prefWidth="125.0" text="MisKrat" />
+            <Button fx:id="kratKoop3" layoutX="125.0" layoutY="65.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="70.0" prefWidth="125.0" text="Krat gekocht" />
             <Label fx:id="stockAcc3" layoutX="228.0" layoutY="15.0" text="##">
                <font>
                   <Font size="14.0" />
                </font></Label>
          </children>
       </Pane>
-      <Pane layoutX="275.0" layoutY="249.0" prefHeight="137.0" prefWidth="250.0" style="-fx-background-color: ffffff;">
+      <Pane layoutX="275.0" layoutY="287.0" prefHeight="185.0" prefWidth="250.0" style="-fx-background-color: ffffff;">
          <children>
             <Label fx:id="naamAcc4" layoutX="11.0" layoutY="7.0" text="Naam">
                <font>
@@ -144,17 +144,17 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Button fx:id="misBeer4" layoutY="97.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisBier" />
-            <Button fx:id="beerDrank4" layoutY="39.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Bier Gepakt" />
-            <Button fx:id="misKrat4" layoutX="125.0" layoutY="97.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisKrat" />
-            <Button fx:id="kratKoop4" layoutX="125.0" layoutY="39.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
+            <Button fx:id="misBeer4" layoutY="135.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="50.0" prefWidth="125.0" text="MisBier" />
+            <Button fx:id="beerDrank4" layoutY="66.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="70.0" prefWidth="125.0" text="Bier Gepakt" />
+            <Button fx:id="misKrat4" layoutX="125.0" layoutY="135.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="50.0" prefWidth="125.0" text="MisKrat" />
+            <Button fx:id="kratKoop4" layoutX="125.0" layoutY="66.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="70.0" prefWidth="125.0" text="Krat gekocht" />
             <Label fx:id="stockAcc4" layoutX="230.0" layoutY="15.0" text="##">
                <font>
                   <Font size="14.0" />
                </font></Label>
          </children>
       </Pane>
-      <Pane layoutX="536.0" layoutY="249.0" prefHeight="137.0" prefWidth="250.0" style="-fx-background-color: ffffff;">
+      <Pane layoutX="530.0" layoutY="287.0" prefHeight="185.0" prefWidth="250.0" style="-fx-background-color: ffffff;">
          <children>
             <Label fx:id="naamAcc5" layoutX="10.0" layoutY="5.0" text="Naam">
                <font>
