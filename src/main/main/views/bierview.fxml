@@ -25,7 +25,10 @@
                <graphic>
                   <TextField fx:id="newFeutTextField" />
                </graphic></MenuItem>
-          <MenuItem mnemonicParsing="false" text="Oude lul" />
+          <MenuItem fx:id="oudeLul" mnemonicParsing="false" onAction="#makeOudeLul" text="Oude lul">
+               <graphic>
+                  <TextField fx:id="oudeLulTextField" />
+               </graphic></MenuItem>
         </items>
          <font>
             <Font size="14.0" />

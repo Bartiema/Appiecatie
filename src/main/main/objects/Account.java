@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Account {
+public class Account implements Comparable<Account> {
     private String name;
     private int stock;
     private int drankTotal;
@@ -224,5 +224,10 @@ public class Account {
                 isOld == account.isOld &&
                 name.equals(account.name) &&
                 created.equals(account.created);
+    }
+
+    @Override
+    public int compareTo(Account o) {
+        return this.created.compareTo(o.created);
     }
 }

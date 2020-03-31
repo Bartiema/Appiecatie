@@ -4,10 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class AccountList {
+public class AccountList implements Iterable<Account>{
     private LinkedList<Account> accounts;
     private int totalStock;
 
@@ -113,5 +114,26 @@ public class AccountList {
     public void kratKoop(int index){
         totalStock += 24;
         accounts.get(index).boughtCrate();
+    }
+
+    @Override
+    public Iterator<Account> iterator() {
+        return accounts.iterator();
+    }
+
+    public void sort(){
+        LinkedList<Account> young = new LinkedList<>();
+        LinkedList<Account> old = new LinkedList<>();
+
+        for(Account a : accounts){
+            if(a.isOld()) old.add(a);
+            else if(!a.isOld()) young.add(a);
+        }
+        young.sort(Account::compareTo);
+        old.sort(Account::compareTo);
+
+        accounts = new LinkedList<>();
+        accounts.addAll(young);
+        accounts.addAll(old);
     }
 }

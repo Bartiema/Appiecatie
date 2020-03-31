@@ -117,7 +117,12 @@ public class Controller implements Initializable {
     private MenuItem newFeut;
     @FXML
     private TextField newFeutTextField;
-    private ActionEvent event;
+
+    //Oude lul buttons
+    @FXML
+    private MenuItem oudeLul;
+    @FXML
+    private TextField oudeLulTextField;
 
 
     @Override
@@ -137,14 +142,15 @@ public class Controller implements Initializable {
         /*
           Updating the total stock and accounts to be correct before initializing
          */
+        accountList.sort();
         accountList.updateAll();
         accountList.updateTotalStock();
 
         /*
           Setting names and Stocks
          */
-        setNames(accountList);
-        setAllStocks(accountList);
+        setNames();
+        setAllStocks();
 
         /*
           Closing the Writer and saving before shutdown
@@ -161,9 +167,8 @@ public class Controller implements Initializable {
 
     /**
      * A method setting all the names in the view
-     * @param accountList - the list of current accounts
      */
-    public void setNames(AccountList accountList) {
+    public void setNames() {
         naamAcc0.setText(accountList.get(0).getName());
         naamAcc1.setText(accountList.get(1).getName());
         naamAcc2.setText(accountList.get(2).getName());
@@ -174,9 +179,8 @@ public class Controller implements Initializable {
 
     /**
      * a method setting all the Stocks in the view
-     * @param accountList - the list of current accounts
      */
-    public void setAllStocks(AccountList accountList){
+    public void setAllStocks(){
         stockAcc0.setText(String.valueOf(accountList.get(0).getStock()));
         stockAcc1.setText(String.valueOf(accountList.get(1).getStock()));
         stockAcc2.setText(String.valueOf(accountList.get(2).getStock()));
@@ -405,6 +409,18 @@ public class Controller implements Initializable {
             Account feut = new Account(newFeutTextField.getCharacters().toString());
             accountList.add(feut);
         }
+        accountList.sort();
         write();
+    }
+
+    public void makeOudeLul(ActionEvent event){
+        String name = oudeLulTextField.getCharacters().toString();
+        for(Account a : accountList){
+            if(a.getName().equals(name)) a.setOld();
+        }
+        accountList.sort();
+        write();
+        setAllStocks();
+        setNames();
     }
  }
