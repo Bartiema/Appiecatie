@@ -3,9 +3,8 @@ package main.contollers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
+import javafx.scene.control.*;
+import main.objects.Account;
 import main.objects.AccountList;
 
 import java.io.File;
@@ -20,6 +19,7 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     private AccountList accountList;
     private Random random = new Random();
+    File file = new File("Accounts");
     //The MessageBoard
     @FXML
     private Label messageBoard;
@@ -112,13 +112,19 @@ public class Controller implements Initializable {
     @FXML
     private Button misKrat5;
 
+    //New Feut buttons
+    @FXML
+    private MenuItem newFeut;
+    @FXML
+    private TextField newFeutTextField;
+    private ActionEvent event;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         /*
           Fetching the file to build the accountList
          */
-        File file = new File("Accounts");
         accountList = new AccountList();
         FileWriter writer = null;
         try {
@@ -229,6 +235,7 @@ public class Controller implements Initializable {
             }
             if(randomise((int)levelSlider.getValue())) messageBoard.setText("Trek een Spies Amice");
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
+            write();
         }
     }
 
@@ -270,6 +277,10 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Method for handeling the misbeer button
+     * @param event - event
+     */
     public void misBeerButtonClicked(ActionEvent event){
         resetMessageBoard();
         if(event.getSource() instanceof Button) {
@@ -280,25 +291,30 @@ public class Controller implements Initializable {
                 stockAcc0.setText(String.valueOf(accountList.get(0).getStock()));
             } else if(eventButton.equals(misBeer1)) {
                 accountList.misBeer(1);
-                stockAcc1.setText(String.valueOf(accountList.get(0).getStock()));
+                stockAcc1.setText(String.valueOf(accountList.get(1).getStock()));
             } else if(eventButton.equals(misBeer2)) {
                 accountList.misBeer(2);
-                stockAcc2.setText(String.valueOf(accountList.get(0).getStock()));
+                stockAcc2.setText(String.valueOf(accountList.get(2).getStock()));
             } else if(eventButton.equals(misBeer3)) {
                 accountList.misBeer(3);
-                stockAcc3.setText(String.valueOf(accountList.get(0).getStock()));
+                stockAcc3.setText(String.valueOf(accountList.get(3).getStock()));
             } else if(eventButton.equals(misBeer4)) {
                 accountList.misBeer(4);
-                stockAcc4.setText(String.valueOf(accountList.get(0).getStock()));
+                stockAcc4.setText(String.valueOf(accountList.get(4).getStock()));
             } else if(eventButton.equals(misBeer5)) {
                 accountList.misBeer(5);
-                stockAcc5.setText(String.valueOf(accountList.get(0).getStock()));
+                stockAcc5.setText(String.valueOf(accountList.get(5).getStock()));
             }
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
             messageBoard.setText("Zieke feut die je bent");
+            write();
         }
     }
 
+    /**
+     * Method for handeling the miskrat button
+     * @param event - event
+     */
     public void misKratButtonClicked(ActionEvent event){
         resetMessageBoard();
         if(event.getSource() instanceof Button) {
@@ -325,9 +341,14 @@ public class Controller implements Initializable {
                 stockAcc5.setText(String.valueOf(accountList.get(5).getStock()));
             }
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
+            write();
         }
     }
 
+    /**
+     * Method for handeling the kratkoop button
+     * @param event - event
+     */
     public void kratKoopButtonClicked(ActionEvent event){
         resetMessageBoard();
         if(event.getSource() instanceof Button) {
@@ -354,6 +375,36 @@ public class Controller implements Initializable {
                 stockAcc5.setText(String.valueOf(accountList.get(5).getStock()));
             }
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
+            write();
         }
+    }
+
+    /**
+     * A method to quickly write the updates to the file
+     */
+    public void write(){
+        try {
+            FileWriter writer = new FileWriter(file);
+            writer.write(accountList.toWrite());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * New Feut Button
+     * makes a new account based on what is in the textfield
+     * @param event - event
+     */
+    public void newFeut(ActionEvent event) {
+        if(newFeutTextField.getCharacters().toString().equals("")){
+            Account feut = new Account("Feut");
+            accountList.add(feut);
+        } else {
+            Account feut = new Account(newFeutTextField.getCharacters().toString());
+            accountList.add(feut);
+        }
+        write();
     }
  }

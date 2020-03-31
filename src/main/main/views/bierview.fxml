@@ -21,7 +21,10 @@
          </font></Button>
       <SplitMenuButton layoutX="655.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="145.0" text="Instellingen">
         <items>
-          <MenuItem mnemonicParsing="false" text="Nieuwe Feut" />
+          <MenuItem fx:id="newFeut" mnemonicParsing="false" onAction="#newFeut" text="Nieuwe Feut">
+               <graphic>
+                  <TextField fx:id="newFeutTextField" />
+               </graphic></MenuItem>
           <MenuItem mnemonicParsing="false" text="Oude lul" />
         </items>
          <font>
@@ -55,7 +58,7 @@
             <Button fx:id="misBeer0" layoutY="97.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisBier" />
             <Button fx:id="beerDrank0" layoutY="39.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Bier Gepakt" />
             <Button fx:id="misKrat0" layoutX="125.0" layoutY="97.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisKrat" />
-            <Button fx:id="kratKoop0" layoutX="125.0" layoutY="39.0" onAction="#kratKoopButtonClicked"  mnemonicParsing="false" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
+            <Button fx:id="kratKoop0" layoutX="125.0" layoutY="39.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
             <Label fx:id="stockAcc0" layoutX="229.0" layoutY="14.0" text="##">
                <font>
                   <Font size="14.0" />
@@ -80,8 +83,8 @@
             </Text>
             <Button fx:id="misBeer1" layoutY="97.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisBier" />
             <Button fx:id="beerDrank1" layoutY="39.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Bier Gepakt" />
-            <Button fx:id="misKrat1" layoutX="125.0" layoutY="97.0" onAction="#misKratButtonClicked" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" text="MisKrat" />
-            <Button fx:id="kratKoop1" layoutX="125.0" layoutY="39.0" onAction="#kratKoopButtonClicked" mnemonicParsing="false" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
+            <Button fx:id="misKrat1" layoutX="125.0" layoutY="97.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisKrat" />
+            <Button fx:id="kratKoop1" layoutX="125.0" layoutY="39.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
             <Label fx:id="stockAcc1" layoutX="227.0" layoutY="14.0" text="##">
                <font>
                   <Font size="14.0" />
@@ -102,8 +105,8 @@
             </Text>
             <Button fx:id="misBeer2" layoutY="97.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisBier" />
             <Button fx:id="beerDrank2" layoutY="39.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Bier Gepakt" />
-            <Button fx:id="misKrat2" layoutX="125.0" layoutY="97.0" onAction="#misKratButtonClicked" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" text="MisKrat" />
-            <Button fx:id="kratKoop2" layoutX="125.0" layoutY="39.0" onAction="#kratKoopButtonClicked" mnemonicParsing="false" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
+            <Button fx:id="misKrat2" layoutX="125.0" layoutY="97.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisKrat" />
+            <Button fx:id="kratKoop2" layoutX="125.0" layoutY="39.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
             <Label fx:id="stockAcc2" layoutX="226.0" layoutY="14.0" text="##">
                <font>
                   <Font size="14.0" />
@@ -124,8 +127,8 @@
             </Text>
             <Button fx:id="misBeer3" layoutY="97.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisBier" />
             <Button fx:id="beerDrank3" layoutY="39.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Bier Gepakt" />
-            <Button fx:id="misKrat3" layoutX="125.0" layoutY="97.0" onAction="#misKratButtonClicked" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" text="MisKrat" />
-            <Button fx:id="kratKoop3" layoutX="125.0" layoutY="39.0" onAction="#kratKoopButtonClicked" mnemonicParsing="false" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
+            <Button fx:id="misKrat3" layoutX="125.0" layoutY="97.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisKrat" />
+            <Button fx:id="kratKoop3" layoutX="125.0" layoutY="39.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
             <Label fx:id="stockAcc3" layoutX="228.0" layoutY="15.0" text="##">
                <font>
                   <Font size="14.0" />
@@ -146,8 +149,8 @@
             </Text>
             <Button fx:id="misBeer4" layoutY="97.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisBier" />
             <Button fx:id="beerDrank4" layoutY="39.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Bier Gepakt" />
-            <Button fx:id="misKrat4" layoutX="125.0" layoutY="97.0" onAction="#misKratButtonClicked" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" text="MisKrat" />
-            <Button fx:id="kratKoop4" layoutX="125.0" layoutY="39.0" onAction="#kratKoopButtonClicked" mnemonicParsing="false" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
+            <Button fx:id="misKrat4" layoutX="125.0" layoutY="97.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisKrat" />
+            <Button fx:id="kratKoop4" layoutX="125.0" layoutY="39.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
             <Label fx:id="stockAcc4" layoutX="230.0" layoutY="15.0" text="##">
                <font>
                   <Font size="14.0" />
@@ -168,8 +171,8 @@
             </Text>
             <Button fx:id="misBeer5" layoutY="97.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisBier" />
             <Button fx:id="beerDrank5" layoutY="39.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Bier Gepakt" />
-            <Button fx:id="misKrat5"  layoutX="125.0" layoutY="97.0" onAction="#misKratButtonClicked" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" text="MisKrat" />
-            <Button fx:id="kratKoop5" layoutX="125.0" layoutY="39.0" onAction="#kratKoopButtonClicked" mnemonicParsing="false" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
+            <Button fx:id="misKrat5" layoutX="125.0" layoutY="97.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="40.0" prefWidth="125.0" text="MisKrat" />
+            <Button fx:id="kratKoop5" layoutX="125.0" layoutY="39.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="60.0" prefWidth="125.0" text="Krat gekocht" />
             <Label fx:id="stockAcc5" layoutX="227.0" layoutY="16.0" text="##">
                <font>
                   <Font size="14.0" />
