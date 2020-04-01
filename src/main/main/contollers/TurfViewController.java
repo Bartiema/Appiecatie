@@ -12,24 +12,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import main.objects.AccountList;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.net.URL;
-import java.text.ParseException;
-import java.util.LinkedList;
-import java.util.Random;
 import java.util.ResourceBundle;
 
-
-public class Controller implements Initializable {
+public class TurfViewController implements Initializable {
     private AccountList accountList;
-    private Random random = new Random();
-    private LinkedList<String> stringLinkedList = new LinkedList<>();
-    File file = new File("Accounts");
-    //The MessageBoard
-    @FXML
-    private Label messageBoard;
+    private MainController mainController;
 
     //The Names and Stocks of the Bierview
     @FXML
@@ -133,59 +121,14 @@ public class Controller implements Initializable {
     @FXML
     private Button misKrat5;
 
-    //New Feut buttons
-    //@FXML
-    //private MenuItem newFeut;
-    //@FXML
-    //private TextField newFeutTextField;
-
-    //Oude lul buttons
-    //@FXML
-    //private MenuItem oudeLul;
-    //@FXML
-    //private TextField oudeLulTextField;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*
-          Fetching the file to build the accountList
-         */
-        accountList = new AccountList();
-        FileWriter writer = null;
-        try {
-            accountList.toRead(file);
-            writer = new FileWriter(file);
-        } catch (ParseException | IOException e) {
-            e.printStackTrace();
-        }
 
-        /*
-          Updating the total stock and accounts to be correct before initializing
-         */
-        accountList.sort();
-        accountList.updateAll();
-        accountList.updateTotalStock();
+    }
 
-
-        /*
-          Setting names and Stocks
-         */
-        setNames();
-        setAllStocks();
-        positiveBeer();
-
-        /*
-          Closing the Writer and saving before shutdown
-         */
-        try {
-            if (writer == null) throw new AssertionError();
-            writer.write(accountList.toWrite());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    public void setAccountList(AccountList accountList){
+        this.accountList = accountList;
     }
 
     /**
@@ -218,7 +161,7 @@ public class Controller implements Initializable {
      * @param event - the button being clicked
      */
     public void drankButtonClicked(ActionEvent event) {
-        resetMessageBoard();
+        mainController.resetMessageBoard();
         if(event.getSource() instanceof Button) {
             Button eventButton = (Button) event.getSource();
 
@@ -227,92 +170,51 @@ public class Controller implements Initializable {
                 accountList.beerDrank(0);
                 stockAcc0.setText(String.valueOf(accountList.get(0).getStock()));
                 if(accountList.get(0).getStock()<0){
-                    messageBoard.setText("Ga bier kopen met je hoofd");
+                    mainController.getMessageBoard().setText("Ga bier kopen met je hoofd");
                 }
             } else if(eventButton.equals(beerDrank1)){
                 accountList.beerDrank(1);
                 stockAcc1.setText(String.valueOf(accountList.get(1).getStock()));
                 if(accountList.get(1).getStock()<0){
-                    messageBoard.setText("Ga bier kopen met je hoofd");
+                    mainController.getMessageBoard().setText("Ga bier kopen met je hoofd");
                 }
             } else if(eventButton.equals(beerDrank2)){
                 accountList.beerDrank(2);
                 stockAcc2.setText(String.valueOf(accountList.get(2).getStock()));
                 if(accountList.get(2).getStock()<0){
-                    messageBoard.setText("Ga bier kopen met je hoofd");
+                    mainController.getMessageBoard().setText("Ga bier kopen met je hoofd");
                 }
             } else if(eventButton.equals(beerDrank3)){
                 accountList.beerDrank(3);
                 stockAcc3.setText(String.valueOf(accountList.get(3).getStock()));
                 if(accountList.get(3).getStock()<0){
-                    messageBoard.setText("Ga bier kopen met je hoofd");
+                    mainController.getMessageBoard().setText("Ga bier kopen met je hoofd");
                 }
             } else if(eventButton.equals(beerDrank4)){
                 accountList.beerDrank(4);
                 stockAcc4.setText(String.valueOf(accountList.get(4).getStock()));
                 if(accountList.get(4).getStock()<0){
-                    messageBoard.setText("Ga bier kopen met je hoofd");
+                    mainController.getMessageBoard().setText("Ga bier kopen met je hoofd");
                 }
             } else if(eventButton.equals(beerDrank5)){
                 accountList.beerDrank(5);
                 stockAcc5.setText(String.valueOf(accountList.get(5).getStock()));
                 if(accountList.get(5).getStock()<0){
-                    messageBoard.setText("Ga bier kopen feut");
+                    mainController.getMessageBoard().setText("Ga bier kopen feut");
                 }
             }
-            if(randomise((int)levelSlider.getValue())) messageBoard.setText("Trek een Spies Amice");
+            if(mainController.randomise((int)levelSlider.getValue())) mainController.getMessageBoard().setText("Trek een Spies Amice");
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
-            write();
+            mainController.write();
             positiveBeer();
         }
     }
-
-    public void resetMessageBoard(){
-       String s = "AppieZicht";
-       int randomGuess = random.nextInt(100);
-        if(randomGuess == 0){
-           s = "AppieZicht Bravo";
-       } else if(randomGuess == 1){
-            s = "Vo voor de Leden";
-        } else if(randomGuess == 2 ){
-            s = "24 Bravo";
-        } else if(randomGuess == 3){
-            s = "Brand is geen Spiesbier";
-        } else if(randomGuess == 4){
-            s = "Ben je wel hard genoeg aan het borrelen";
-        } else if(randomGuess == 5){
-            s = "";
-        }
-        messageBoard.setText(s);
-    }
-
-    /**
-     * The randomizer for spiesjes
-     * @return true means Spies, false is Not spies
-     */
-    public boolean randomise(int level){
-        switch(level){
-            case 1:
-                return random.nextInt(300) == 0;
-            case 2:
-                return random.nextInt(100) == 0;
-            case 3:
-                return random.nextInt(25) == 0;
-            case 4:
-                return random.nextInt(10) == 0;
-            case 5:
-                return random.nextInt(5) == 0;
-            default:
-                return false;
-        }
-    }
-
     /**
      * Method for handeling the misbeer button
      * @param event - event
      */
     public void misBeerButtonClicked(ActionEvent event){
-        resetMessageBoard();
+        mainController.resetMessageBoard();
         if(event.getSource() instanceof Button) {
             Button eventButton = (Button) event.getSource();
 
@@ -336,8 +238,8 @@ public class Controller implements Initializable {
                 stockAcc5.setText(String.valueOf(accountList.get(5).getStock()));
             }
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
-            messageBoard.setText("Zieke feut die je bent");
-            write();
+            mainController.getMessageBoard().setText("Zieke feut die je bent");
+            mainController.write();
             positiveBeer();
         }
     }
@@ -347,10 +249,10 @@ public class Controller implements Initializable {
      * @param event - event
      */
     public void misKratButtonClicked(ActionEvent event){
-        resetMessageBoard();
+        mainController.resetMessageBoard();
         if(event.getSource() instanceof Button) {
             Button eventButton = (Button) event.getSource();
-            messageBoard.setText("Zieke mega-feut die je bent");
+            mainController.getMessageBoard().setText("Zieke mega-feut die je bent");
 
             if(eventButton.equals(misKrat0)){
                 accountList.misKrat(0);
@@ -372,7 +274,7 @@ public class Controller implements Initializable {
                 stockAcc5.setText(String.valueOf(accountList.get(5).getStock()));
             }
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
-            write();
+            mainController.write();
             positiveBeer();
         }
     }
@@ -382,10 +284,10 @@ public class Controller implements Initializable {
      * @param event - event
      */
     public void kratKoopButtonClicked(ActionEvent event){
-        resetMessageBoard();
+        mainController.resetMessageBoard();
         if(event.getSource() instanceof Button) {
             Button eventButton = (Button) event.getSource();
-            messageBoard.setText("Mooie lul die je bent");
+            mainController.getMessageBoard().setText("Mooie lul die je bent");
 
             if(eventButton.equals(kratKoop0)){
                 accountList.kratKoop(0);
@@ -408,20 +310,7 @@ public class Controller implements Initializable {
             }
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
             positiveBeer();
-            write();
-        }
-    }
-
-    /**
-     * A method to quickly write the updates to the file
-     */
-    public void write(){
-        try {
-            FileWriter writer = new FileWriter(file);
-            writer.write(accountList.toWrite());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            mainController.write();
         }
     }
 
@@ -461,30 +350,4 @@ public class Controller implements Initializable {
             AccPane5.setBackground(whiteBackground);
         }
     }
-
-    /*
-
-    public void newFeut(ActionEvent event) {
-        if(newFeutTextField.getCharacters().toString().equals("")){
-            Account feut = new Account("Feut");
-            accountList.add(feut);
-        } else {
-            Account feut = new Account(newFeutTextField.getCharacters().toString());
-            accountList.add(feut);
-        }
-        accountList.sort();
-        write();
-    }
-
-    public void makeOudeLul(ActionEvent event){
-        String name = oudeLulTextField.getCharacters().toString();
-        for(Account a : accountList){
-            if(a.getName().equals(name)) a.setOld();
-        }
-        accountList.sort();
-        write();
-        setAllStocks();
-        setNames();
-    }
-    */
- }
+}

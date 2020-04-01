@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="main.contollers.TurfViewController"
+            prefHeight="901.0" prefWidth="1280.0">
+    <children>
+        <Slider fx:id="levelSlider" layoutX="1076.0" layoutY="10.0" majorTickUnit="1.0" max="5.0" minorTickCount="0" prefHeight="35.0" prefWidth="200.0" snapToTicks="true" />
+        <Text layoutX="6.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totale voorraad: " wrappingWidth="274.0">
+            <font>
+                <Font size="36.0" />
+            </font>
+        </Text>
+        <Label fx:id="totalStock" layoutX="270.0" layoutY="4.0" text="##">
+            <font>
+                <Font size="36.0" />
+            </font>
+        </Label>
+        <Pane fx:id="AccPane5" layoutX="861.0" layoutY="476.0" prefHeight="410.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
+            <children>
+                <Label fx:id="naamAcc5" layoutX="14.0" layoutY="14.0" text="Naam">
+                    <font>
+                        <Font size="44.0" />
+                    </font>
+                </Label>
+                <Text layoutX="193.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bier in voorraad:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+                <Button fx:id="beerDrank5" layoutY="100.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="200.0" prefWidth="202.0" text="Bier Gepakt">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="misKrat5" layoutX="203.0" layoutY="300.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="110.0" prefWidth="202.0" text="MisKrat">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="kratKoop5" layoutX="203.0" layoutY="100.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="200.0" prefWidth="202.0" text="Krat gekocht">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Label fx:id="stockAcc5" layoutX="370.0" layoutY="41.0" text="##">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Button fx:id="misBeer5" layoutY="300.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="110.0" prefWidth="202.0" text="MisBier">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+            </children>
+        </Pane>
+        <Pane fx:id="AccPane4" layoutX="438.0" layoutY="476.0" prefHeight="410.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
+            <children>
+                <Label fx:id="naamAcc4" layoutX="14.0" layoutY="14.0" text="Naam">
+                    <font>
+                        <Font size="44.0" />
+                    </font>
+                </Label>
+                <Text layoutX="193.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bier in voorraad:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+                <Button fx:id="misBeer4" layoutY="300.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="110.0" prefWidth="202.0" text="MisBier">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="beerDrank4" layoutY="100.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="200.0" prefWidth="202.0" text="Bier Gepakt">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="misKrat4" layoutX="203.0" layoutY="300.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="110.0" prefWidth="202.0" text="MisKrat">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="kratKoop4" layoutX="203.0" layoutY="100.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="200.0" prefWidth="202.0" text="Krat gekocht">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Label fx:id="stockAcc4" layoutX="370.0" layoutY="41.0" text="##">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane fx:id="AccPane3" layoutX="14.0" layoutY="476.0" prefHeight="410.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
+            <children>
+                <Label fx:id="naamAcc3" layoutX="14.0" layoutY="14.0" text="Naam">
+                    <font>
+                        <Font size="44.0" />
+                    </font>
+                </Label>
+                <Text layoutX="193.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bier in voorraad:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+                <Button fx:id="misBeer3" layoutY="300.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="110.0" prefWidth="202.0" text="MisBier">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="beerDrank3" layoutY="100.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="200.0" prefWidth="202.0" text="Bier Gepakt">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="misKrat3" layoutX="203.0" layoutY="300.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="110.0" prefWidth="202.0" text="MisKrat">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="kratKoop3" layoutX="203.0" layoutY="100.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="200.0" prefWidth="202.0" text="Krat gekocht">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Label fx:id="stockAcc3" layoutX="370.0" layoutY="41.0" text="##">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane fx:id="AccPane2" layoutX="861.0" layoutY="49.0" prefHeight="410.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
+            <children>
+                <Label fx:id="naamAcc2" layoutX="14.0" layoutY="14.0" text="Naam">
+                    <font>
+                        <Font size="44.0" />
+                    </font>
+                </Label>
+                <Text layoutX="193.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bier in voorraad:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+                <Button fx:id="misBeer2" layoutY="300.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="110.0" prefWidth="202.0" text="MisBier">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="beerDrank2" layoutY="100.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="200.0" prefWidth="202.0" text="Bier Gepakt">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="misKrat2" layoutX="202.0" layoutY="300.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="110.0" prefWidth="202.0" text="MisKrat">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="kratKoop2" layoutX="202.0" layoutY="100.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="200.0" prefWidth="202.0" text="Krat gekocht">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Label fx:id="stockAcc2" layoutX="370.0" layoutY="41.0" text="##">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane fx:id="AccPane1" layoutX="438.0" layoutY="49.0" prefHeight="410.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
+            <children>
+                <Label fx:id="naamAcc1" layoutX="14.0" layoutY="14.0" text="Naam">
+                    <font>
+                        <Font size="44.0" />
+                    </font>
+                </Label>
+                <Text layoutX="193.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bier in voorraad:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+                <Button fx:id="misBeer1" layoutY="300.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="110.0" prefWidth="202.0" text="MisBier">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="beerDrank1" layoutY="100.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="200.0" prefWidth="202.0" text="Bier Gepakt">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="misKrat1" layoutX="203.0" layoutY="300.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="110.0" prefWidth="202.0" text="MisKrat">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="kratKoop1" layoutX="202.0" layoutY="100.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="200.0" prefWidth="202.0" text="Krat gekocht">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Label fx:id="stockAcc1" layoutX="370.0" layoutY="41.0" text="##">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane fx:id="AccPane0" layoutX="14.0" layoutY="49.0" prefHeight="410.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
+            <children>
+                <Text layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+                <Button fx:id="misBeer0" layoutY="362.0" mnemonicParsing="false" onAction="#misBeerButtonClicked" prefHeight="51.0" prefWidth="202.0" text="MisBier">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="beerDrank0" layoutY="100.0" mnemonicParsing="false" onAction="#drankButtonClicked" prefHeight="263.0" prefWidth="334.0" text="Bier Gepakt">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="misKrat0" layoutX="203.0" layoutY="362.0" mnemonicParsing="false" onAction="#misKratButtonClicked" prefHeight="51.0" prefWidth="202.0" text="MisKrat">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="kratKoop0" layoutX="336.0" layoutY="100.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="263.0" prefWidth="68.0" text="Krat gekocht">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Label fx:id="stockAcc0" layoutX="341.0" layoutY="27.0" text="##">
+                    <font>
+                        <Font size="36.0" />
+                    </font>
+                </Label>
+                <Label fx:id="naamAcc0" layoutX="14.0" layoutY="14.0" prefHeight="70.0" prefWidth="167.0" text="Naam">
+                    <font>
+                        <Font size="44.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
