@@ -6,6 +6,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import main.objects.AccountList;
 
 import java.io.File;
@@ -13,6 +17,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -20,6 +25,7 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     private AccountList accountList;
     private Random random = new Random();
+    private LinkedList<String> stringLinkedList = new LinkedList<>();
     File file = new File("Accounts");
     //The MessageBoard
     @FXML
@@ -52,6 +58,20 @@ public class Controller implements Initializable {
     private Label stockAcc5;
     @FXML
     private Label totalStock;
+
+    //Account panes for background changes
+    @FXML
+    private Pane AccPane0;
+    @FXML
+    private Pane AccPane1;
+    @FXML
+    private Pane AccPane2;
+    @FXML
+    private Pane AccPane3;
+    @FXML
+    private Pane AccPane4;
+    @FXML
+    private Pane AccPane5;
 
     //Zuiplevel slider
     @FXML
@@ -147,11 +167,13 @@ public class Controller implements Initializable {
         accountList.updateAll();
         accountList.updateTotalStock();
 
+
         /*
           Setting names and Stocks
          */
         setNames();
         setAllStocks();
+        positiveBeer();
 
         /*
           Closing the Writer and saving before shutdown
@@ -241,6 +263,7 @@ public class Controller implements Initializable {
             if(randomise((int)levelSlider.getValue())) messageBoard.setText("Trek een Spies Amice");
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
             write();
+            positiveBeer();
         }
     }
 
@@ -257,6 +280,8 @@ public class Controller implements Initializable {
             s = "Brand is geen Spiesbier";
         } else if(randomGuess == 4){
             s = "Ben je wel hard genoeg aan het borrelen";
+        } else if(randomGuess == 5){
+            s = "";
         }
         messageBoard.setText(s);
     }
@@ -313,6 +338,7 @@ public class Controller implements Initializable {
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
             messageBoard.setText("Zieke feut die je bent");
             write();
+            positiveBeer();
         }
     }
 
@@ -347,6 +373,7 @@ public class Controller implements Initializable {
             }
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
             write();
+            positiveBeer();
         }
     }
 
@@ -380,6 +407,7 @@ public class Controller implements Initializable {
                 stockAcc5.setText(String.valueOf(accountList.get(5).getStock()));
             }
             totalStock.setText(String.valueOf(accountList.getTotalStock()));
+            positiveBeer();
             write();
         }
     }
@@ -394,6 +422,43 @@ public class Controller implements Initializable {
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * A method setting the Background to white or red depending on stock value
+     */
+    public void positiveBeer(){
+        Color red = Color.RED;
+        Color white = Color.WHITE;
+        BackgroundFill redFill = new BackgroundFill(red, null, null);
+        BackgroundFill whiteFill = new BackgroundFill(white, null, null);
+        Background redBackground = new Background(redFill);
+        Background whiteBackground = new Background(whiteFill);
+        if(accountList.get(0).getStock()<0){
+            AccPane0.setBackground(redBackground);
+        } if(accountList.get(0).getStock()>= 0){
+            AccPane0.setBackground(whiteBackground);
+        } if(accountList.get(1).getStock()<0){
+            AccPane1.setBackground(redBackground);
+        } if(accountList.get(1).getStock()>= 0){
+            AccPane1.setBackground(whiteBackground);
+        } if(accountList.get(2).getStock()<0){
+            AccPane2.setBackground(redBackground);
+        } if(accountList.get(2).getStock()>= 0){
+            AccPane2.setBackground(whiteBackground);
+        } if(accountList.get(3).getStock()<0){
+            AccPane3.setBackground(redBackground);
+        } if(accountList.get(3).getStock()>= 0){
+            AccPane3.setBackground(whiteBackground);
+        } if(accountList.get(4).getStock()<0){
+            AccPane4.setBackground(redBackground);
+        } if(accountList.get(4).getStock()>= 0){
+            AccPane4.setBackground(whiteBackground);
+        } if(accountList.get(5).getStock()<0){
+            AccPane5.setBackground(redBackground);
+        } if(accountList.get(5).getStock()>= 0){
+            AccPane5.setBackground(whiteBackground);
         }
     }
 
