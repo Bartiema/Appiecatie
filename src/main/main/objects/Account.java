@@ -214,6 +214,11 @@ public class Account implements Comparable<Account> {
         drankPerMonth = calculatePerMonth(drankTotal, date);
     }
 
+    /**
+     * SelfExplanatory
+     * @param o - the compaired object
+     * @return - boolean
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -226,11 +231,20 @@ public class Account implements Comparable<Account> {
                 created.equals(account.created);
     }
 
+    /**
+     * for Sorting
+     * @param o - the compaired object
+     * @return - int for sorting
+     */
     @Override
     public int compareTo(Account o) {
         return this.created.compareTo(o.created);
     }
 
+    /**
+     * Simple toString for ListView
+     * @return - the String
+     */
     @Override
     public String toString(){
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");

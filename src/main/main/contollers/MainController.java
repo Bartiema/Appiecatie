@@ -22,18 +22,23 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
     private AccountList accountList;
     private MessageList messages = new MessageList();
-    private Random random = new Random();
+
     File accountFile = new File("Accounts");
     File messageFile = new File("src\\main\\main\\files\\Messages");
 
+    private Random random = new Random();
+
+    //the extra loaders for the other possible pages
     FXMLLoader turfPageLoader = new FXMLLoader(getClass().getResource("/turfView.fxml"));
     FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/statistiekView.fxml"));
 
+    //the Panes containing all the extra gui
     private AnchorPane turfPane = turfPageLoader.load();
     private AnchorPane statistiekPane = statistiekPageLoader.load();
     //private AnchorPane bierVerliesPane;
     //private AnchorPane instellingenPane;
 
+    //The controllers of the other Panes
     TurfViewController turfViewController = turfPageLoader.getController();
     StatistiekViewController statistiekViewController = statistiekPageLoader.getController();
 
@@ -41,16 +46,18 @@ public class MainController implements Initializable {
     @FXML
     private Label messageBoard;
 
+    //The buttons in the top bar
     @FXML
     private Button turvenButton;
     @FXML
     private Button statistiekenButton;
+
+    //the Main Pane for setting the other panes on top
     @FXML
     private AnchorPane mainPane;
 
     public MainController() throws IOException {
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -106,6 +113,9 @@ public class MainController implements Initializable {
         return this.messageBoard;
     }
 
+    /**
+     * The method reseting the Messageboard pulling a string out of the Messages file
+     */
     public void resetMessageBoard(){
        int randomGuess = random.nextInt(messages.size()*5);
        String s = messages.get(randomGuess);
@@ -146,6 +156,13 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * eventHandler for the turfbutton being pressed
+     * First checks if the turfpane isnt already the active pane
+     * then removes the other panes if its not
+     * Then it will load in the TurfPane
+     * @param event - the button being pressed
+     */
     public void turfView(ActionEvent event) {
         if(mainPane.getChildren().contains(turfPane)) return;
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
@@ -157,7 +174,13 @@ public class MainController implements Initializable {
         turfViewController.positiveBeer();
     }
 
-
+    /**
+     * eventHandler for the statistiekButton being pressed
+     * First checks if the statistiekPane isnt already the active pane
+     * then removes the other panes if its not
+     * Then it will load in the statistiekPane
+     * @param event - the button being pressed
+     */
     public void statistiekenView(ActionEvent event) {
         if(mainPane.getChildren().contains(statistiekPane)) return;
         if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);

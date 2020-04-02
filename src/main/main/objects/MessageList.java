@@ -36,4 +36,8 @@ public class MessageList {
         return stringList.size();
     }
 
+    public void add(String s){
+        stringList.add(s);
+    }
+
 }

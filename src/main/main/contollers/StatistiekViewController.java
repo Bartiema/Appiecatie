@@ -17,7 +17,7 @@ public class StatistiekViewController implements Initializable {
     private MainController mainController;
 
     @FXML
-    private ListView listView;
+    private ListView<Account> listView;
 
     public void setAccountList(AccountList accountList){
         this.accountList = accountList;
@@ -31,6 +31,10 @@ public class StatistiekViewController implements Initializable {
 
     }
 
+    /**
+     * the Method setting all the data in the ListView
+     * first updates the data and then loads it into a observable list(aka just calling toString and making line seperation) then sets those Items
+     */
     public void setData(){
         accountList.updateAll();
         ObservableList<Account> o1 = FXCollections.observableArrayList(accountList.getAll());

@@ -117,11 +117,20 @@ public class AccountList implements Iterable<Account>{
         accounts.get(index).boughtCrate();
     }
 
+    /**
+     * The method to allow Accountlist to be itarable
+     * @return - The iterator
+     */
     @Override
     public Iterator<Account> iterator() {
         return accounts.iterator();
     }
 
+    /**
+     * The method that sorts the List of Accounts
+     * puts non old people on the first spots
+     * ranked on assiniteit
+     */
     public void sort(){
         LinkedList<Account> young = new LinkedList<>();
         LinkedList<Account> old = new LinkedList<>();
@@ -138,6 +147,10 @@ public class AccountList implements Iterable<Account>{
         accounts.addAll(old);
     }
 
+    /**
+     * simple tostring for the Listview stuff
+     * @return - the String
+     */
     @Override
     public String toString(){
       StringBuilder s = new StringBuilder();
