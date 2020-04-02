@@ -3,10 +3,7 @@ package main.objects;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 
 public class AccountList implements Iterable<Account>{
     private LinkedList<Account> accounts;
@@ -15,6 +12,10 @@ public class AccountList implements Iterable<Account>{
     public AccountList(){
         accounts = new LinkedList<>();
         totalStock = 0;
+    }
+
+    public List<Account> getAll(){
+        return this.accounts;
     }
 
     public void add(Account a){
@@ -135,5 +136,14 @@ public class AccountList implements Iterable<Account>{
         accounts = new LinkedList<>();
         accounts.addAll(young);
         accounts.addAll(old);
+    }
+
+    @Override
+    public String toString(){
+      StringBuilder s = new StringBuilder();
+        for(Account a : accounts){
+          s.append(a.toString()).append("\n");
+      }
+        return s.toString();
     }
 }

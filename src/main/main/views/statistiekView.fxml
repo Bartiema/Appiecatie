@@ -2,17 +2,15 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="901.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.contollers.StatistiekViewController">
    <children>
-      <TableView fx:id="statistiekTable" layoutX="14.0" layoutY="14.0" prefHeight="870.0" prefWidth="1249.0">
-        <columns>
-          <TableColumn fx:id="nameTable" prefWidth="294.0" text="Naam" />
-          <TableColumn fx:id="totalDrank" prefWidth="274.0" text="Totaal gezopen" />
-            <TableColumn fx:id="perMonth" prefWidth="232.0" text="per maand gezopen" />
-            <TableColumn fx:id="perDay" minWidth="0.0" prefWidth="246.0" text="per dag gezopen" />
-            <TableColumn fx:id="dateCreated" minWidth="0.0" prefWidth="201.0" text="In huis gekomen op" />
-        </columns>
-      </TableView>
+      <ListView fx:id="listView" layoutX="14.0" layoutY="63.0" prefHeight="828.0" prefWidth="1251.0" style="-fx-font-size: 28pt" />
+      <Text layoutX="15.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Naam - Totaal gezopen - per maand - per dag - datum in huis getreden" wrappingWidth="1250.999984741211">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

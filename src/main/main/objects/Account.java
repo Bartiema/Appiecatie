@@ -230,4 +230,14 @@ public class Account implements Comparable<Account> {
     public int compareTo(Account o) {
         return this.created.compareTo(o.created);
     }
+
+    @Override
+    public String toString(){
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        return name + " - " +
+                drankTotal + " - " +
+                drankPerMonth + " - " +
+                drankPerDay + " - " +
+                format.format(created);
+    }
 }

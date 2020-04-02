@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import main.objects.AccountList;
+import main.objects.MessageList;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -20,11 +21,21 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     private AccountList accountList;
+    private MessageList messages = new MessageList();
     private Random random = new Random();
-    File file = new File("Accounts");
+    File accountFile = new File("Accounts");
+    File messageFile = new File("src\\main\\main\\files\\Messages");
 
-    private AnchorPane turfPane;
-    private AnchorPane statistiekPane;
+    FXMLLoader turfPageLoader = new FXMLLoader(getClass().getResource("/turfView.fxml"));
+    FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/statistiekView.fxml"));
+
+    private AnchorPane turfPane = turfPageLoader.load();
+    private AnchorPane statistiekPane = statistiekPageLoader.load();
+    //private AnchorPane bierVerliesPane;
+    //private AnchorPane instellingenPane;
+
+    TurfViewController turfViewController = turfPageLoader.getController();
+    StatistiekViewController statistiekViewController = statistiekPageLoader.getController();
 
     //The MessageBoard
     @FXML
@@ -37,6 +48,9 @@ public class MainController implements Initializable {
     @FXML
     private AnchorPane mainPane;
 
+    public MainController() throws IOException {
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -46,8 +60,10 @@ public class MainController implements Initializable {
         accountList = new AccountList();
         FileWriter writer = null;
         try {
-            accountList.toRead(file);
-            writer = new FileWriter(file);
+            accountList.toRead(accountFile);
+            writer = new FileWriter(accountFile);
+
+            messages.toRead(messageFile);
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
@@ -59,25 +75,18 @@ public class MainController implements Initializable {
         accountList.updateAll();
         accountList.updateTotalStock();
 
-        FXMLLoader turfPageLoader = new FXMLLoader(getClass().getResource("/turfView.fxml"));
-        FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/statistiekView.fxml"));
-
-        try {
-            turfPane = turfPageLoader.load();
-            statistiekPane = statistiekPageLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         AnchorPane.setTopAnchor(turfPane, (double)125);
         mainPane.getChildren().add(turfPane);
+
+        statistiekViewController.setAccountList(accountList);
+        statistiekViewController.setMainController(this);
 
         TurfViewController turfViewController = turfPageLoader.getController();
         turfViewController.setAccountList(accountList);
         turfViewController.setMainController(this);
         turfViewController.setAllStocks();
         turfViewController.setNames();
-
+        turfViewController.positiveBeer();
 
 
         /*
@@ -98,22 +107,9 @@ public class MainController implements Initializable {
     }
 
     public void resetMessageBoard(){
-       String s = "AppieZicht";
-       int randomGuess = random.nextInt(100);
-        if(randomGuess == 0){
-           s = "AppieZicht Bravo";
-       } else if(randomGuess == 1){
-            s = "Vo voor de Leden";
-        } else if(randomGuess == 2 ){
-            s = "24 Bravo";
-        } else if(randomGuess == 3){
-            s = "Brand is geen Spiesbier";
-        } else if(randomGuess == 4){
-            s = "Ben je wel hard genoeg aan het borrelen";
-        } else if(randomGuess == 5){
-            s = "Bless up";
-        }
-        messageBoard.setText(s);
+       int randomGuess = random.nextInt(messages.size()*5);
+       String s = messages.get(randomGuess);
+       messageBoard.setText(s);
     }
 
     /**
@@ -142,7 +138,7 @@ public class MainController implements Initializable {
      */
     public void write(){
         try {
-            FileWriter writer = new FileWriter(file);
+            FileWriter writer = new FileWriter(accountFile);
             writer.write(accountList.toWrite());
             writer.close();
         } catch (IOException e) {
@@ -153,27 +149,21 @@ public class MainController implements Initializable {
     public void turfView(ActionEvent event) {
         if(mainPane.getChildren().contains(turfPane)) return;
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
-        FXMLLoader turfPageLoader = new FXMLLoader(getClass().getResource("/turfView.fxml"));
         AnchorPane.setTopAnchor(turfPane, (double)125);
         mainPane.getChildren().add(turfPane);
 
-        TurfViewController turfViewController = turfPageLoader.getController();
-        turfViewController.setAccountList(accountList);
-        turfViewController.setMainController(this);
         turfViewController.setAllStocks();
         turfViewController.setNames();
+        turfViewController.positiveBeer();
     }
 
 
     public void statistiekenView(ActionEvent event) {
         if(mainPane.getChildren().contains(statistiekPane)) return;
         if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);
-        FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/statistiekView.fxml"));
         AnchorPane.setTopAnchor(statistiekPane, (double)125);
         mainPane.getChildren().add(statistiekPane);
 
-        StatistiekViewController statistiekViewController = statistiekPageLoader.getController();
-        statistiekViewController.setAccountList(accountList);
-        statistiekViewController.setMainController(this);
+        statistiekViewController.setData();
     }
  }

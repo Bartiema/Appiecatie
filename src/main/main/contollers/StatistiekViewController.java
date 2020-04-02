@@ -1,9 +1,11 @@
 package main.contollers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ListView;
+import main.objects.Account;
 import main.objects.AccountList;
 
 import java.net.URL;
@@ -15,9 +17,7 @@ public class StatistiekViewController implements Initializable {
     private MainController mainController;
 
     @FXML
-    public TableView statistiekTable;
-    @FXML
-    public TableColumn nameTable;
+    private ListView listView;
 
     public void setAccountList(AccountList accountList){
         this.accountList = accountList;
@@ -30,4 +30,11 @@ public class StatistiekViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-}
+
+    public void setData(){
+        accountList.updateAll();
+        ObservableList<Account> o1 = FXCollections.observableArrayList(accountList.getAll());
+        listView.setItems(o1);
+        }
+    }
+
