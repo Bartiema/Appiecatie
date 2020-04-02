@@ -149,7 +149,7 @@ public class MainController implements Initializable {
 
     public void turfView(ActionEvent event) throws IOException {
         if(mainPane.getChildren().contains(turfPane)) return;
-
+        FXMLLoader turfPageLoader = new FXMLLoader(getClass().getResource("/turfView.fxml"));
         AnchorPane.setTopAnchor(turfPane, (double)125);
         mainPane.getChildren().add(turfPane);
 
