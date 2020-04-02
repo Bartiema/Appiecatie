@@ -24,6 +24,7 @@ public class MainController implements Initializable {
     File file = new File("Accounts");
 
     private AnchorPane turfPane;
+    private AnchorPane statistiekPane;
 
     //The MessageBoard
     @FXML
@@ -59,9 +60,11 @@ public class MainController implements Initializable {
         accountList.updateTotalStock();
 
         FXMLLoader turfPageLoader = new FXMLLoader(getClass().getResource("/turfView.fxml"));
+        FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/statistiekView.fxml"));
 
         try {
             turfPane = turfPageLoader.load();
+            statistiekPane = statistiekPageLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -147,8 +150,9 @@ public class MainController implements Initializable {
         }
     }
 
-    public void turfView(ActionEvent event) throws IOException {
+    public void turfView(ActionEvent event) {
         if(mainPane.getChildren().contains(turfPane)) return;
+        if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
         FXMLLoader turfPageLoader = new FXMLLoader(getClass().getResource("/turfView.fxml"));
         AnchorPane.setTopAnchor(turfPane, (double)125);
         mainPane.getChildren().add(turfPane);
@@ -161,7 +165,15 @@ public class MainController implements Initializable {
     }
 
 
-    public void statistiekenView(ActionEvent event){
+    public void statistiekenView(ActionEvent event) {
+        if(mainPane.getChildren().contains(statistiekPane)) return;
+        if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);
+        FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/statistiekView.fxml"));
+        AnchorPane.setTopAnchor(statistiekPane, (double)125);
+        mainPane.getChildren().add(statistiekPane);
 
+        StatistiekViewController statistiekViewController = statistiekPageLoader.getController();
+        statistiekViewController.setAccountList(accountList);
+        statistiekViewController.setMainController(this);
     }
  }
