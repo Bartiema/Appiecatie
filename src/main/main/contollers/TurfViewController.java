@@ -130,6 +130,9 @@ public class TurfViewController implements Initializable {
     public void setAccountList(AccountList accountList){
         this.accountList = accountList;
     }
+    public void setMainController(MainController controller){
+        this.mainController = controller;
+    }
 
     /**
      * A method setting all the names in the view

@@ -23,8 +23,7 @@ public class MainController implements Initializable {
     private Random random = new Random();
     File file = new File("Accounts");
 
-    @FXML
-    private AnchorPane mainPane;
+    private AnchorPane turfPane;
 
     //The MessageBoard
     @FXML
@@ -34,6 +33,9 @@ public class MainController implements Initializable {
     private Button turvenButton;
     @FXML
     private Button statistiekenButton;
+    @FXML
+    private AnchorPane mainPane;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -55,6 +57,23 @@ public class MainController implements Initializable {
         accountList.sort();
         accountList.updateAll();
         accountList.updateTotalStock();
+
+        FXMLLoader turfPageLoader = new FXMLLoader(getClass().getResource("/turfView.fxml"));
+
+        try {
+            turfPane = turfPageLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        AnchorPane.setTopAnchor(turfPane, (double)125);
+        mainPane.getChildren().add(turfPane);
+
+        TurfViewController turfViewController = turfPageLoader.getController();
+        turfViewController.setAccountList(accountList);
+        turfViewController.setMainController(this);
+        turfViewController.setAllStocks();
+        turfViewController.setNames();
 
 
 
@@ -129,14 +148,16 @@ public class MainController implements Initializable {
     }
 
     public void turfView(ActionEvent event) throws IOException {
-        FXMLLoader turfPageLoader = new FXMLLoader(getClass().getResource("main/view/testView.fxml"));
+        if(mainPane.getChildren().contains(turfPane)) return;
 
-        AnchorPane.setTopAnchor(turfPageLoader.load(), (double) 125);
-        mainPane.getChildren().add(turfPageLoader.load());
+        AnchorPane.setTopAnchor(turfPane, (double)125);
+        mainPane.getChildren().add(turfPane);
 
         TurfViewController turfViewController = turfPageLoader.getController();
         turfViewController.setAccountList(accountList);
-
+        turfViewController.setMainController(this);
+        turfViewController.setAllStocks();
+        turfViewController.setNames();
     }
 
 
