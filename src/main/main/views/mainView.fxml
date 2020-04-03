@@ -29,7 +29,7 @@
                   <Font size="28.0" />
                </font>
             </Button>
-            <Button fx:id="bierverliesButton" layoutX="400.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="200.0" text="Bierverlies">
+            <Button fx:id="bierverliesButton" layoutX="400.0" mnemonicParsing="false" onAction="#bierverliesView" prefHeight="120.0" prefWidth="200.0" text="Bierverlies">
                <font>
                   <Font size="28.0" />
                </font>

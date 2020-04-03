@@ -90,8 +90,9 @@ public class AccountList implements Iterable<Account>{
         for(Account a : people){
             for(Account b : accounts){
                 if(a.equals(b)){
-                    int newStock = b.getStock()-lossPP;
-                    b.setStock(newStock);
+                    for(int i = 0; i<lossPP; i++){
+                        b.beerDrank();
+                    }
                 }
             }
         }
@@ -158,5 +159,9 @@ public class AccountList implements Iterable<Account>{
           s.append(a.toString()).append("\n");
       }
         return s.toString();
+    }
+
+    public int size(){
+        return accounts.size();
     }
 }

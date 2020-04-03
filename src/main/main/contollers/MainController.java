@@ -31,16 +31,18 @@ public class MainController implements Initializable {
     //the extra loaders for the other possible pages
     FXMLLoader turfPageLoader = new FXMLLoader(getClass().getResource("/turfView.fxml"));
     FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/statistiekView.fxml"));
+    FXMLLoader bierverliesPageLoader = new FXMLLoader(getClass().getResource("/bierVerliesView.fxml"));
 
     //the Panes containing all the extra gui
     private AnchorPane turfPane = turfPageLoader.load();
     private AnchorPane statistiekPane = statistiekPageLoader.load();
-    //private AnchorPane bierVerliesPane;
+    private AnchorPane bierVerliesPane = bierverliesPageLoader.load();
     //private AnchorPane instellingenPane;
 
     //The controllers of the other Panes
     TurfViewController turfViewController = turfPageLoader.getController();
     StatistiekViewController statistiekViewController = statistiekPageLoader.getController();
+    BierVerliesViewContoller bierVerliesViewContoller = bierverliesPageLoader.getController();
 
     //The MessageBoard
     @FXML
@@ -51,6 +53,8 @@ public class MainController implements Initializable {
     private Button turvenButton;
     @FXML
     private Button statistiekenButton;
+    @FXML
+    private Button bierverliesButton;
 
     //the Main Pane for setting the other panes on top
     @FXML
@@ -95,6 +99,8 @@ public class MainController implements Initializable {
         turfViewController.setNames();
         turfViewController.positiveBeer();
 
+        bierVerliesViewContoller.setAccountList(accountList);
+        bierVerliesViewContoller.setMainController(this);
 
         /*
           Closing the Writer and saving before shutdown
@@ -166,6 +172,7 @@ public class MainController implements Initializable {
     public void turfView(ActionEvent event) {
         if(mainPane.getChildren().contains(turfPane)) return;
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
+        if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         AnchorPane.setTopAnchor(turfPane, (double)125);
         mainPane.getChildren().add(turfPane);
 
@@ -184,9 +191,21 @@ public class MainController implements Initializable {
     public void statistiekenView(ActionEvent event) {
         if(mainPane.getChildren().contains(statistiekPane)) return;
         if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);
+        if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         AnchorPane.setTopAnchor(statistiekPane, (double)125);
         mainPane.getChildren().add(statistiekPane);
 
         statistiekViewController.setData();
+    }
+
+    public void bierverliesView(ActionEvent event){
+        if(mainPane.getChildren().contains(bierVerliesPane)) return;
+        if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);
+        if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
+
+        AnchorPane.setTopAnchor(bierVerliesPane, (double)125);
+        mainPane.getChildren().add(bierVerliesPane);
+
+        bierVerliesViewContoller.setData();
     }
  }
