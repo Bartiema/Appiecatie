@@ -14,6 +14,16 @@ public class Account implements Comparable<Account> {
     private double drankPerMonth;
     private boolean isOld;
 
+    public Account(){
+        this.name = "Feut";
+        this.stock = 0;
+        this.drankTotal = 0;
+        this.drankPerDay = 0;
+        this.drankPerMonth = 0;
+        this.created = new Date();
+        this.isOld = false;
+    }
+
     /**
      * Constructor for new Account
      * @param name

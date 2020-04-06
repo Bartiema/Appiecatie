@@ -32,17 +32,19 @@ public class MainController implements Initializable {
     FXMLLoader turfPageLoader = new FXMLLoader(getClass().getResource("/turfView.fxml"));
     FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/statistiekView.fxml"));
     FXMLLoader bierverliesPageLoader = new FXMLLoader(getClass().getResource("/bierVerliesView.fxml"));
+    FXMLLoader instellingenPageLoader = new FXMLLoader(getClass().getResource("/instellingenView.fxml"));
 
     //the Panes containing all the extra gui
     private AnchorPane turfPane = turfPageLoader.load();
     private AnchorPane statistiekPane = statistiekPageLoader.load();
     private AnchorPane bierVerliesPane = bierverliesPageLoader.load();
-    //private AnchorPane instellingenPane;
+    private AnchorPane instellingenPane = instellingenPageLoader.load();
 
     //The controllers of the other Panes
     TurfViewController turfViewController = turfPageLoader.getController();
     StatistiekViewController statistiekViewController = statistiekPageLoader.getController();
     BierVerliesViewContoller bierVerliesViewContoller = bierverliesPageLoader.getController();
+    InstellingenViewController instellingenViewController = instellingenPageLoader.getController();
 
     //The MessageBoard
     @FXML
@@ -101,6 +103,9 @@ public class MainController implements Initializable {
 
         bierVerliesViewContoller.setAccountList(accountList);
         bierVerliesViewContoller.setMainController(this);
+
+        instellingenViewController.setAccountList(accountList);
+        instellingenViewController.setMainController(this);
 
         /*
           Closing the Writer and saving before shutdown
@@ -173,6 +178,8 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(turfPane)) return;
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
+        if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
+
         AnchorPane.setTopAnchor(turfPane, (double)125);
         mainPane.getChildren().add(turfPane);
 
@@ -192,6 +199,8 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(statistiekPane)) return;
         if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
+        if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
+
         AnchorPane.setTopAnchor(statistiekPane, (double)125);
         mainPane.getChildren().add(statistiekPane);
 
@@ -202,10 +211,22 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(bierVerliesPane)) return;
         if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
+        if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
 
         AnchorPane.setTopAnchor(bierVerliesPane, (double)125);
         mainPane.getChildren().add(bierVerliesPane);
 
         bierVerliesViewContoller.setData();
+    }
+
+    public void instellingenView(ActionEvent event){
+        if(mainPane.getChildren().contains(instellingenPane)) return;
+        if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);
+        if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
+        if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
+
+        AnchorPane.setTopAnchor(instellingenPane, (double)125);
+        mainPane.getChildren().add(instellingenPane);
+        instellingenViewController.setData();
     }
  }
