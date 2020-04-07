@@ -37,7 +37,11 @@ public class StatistiekViewController implements Initializable {
      */
     public void setData(){
         accountList.updateAll();
+        Account blank = accountList.get(6);
+        accountList.remove(blank);
         ObservableList<Account> o1 = FXCollections.observableArrayList(accountList.getAll());
+        accountList.add(blank);
+        accountList.sort();
         listView.setItems(o1);
         }
     }

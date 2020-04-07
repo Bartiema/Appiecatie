@@ -164,4 +164,8 @@ public class AccountList implements Iterable<Account>{
     public int size(){
         return accounts.size();
     }
+
+    public void remove(Account account){
+        accounts.remove(account);
+    }
 }
