@@ -13,13 +13,19 @@ import javafx.scene.paint.Color;
 import main.objects.AccountList;
 
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class TurfViewController implements Initializable {
     private AccountList accountList;
     private MainController mainController;
+    //Zuiplevel slider
+    @FXML
+    private Slider levelSlider;
 
     //The Names and Stocks of the Bierview
+    private LinkedList<Label> accountNameList = new LinkedList<>();
+    private LinkedList<Label> accountStockList = new LinkedList<>();
     @FXML
     private Label naamAcc0;
     @FXML
@@ -48,6 +54,7 @@ public class TurfViewController implements Initializable {
     private Label totalStock;
 
     //Account panes for background changes
+    private LinkedList<Pane> accountPaneList = new LinkedList<>();
     @FXML
     private Pane AccPane0;
     @FXML
@@ -61,11 +68,8 @@ public class TurfViewController implements Initializable {
     @FXML
     private Pane AccPane5;
 
-    //Zuiplevel slider
-    @FXML
-    private Slider levelSlider;
-
     //The beer drank buttons
+    private LinkedList<Button> beerDrankButtonList = new LinkedList<>();
     @FXML
     private Button beerDrank0;
     @FXML
@@ -80,6 +84,7 @@ public class TurfViewController implements Initializable {
     private Button beerDrank5;
 
     //The misBeer button's
+    private  LinkedList<Button> misBeerButtonList = new LinkedList<>();
     @FXML
     private Button misBeer0;
     @FXML
@@ -94,6 +99,7 @@ public class TurfViewController implements Initializable {
     private Button misBeer5;
 
     //The KratKoop Button's
+    private LinkedList<Button> kratKoopButtonList = new LinkedList<>();
     @FXML
     private Button kratKoop0;
     @FXML
@@ -108,6 +114,7 @@ public class TurfViewController implements Initializable {
     private Button kratKoop5;
 
     //KratMis button's
+    private LinkedList<Button> misKratButtonList = new LinkedList<>();
     @FXML
     private Button misKrat0;
     @FXML
@@ -124,7 +131,33 @@ public class TurfViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        accountNameList.add(naamAcc0);
+        accountNameList.add(naamAcc1);
+        accountNameList.add(naamAcc2);
+        accountNameList.add(naamAcc3);
+        accountNameList.add(naamAcc4);
+        accountNameList.add(naamAcc5);
 
+        accountStockList.add(stockAcc0);
+        accountStockList.add(stockAcc1);
+        accountStockList.add(stockAcc2);
+        accountStockList.add(stockAcc3);
+        accountStockList.add(stockAcc4);
+        accountStockList.add(stockAcc5);
+
+        accountPaneList.add(AccPane0);
+        accountPaneList.add(AccPane1);
+        accountPaneList.add(AccPane2);
+        accountPaneList.add(AccPane3);
+        accountPaneList.add(AccPane4);
+        accountPaneList.add(AccPane5);
+
+        beerDrankButtonList.add(beerDrank0);
+        beerDrankButtonList.add(beerDrank1);
+        beerDrankButtonList.add(beerDrank2);
+        beerDrankButtonList.add(beerDrank3);
+        beerDrankButtonList.add(beerDrank4);
+        beerDrankButtonList.add(beerDrank5);
     }
 
     public void setAccountList(AccountList accountList){
