@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="901.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.contollers.InstellingenViewController">
+   <children>
+      <Pane layoutX="15.0" layoutY="14.0" prefHeight="100.0" prefWidth="1250.0">
+         <children>
+            <Label fx:id="naamLabel0" prefHeight="100.0" prefWidth="425.0" text="Naam">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+            <Button fx:id="uitgestemd0" layoutX="1181.0" mnemonicParsing="false" onAction="#makeOld" prefHeight="100.0" prefWidth="69.0" text="Uitgestemd" wrapText="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <TextField fx:id="editField0" layoutX="461.0" layoutY="-1.0" prefHeight="102.0" prefWidth="519.0">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </TextField>
+            <Button fx:id="editConfirm0" layoutX="981.0" mnemonicParsing="false" onAction="#editConfimPress" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+       <Pane layoutX="15.0" layoutY="124.0" prefHeight="100.0" prefWidth="1250.0">
+           <children>
+               <Label fx:id="naamLabel1" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+               <Button fx:id="uitgestemd1" layoutX="1181.0" mnemonicParsing="false" onAction="#makeOld" prefHeight="100.0" prefWidth="69.0" text="Uitgestemd">
+                   <font>
+                       <Font size="10.0" />
+                   </font>
+               </Button>
+               <TextField fx:id="editField1" layoutX="461.0" layoutY="-1.0" prefHeight="102.0" prefWidth="519.0">
+                   <font>
+                       <Font size="48.0" />
+                   </font>
+               </TextField>
+               <Button fx:id="editConfirm1" layoutX="981.0" mnemonicParsing="false" onAction="#editConfimPress" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
+                   <font>
+                       <Font size="29.0" />
+                   </font>
+               </Button>
+           </children>
+       </Pane>
+       <Pane layoutX="15.0" layoutY="234.0" prefHeight="100.0" prefWidth="1250.0">
+           <children>
+               <Label fx:id="naamLabel2" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+               <Button fx:id="uitgestemd2" layoutX="1181.0" mnemonicParsing="false" onAction="#makeOld" prefHeight="100.0" prefWidth="69.0" text="Uitgestemd">
+                   <font>
+                       <Font size="10.0" />
+                   </font>
+               </Button>
+               <TextField fx:id="editField2" layoutX="461.0" layoutY="-1.0" prefHeight="102.0" prefWidth="519.0">
+                   <font>
+                       <Font size="48.0" />
+                   </font>
+               </TextField>
+               <Button fx:id="editConfirm2" layoutX="981.0" mnemonicParsing="false" onAction="#editConfimPress" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
+                   <font>
+                       <Font size="29.0" />
+                   </font>
+               </Button>
+           </children>
+       </Pane>
+       <Pane layoutX="15.0" layoutY="344.0" prefHeight="100.0" prefWidth="1250.0">
+           <children>
+               <Label fx:id="naamLabel3" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+               <Button fx:id="uitgestemd3" layoutX="1181.0" mnemonicParsing="false" onAction="#makeOld" prefHeight="100.0" prefWidth="69.0" text="Uitgestemd">
+                   <font>
+                       <Font size="10.0" />
+                   </font>
+               </Button>
+               <TextField fx:id="editField3" layoutX="461.0" layoutY="-1.0" prefHeight="102.0" prefWidth="519.0">
+                   <font>
+                       <Font size="48.0" />
+                   </font>
+               </TextField>
+               <Button fx:id="editConfirm3" layoutX="981.0" mnemonicParsing="false" onAction="#editConfimPress" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
+                   <font>
+                       <Font size="29.0" />
+                   </font>
+               </Button>
+           </children>
+       </Pane>
+       <Pane layoutX="15.0" layoutY="454.0" prefHeight="100.0" prefWidth="1250.0">
+           <children>
+               <Label fx:id="naamLabel4" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+               <Button fx:id="uitgestemd4" layoutX="1181.0" mnemonicParsing="false" onAction="#makeOld" prefHeight="100.0" prefWidth="69.0" text="Uitgestemd">
+                   <font>
+                       <Font size="10.0" />
+                   </font>
+               </Button>
+               <TextField fx:id="editField4" layoutX="461.0" layoutY="-1.0" prefHeight="102.0" prefWidth="519.0">
+                   <font>
+                       <Font size="48.0" />
+                   </font>
+               </TextField>
+               <Button fx:id="editConfirm4" layoutX="981.0" mnemonicParsing="false" onAction="#editConfimPress" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
+                   <font>
+                       <Font size="29.0" />
+                   </font>
+               </Button>
+           </children>
+       </Pane>
+       <Pane layoutX="15.0" layoutY="564.0" prefHeight="100.0" prefWidth="1250.0">
+           <children>
+               <Label fx:id="naamLabel5" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+               <Button fx:id="uitgestemd5" layoutX="1181.0" mnemonicParsing="false" onAction="#makeOld" prefHeight="100.0" prefWidth="69.0" text="Uitgestemd">
+                   <font>
+                       <Font size="10.0" />
+                   </font>
+               </Button>
+               <TextField fx:id="editField5" layoutX="461.0" layoutY="-1.0" prefHeight="102.0" prefWidth="519.0">
+                   <font>
+                       <Font size="48.0" />
+                   </font>
+               </TextField>
+               <Button fx:id="editConfirm5" layoutX="981.0" mnemonicParsing="false" onAction="#editConfimPress" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
+                   <font>
+                       <Font size="29.0" />
+                   </font>
+               </Button>
+           </children>
+       </Pane>
+      <Button fx:id="newFeut" layoutX="340.0" layoutY="681.0" mnemonicParsing="false" onAction="#newFeut" prefHeight="206.0" prefWidth="600.0" text="Nieuwe Feut">
+         <font>
+            <Font size="64.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
