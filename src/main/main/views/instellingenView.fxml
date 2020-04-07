@@ -23,7 +23,7 @@
                   <Font size="48.0" />
                </font>
             </TextField>
-            <Button fx:id="editConfirm0" layoutX="981.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
+            <Button fx:id="editConfirm0" layoutX="981.0" mnemonicParsing="false" onAction="#editConfimPress" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
                <font>
                   <Font size="29.0" />
                </font>
@@ -47,7 +47,7 @@
                        <Font size="48.0" />
                    </font>
                </TextField>
-               <Button fx:id="editConfirm1" layoutX="981.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
+               <Button fx:id="editConfirm1" layoutX="981.0" mnemonicParsing="false" onAction="#editConfimPress" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
                    <font>
                        <Font size="29.0" />
                    </font>
@@ -71,7 +71,7 @@
                        <Font size="48.0" />
                    </font>
                </TextField>
-               <Button fx:id="editConfirm2" layoutX="981.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
+               <Button fx:id="editConfirm2" layoutX="981.0" mnemonicParsing="false" onAction="#editConfimPress" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
                    <font>
                        <Font size="29.0" />
                    </font>
@@ -95,7 +95,7 @@
                        <Font size="48.0" />
                    </font>
                </TextField>
-               <Button fx:id="editConfirm3" layoutX="981.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
+               <Button fx:id="editConfirm3" layoutX="981.0" mnemonicParsing="false" onAction="#editConfimPress" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
                    <font>
                        <Font size="29.0" />
                    </font>
@@ -119,7 +119,7 @@
                        <Font size="48.0" />
                    </font>
                </TextField>
-               <Button fx:id="editConfirm4" layoutX="981.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
+               <Button fx:id="editConfirm4" layoutX="981.0" mnemonicParsing="false" onAction="#editConfimPress" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
                    <font>
                        <Font size="29.0" />
                    </font>
@@ -143,7 +143,7 @@
                        <Font size="48.0" />
                    </font>
                </TextField>
-               <Button fx:id="editConfirm5" layoutX="981.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
+               <Button fx:id="editConfirm5" layoutX="981.0" mnemonicParsing="false" onAction="#editConfimPress" prefHeight="100.0" prefWidth="200.0" text="Wijzig naam">
                    <font>
                        <Font size="29.0" />
                    </font>

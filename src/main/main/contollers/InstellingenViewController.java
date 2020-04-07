@@ -10,6 +10,7 @@ import main.objects.Account;
 import main.objects.AccountList;
 
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class InstellingenViewController implements Initializable {
@@ -19,6 +20,7 @@ public class InstellingenViewController implements Initializable {
     @FXML
     private Button newFeut;
 
+    private LinkedList<Label> naamLabelList = new LinkedList<>();
     @FXML
     private Label naamLabel0;
     @FXML
@@ -32,6 +34,7 @@ public class InstellingenViewController implements Initializable {
     @FXML
     private Label naamLabel5;
 
+    private LinkedList<Button> uitgestemdList = new LinkedList<>();
     @FXML
     private Button uitgestemd0;
     @FXML
@@ -45,7 +48,7 @@ public class InstellingenViewController implements Initializable {
     @FXML
     private Button uitgestemd5;
 
-
+    private LinkedList<TextField> editFieldList = new LinkedList<>();
     @FXML
     private TextField editField0;
     @FXML
@@ -59,7 +62,7 @@ public class InstellingenViewController implements Initializable {
     @FXML
     private TextField editField5;
 
-
+    private LinkedList<Button> editConfirmList = new LinkedList<>();
     @FXML
     private Button editConfirm0;
     @FXML
@@ -76,7 +79,33 @@ public class InstellingenViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        naamLabelList.add(naamLabel0);
+        naamLabelList.add(naamLabel1);
+        naamLabelList.add(naamLabel2);
+        naamLabelList.add(naamLabel3);
+        naamLabelList.add(naamLabel4);
+        naamLabelList.add(naamLabel5);
 
+        uitgestemdList.add(uitgestemd0);
+        uitgestemdList.add(uitgestemd1);
+        uitgestemdList.add(uitgestemd2);
+        uitgestemdList.add(uitgestemd3);
+        uitgestemdList.add(uitgestemd4);
+        uitgestemdList.add(uitgestemd5);
+
+        editFieldList.add(editField0);
+        editFieldList.add(editField1);
+        editFieldList.add(editField2);
+        editFieldList.add(editField3);
+        editFieldList.add(editField4);
+        editFieldList.add(editField5);
+
+        editConfirmList.add(editConfirm0);
+        editConfirmList.add(editConfirm1);
+        editConfirmList.add(editConfirm2);
+        editConfirmList.add(editConfirm3);
+        editConfirmList.add(editConfirm4);
+        editConfirmList.add(editConfirm5);
     }
 
     public void setAccountList(AccountList accountList){
@@ -87,12 +116,12 @@ public class InstellingenViewController implements Initializable {
     }
 
     public void setData(){
-        naamLabel0.setText(accountList.get(0).getName());
-        naamLabel1.setText(accountList.get(1).getName());
-        naamLabel2.setText(accountList.get(2).getName());
-        naamLabel3.setText(accountList.get(3).getName());
-        naamLabel4.setText(accountList.get(4).getName());
-        naamLabel5.setText(accountList.get(5).getName());
+        for(int i = 0; i<6; i++){
+            naamLabelList.get(i).setText(accountList.get(i).getName());
+            if(accountList.get(i).getName().equals("")||accountList.get(i).getName().equals("B3ni3")){
+                editConfirmList.get(i).setDisable(true);
+            }
+        }
     }
 
     public void newFeut(ActionEvent event){
@@ -100,9 +129,28 @@ public class InstellingenViewController implements Initializable {
         accountList.add(feut);
         accountList.sort();
         mainController.write();
+        setData();
     }
 
     public void makeOld(ActionEvent event) {
-        Button pressedButton = (Button) event.getSource();
+        for(int i = 0; i<6; i++){
+            if(event.getSource().equals(uitgestemdList.get(i))){
+                accountList.get(i).setOld();
+            }
+        }
+        accountList.sort();
+        mainController.write();
+        setData();
+    }
+
+    public void editConfimPress(ActionEvent event) {
+        for(int i = 0; i<6; i++){
+            if(event.getSource().equals((editConfirmList.get(i)))){
+                accountList.get(i).setName(editFieldList.get(i).getText());
+                editFieldList.get(i).setText("");
+            }
+        }
+        mainController.write();
+        setData();
     }
 }
