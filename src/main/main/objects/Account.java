@@ -1,5 +1,6 @@
 package main.objects;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -141,7 +142,8 @@ public class Account implements Comparable<Account> {
         long diff = currentDate.getTime() - getCreated().getTime();
         double nrDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 
-        return drankTotal/nrDays;
+        double res = drankTotal / nrDays;
+        return res;
     }
 
     /**
@@ -247,10 +249,11 @@ public class Account implements Comparable<Account> {
     @Override
     public String toString(){
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        DecimalFormat decimalFormat = new DecimalFormat("######.##");
         return name + " - " +
                 drankTotal + " - " +
-                String.valueOf(drankPerMonth) + " - " +
-                drankPerDay + " - " +
+                decimalFormat.format(drankPerMonth) + " - " +
+                decimalFormat.format(drankPerDay) + " - " +
                 format.format(created);
     }
 }
