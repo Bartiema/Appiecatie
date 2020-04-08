@@ -63,9 +63,8 @@ public class AccountList implements Iterable<Account>{
      * A method to update all account statistics
      */
     public void updateAll(){
-        Date date = new Date();
         for(Account a : accounts){
-            a.update(date);
+            a.update();
         }
     }
      /**

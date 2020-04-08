@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Account implements Comparable<Account> {
     private String name;
@@ -26,7 +27,7 @@ public class Account implements Comparable<Account> {
 
     /**
      * Constructor for new Account
-     * @param name
+     * @param name - the name of the Account
      */
     public Account(String name){
         this.name = name;
@@ -51,8 +52,8 @@ public class Account implements Comparable<Account> {
         this.stock = stock;
         this.created = created;
         this.drankTotal = drankTotal;
-        this.drankPerDay = calculatePerDay(drankTotal, created);
-        this.drankPerMonth = calculatePerMonth(drankTotal, created);
+        this.drankPerDay = calculatePerDay(drankTotal);
+        this.drankPerMonth = calculatePerMonth(drankTotal);
         this.isOld = isOld;
     }
 
@@ -132,40 +133,29 @@ public class Account implements Comparable<Account> {
     /**
      * A calculation method to calculate the amount of beers drank per day
      * @param drankTotal - the Total number of beers drank by the account
-     * @param date - the date of creation of the account
      * @return the Double of the value
      */
-    public static double calculatePerDay(int drankTotal, Date date){
+    public double calculatePerDay(int drankTotal){
        Date currentDate = new Date();
-       int currentYear = currentDate.getYear();
-       int currentMonth = currentDate.getMonth();
-       int currentDay = currentDate.getDay();
 
-       int dateYear = date.getYear();
-       int dateMonth = date.getMonth();
-       int dateDay = date.getMonth();
+        long diff = currentDate.getTime() - getCreated().getTime();
+        double nrDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 
-       int differenceYear = currentYear - dateYear;
-       int differenceMonth = currentMonth - dateMonth;
-       int differenceDay = currentDay - dateDay;
-
-       double TotalDays = differenceDay + 30.42*differenceMonth + 365.25*differenceYear;
-        return drankTotal/TotalDays;
+        return drankTotal/nrDays;
     }
 
     /**
      * a calculation method to calculate the amount of beers drank per month
      * @param drankTotal - the Total number of beers drank by the account
-     * @param date - the date of creation of the account
      * @return the Double of the value
      */
-    public static double calculatePerMonth(int drankTotal, Date date){
+    public double calculatePerMonth(int drankTotal){
         Date currentDate = new Date();
         int currentYear = currentDate.getYear();
         int currentMonth = currentDate.getMonth();
 
-        int dateYear = date.getYear();
-        int dateMonth = date.getMonth();
+        int dateYear = getCreated().getYear();
+        int dateMonth = getCreated().getMonth();
 
         int differenceYear = currentYear - dateYear;
         int differenceMonth = currentMonth - dateMonth;
@@ -217,11 +207,10 @@ public class Account implements Comparable<Account> {
     /**
      * For updating the stats
      * This method is called from AccountList when something else is done
-     * @param date - the date this method is called on for the updates
      */
-    public void update(Date date){
-        drankPerDay = calculatePerDay(drankTotal, date);
-        drankPerMonth = calculatePerMonth(drankTotal, date);
+    public void update(){
+        drankPerDay = calculatePerDay(drankTotal);
+        drankPerMonth = calculatePerMonth(drankTotal);
     }
 
     /**
@@ -260,7 +249,7 @@ public class Account implements Comparable<Account> {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         return name + " - " +
                 drankTotal + " - " +
-                drankPerMonth + " - " +
+                String.valueOf(drankPerMonth) + " - " +
                 drankPerDay + " - " +
                 format.format(created);
     }
