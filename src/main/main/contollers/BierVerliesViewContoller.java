@@ -21,7 +21,7 @@ public class BierVerliesViewContoller implements Initializable {
     private MainController mainController;
 
     private LinkedList<Account> selectedAccounts = new LinkedList<Account>();
-
+//TODO reformat this shit
 
     @FXML
     private Label totalStock;
