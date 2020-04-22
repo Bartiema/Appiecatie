@@ -118,7 +118,7 @@ public class InstellingenViewController implements Initializable {
     public void setData(){
         for(int i = 0; i<6; i++){
             naamLabelList.get(i).setText(accountList.get(i).getName());
-            if(accountList.get(i).getName().equals("")||accountList.get(i).getName().equals("B3ni3")){
+            if(accountList.get(i).getName().equals("")||accountList.get(i).getName().equals("B3nni3")){
                 editConfirmList.get(i).setDisable(true);
             }
         }
