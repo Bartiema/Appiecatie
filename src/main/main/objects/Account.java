@@ -142,8 +142,7 @@ public class Account implements Comparable<Account> {
         long diff = currentDate.getTime() - getCreated().getTime();
         double nrDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 
-        double res = drankTotal / nrDays;
-        return res;
+        return drankTotal / nrDays;
     }
 
     /**
