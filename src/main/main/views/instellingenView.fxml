@@ -150,10 +150,11 @@
                </Button>
            </children>
        </Pane>
-      <Button fx:id="newFeut" layoutX="340.0" layoutY="681.0" mnemonicParsing="false" onAction="#newFeut" prefHeight="206.0" prefWidth="600.0" text="Nieuwe Feut">
+      <Button fx:id="newFeut" layoutX="597.0" layoutY="680.0" mnemonicParsing="false" onAction="#newFeut" prefHeight="206.0" prefWidth="600.0" text="Nieuwe Feut">
          <font>
             <Font size="64.0" />
          </font>
       </Button>
+      <Button mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>

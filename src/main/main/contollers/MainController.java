@@ -25,6 +25,7 @@ public class MainController implements Initializable {
 
     File accountFile = new File("Accounts");
     File messageFile = new File("src\\main\\main\\files\\Messages");
+    File transactionFile = new File("src\\main\\main\\files\\Transactions");
 
     private Random random = new Random();
 
@@ -74,6 +75,7 @@ public class MainController implements Initializable {
         FileWriter writer = null;
         try {
             accountList.toRead(accountFile);
+            accountList.setTransactionList(transactionFile);
             writer = new FileWriter(accountFile);
 
             messages.toRead(messageFile);

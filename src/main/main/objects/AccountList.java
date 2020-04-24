@@ -8,9 +8,11 @@ import java.util.*;
 public class AccountList implements Iterable<Account>{
     private LinkedList<Account> accounts;
     private int totalStock;
+    private TransactionList transactionList;
 
     public AccountList(){
         accounts = new LinkedList<>();
+        transactionList = new TransactionList();
         totalStock = 0;
     }
 
@@ -32,6 +34,14 @@ public class AccountList implements Iterable<Account>{
 
     public int getTotalStock(){
         return this.totalStock;
+    }
+
+    public TransactionList getTransactionList() {
+        return this.transactionList;
+    }
+
+    public void setTransactionList(File file) throws FileNotFoundException, ParseException {
+        transactionList.toRead(file, this);
     }
 
     /**

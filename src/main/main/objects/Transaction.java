@@ -59,7 +59,7 @@ public class Transaction {
                 " - " + format.format(date);
     }
 
-    public Transaction toRead(String string, AccountList accounts) throws ParseException {
+    public static Transaction toRead(String string, AccountList accounts) throws ParseException {
         Scanner scanner = new Scanner(string);
         scanner.useDelimiter(" - ");
         String accName = scanner.next();
@@ -74,6 +74,7 @@ public class Transaction {
                 account = a;
             }
         }
+        scanner.close();
         return new Transaction(account, oldStock, newStock, date);
     }
 }
