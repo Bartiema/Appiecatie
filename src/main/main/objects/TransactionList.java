@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TransactionList {
@@ -45,5 +46,9 @@ public class TransactionList {
             add(Transaction.toRead(scanner.nextLine(), accounts));
         }
         scanner.close();
+    }
+
+    public List<Transaction> getAll() {
+        return this.transactions;
     }
 }

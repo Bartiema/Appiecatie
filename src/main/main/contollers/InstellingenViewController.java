@@ -76,6 +76,9 @@ public class InstellingenViewController implements Initializable {
     @FXML
     private Button editConfirm5;
 
+    @FXML
+    private Button TransactionViewButton;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -152,5 +155,9 @@ public class InstellingenViewController implements Initializable {
         }
         mainController.write();
         setData();
+    }
+
+    public void TransactionView(ActionEvent actionEvent) {
+        mainController.transactionView();
     }
 }

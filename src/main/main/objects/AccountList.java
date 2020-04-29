@@ -109,22 +109,50 @@ public class AccountList implements Iterable<Account>{
 
     public void beerDrank(int index){
         totalStock -= 1;
-        accounts.get(index).beerDrank();
+
+        Account account = accounts.get(index);
+        int oldStock = account.getStock();
+
+        account.beerDrank();
+
+        Transaction transaction = new Transaction(account, oldStock, account.getStock(), "Bier Gepakt");
+        transactionList.add(transaction);
     }
 
     public void misBeer(int index){
         totalStock += 1;
-        accounts.get(index).misBeer();
+
+        Account account = accounts.get(index);
+        int oldStock = account.getStock();
+
+        account.misBeer();
+
+        Transaction transaction = new Transaction(account, oldStock, account.getStock(), "MisBier");
+        transactionList.add(transaction);
     }
 
     public void misKrat(int index){
         totalStock -= 24;
-        accounts.get(index).misCrate();
+
+        Account account = accounts.get(index);
+        int oldStock = account.getStock();
+
+        account.misCrate();
+
+        Transaction transaction = new Transaction(account, oldStock, account.getStock(), "MisKrat");
+        transactionList.add(transaction);
     }
 
     public void kratKoop(int index){
         totalStock += 24;
-        accounts.get(index).boughtCrate();
+
+        Account account = accounts.get(index);
+        int oldStock = account.getStock();
+
+        account.boughtCrate();
+
+        Transaction transaction = new Transaction(account, oldStock, account.getStock(), "Krat Gekocht");
+        transactionList.add(transaction);
     }
 
     /**

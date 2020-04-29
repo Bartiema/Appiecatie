@@ -155,6 +155,9 @@
             <Font size="64.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" text="Button" />
+      <Button fx:id="TransactionViewButton" layoutX="161.0" layoutY="680.0" mnemonicParsing="false" onAction="#TransactionView" prefHeight="206.0" prefWidth="291.0" text="Geschiedenis">
+         <font>
+            <Font size="40.0" />
+         </font></Button>
    </children>
 </AnchorPane>

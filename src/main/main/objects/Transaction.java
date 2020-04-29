@@ -9,19 +9,22 @@ public class Transaction {
     private Account account;
     private int oldStock;
     private int newStock;
+    private String type;
     private Date date;
 
-    public Transaction(Account account, int oldStock, int newStock){
+    public Transaction(Account account, int oldStock, int newStock, String type){
         this.account = account;
         this.oldStock = oldStock;
         this.newStock = newStock;
+        this.type = type;
         date = new Date();
     }
 
-    public Transaction(Account account, int oldStock, int newStock, Date date){
+    public Transaction(Account account, int oldStock, int newStock, String type, Date date){
         this.account = account;
         this.oldStock = oldStock;
         this.newStock = newStock;
+        this.type = type;
         this.date = date;
     }
 
@@ -38,6 +41,10 @@ public class Transaction {
         return newStock;
     }
 
+    public String getType() {
+        return this.type;
+    }
+
     public Date getDate() {
         return date;
     }
@@ -48,6 +55,7 @@ public class Transaction {
         return "Persoon: " + account.getName() +
                 " - Oude Stand: " + oldStock +
                 " - Nieuwe Stand: " + newStock +
+                " - Knop gedrukt: " + type +
                 " - Datum: " + format.format(date);
     }
 
@@ -56,6 +64,7 @@ public class Transaction {
         return account.getName() +
                 " - " + oldStock +
                 " - " + newStock +
+                " - " + type +
                 " - " + format.format(date);
     }
 
@@ -65,6 +74,7 @@ public class Transaction {
         String accName = scanner.next();
         int oldStock = scanner.nextInt();
         int newStock = scanner.nextInt();
+        String type = scanner.next();
         SimpleDateFormat format = new SimpleDateFormat("H:mm dd MMMMM");
         Date date = format.parse(scanner.next());
         Account account = null;
@@ -75,6 +85,6 @@ public class Transaction {
             }
         }
         scanner.close();
-        return new Transaction(account, oldStock, newStock, date);
+        return new Transaction(account, oldStock, newStock, type, date);
     }
 }
