@@ -167,9 +167,13 @@ public class MainController implements Initializable {
      */
     public void write(){
         try {
-            FileWriter writer = new FileWriter(accountFile);
-            writer.write(accountList.toWrite());
-            writer.close();
+            FileWriter accwriter = new FileWriter(accountFile);
+            accwriter.write(accountList.toWrite());
+            accwriter.close();
+
+            FileWriter transactionWriter = new FileWriter(transactionFile);
+            transactionWriter.write(accountList.getTransactionList().toWrite());
+            transactionWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
