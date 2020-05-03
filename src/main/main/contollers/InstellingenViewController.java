@@ -76,6 +76,9 @@ public class InstellingenViewController implements Initializable {
     @FXML
     private Button editConfirm5;
 
+    @FXML
+    private Button TransactionViewButton;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -118,7 +121,12 @@ public class InstellingenViewController implements Initializable {
     public void setData(){
         for(int i = 0; i<6; i++){
             naamLabelList.get(i).setText(accountList.get(i).getName());
-            if(accountList.get(i).getName().equals("")||accountList.get(i).getName().equals("B3ni3")){
+            editConfirmList.get(i).setDisable(false);
+            uitgestemdList.get(i).setDisable(false);
+            if (accountList.get(i).getName().equals(" ")) {
+                editConfirmList.get(i).setDisable(true);
+                uitgestemdList.get(i).setDisable(true);
+            } else if (accountList.get(i).getName().equals("B3nni3")) {
                 editConfirmList.get(i).setDisable(true);
             }
         }
@@ -152,5 +160,9 @@ public class InstellingenViewController implements Initializable {
         }
         mainController.write();
         setData();
+    }
+
+    public void TransactionView(ActionEvent actionEvent) {
+        mainController.transactionView();
     }
 }

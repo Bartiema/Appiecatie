@@ -25,6 +25,7 @@ public class MainController implements Initializable {
 
     File accountFile = new File("Accounts");
     File messageFile = new File("src\\main\\main\\files\\Messages");
+    File transactionFile = new File("src\\main\\main\\files\\Transactions");
 
     private Random random = new Random();
 
@@ -33,18 +34,21 @@ public class MainController implements Initializable {
     FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/statistiekView.fxml"));
     FXMLLoader bierverliesPageLoader = new FXMLLoader(getClass().getResource("/bierVerliesView.fxml"));
     FXMLLoader instellingenPageLoader = new FXMLLoader(getClass().getResource("/instellingenView.fxml"));
+    FXMLLoader transactionPageLoader = new FXMLLoader(getClass().getResource("/transactionView.fxml"));
 
     //the Panes containing all the extra gui
     private AnchorPane turfPane = turfPageLoader.load();
     private AnchorPane statistiekPane = statistiekPageLoader.load();
     private AnchorPane bierVerliesPane = bierverliesPageLoader.load();
     private AnchorPane instellingenPane = instellingenPageLoader.load();
+    private AnchorPane transactionPane = transactionPageLoader.load();
 
     //The controllers of the other Panes
     TurfViewController turfViewController = turfPageLoader.getController();
     StatistiekViewController statistiekViewController = statistiekPageLoader.getController();
     BierVerliesViewContoller bierVerliesViewContoller = bierverliesPageLoader.getController();
     InstellingenViewController instellingenViewController = instellingenPageLoader.getController();
+    TransactionViewController transactionViewController = transactionPageLoader.getController();
 
     //The MessageBoard
     @FXML
@@ -74,6 +78,7 @@ public class MainController implements Initializable {
         FileWriter writer = null;
         try {
             accountList.toRead(accountFile);
+            accountList.setTransactionList(transactionFile);
             writer = new FileWriter(accountFile);
 
             messages.toRead(messageFile);
@@ -106,6 +111,9 @@ public class MainController implements Initializable {
 
         instellingenViewController.setAccountList(accountList);
         instellingenViewController.setMainController(this);
+
+        transactionViewController.setAccountList(accountList);
+        transactionViewController.setMainController(this);
 
         /*
           Closing the Writer and saving before shutdown
@@ -159,9 +167,13 @@ public class MainController implements Initializable {
      */
     public void write(){
         try {
-            FileWriter writer = new FileWriter(accountFile);
-            writer.write(accountList.toWrite());
-            writer.close();
+            FileWriter accwriter = new FileWriter(accountFile);
+            accwriter.write(accountList.toWrite());
+            accwriter.close();
+
+            FileWriter transactionWriter = new FileWriter(transactionFile);
+            transactionWriter.write(accountList.getTransactionList().toWrite());
+            transactionWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -179,6 +191,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
+        if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
 
         AnchorPane.setTopAnchor(turfPane, (double)125);
         mainPane.getChildren().add(turfPane);
@@ -195,11 +208,12 @@ public class MainController implements Initializable {
      * Then it will load in the statistiekPane
      * @param event - the button being pressed
      */
-    public void statistiekenView(ActionEvent event) {
+    public void statistiekenView(ActionEvent event) throws IllegalAccessException {
         if(mainPane.getChildren().contains(statistiekPane)) return;
         if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
+        if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
 
         AnchorPane.setTopAnchor(statistiekPane, (double)125);
         mainPane.getChildren().add(statistiekPane);
@@ -212,6 +226,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
+        if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
 
         AnchorPane.setTopAnchor(bierVerliesPane, (double)125);
         mainPane.getChildren().add(bierVerliesPane);
@@ -224,9 +239,22 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
+        if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
 
         AnchorPane.setTopAnchor(instellingenPane, (double)125);
         mainPane.getChildren().add(instellingenPane);
         instellingenViewController.setData();
+    }
+
+    public void transactionView(){
+        if(mainPane.getChildren().contains(transactionPane)) return;
+        if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);
+        if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
+        if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
+        if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
+
+        AnchorPane.setTopAnchor(transactionPane, (double)125);
+        mainPane.getChildren().add(transactionPane);
+        transactionViewController.setData();
     }
  }

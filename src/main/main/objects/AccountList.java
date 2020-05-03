@@ -8,9 +8,11 @@ import java.util.*;
 public class AccountList implements Iterable<Account>{
     private LinkedList<Account> accounts;
     private int totalStock;
+    private TransactionList transactionList;
 
     public AccountList(){
         accounts = new LinkedList<>();
+        transactionList = new TransactionList();
         totalStock = 0;
     }
 
@@ -32,6 +34,14 @@ public class AccountList implements Iterable<Account>{
 
     public int getTotalStock(){
         return this.totalStock;
+    }
+
+    public TransactionList getTransactionList() {
+        return this.transactionList;
+    }
+
+    public void setTransactionList(File file) throws FileNotFoundException, ParseException {
+        transactionList.toRead(file, this);
     }
 
     /**
@@ -63,9 +73,8 @@ public class AccountList implements Iterable<Account>{
      * A method to update all account statistics
      */
     public void updateAll(){
-        Date date = new Date();
         for(Account a : accounts){
-            a.update(date);
+            a.update();
         }
     }
      /**
@@ -100,22 +109,50 @@ public class AccountList implements Iterable<Account>{
 
     public void beerDrank(int index){
         totalStock -= 1;
-        accounts.get(index).beerDrank();
+
+        Account account = accounts.get(index);
+        int oldStock = account.getStock();
+
+        account.beerDrank();
+
+        Transaction transaction = new Transaction(account, oldStock, account.getStock(), "Bier Gepakt");
+        transactionList.add(transaction);
     }
 
     public void misBeer(int index){
         totalStock += 1;
-        accounts.get(index).misBeer();
+
+        Account account = accounts.get(index);
+        int oldStock = account.getStock();
+
+        account.misBeer();
+
+        Transaction transaction = new Transaction(account, oldStock, account.getStock(), "MisBier");
+        transactionList.add(transaction);
     }
 
     public void misKrat(int index){
         totalStock -= 24;
-        accounts.get(index).misCrate();
+
+        Account account = accounts.get(index);
+        int oldStock = account.getStock();
+
+        account.misCrate();
+
+        Transaction transaction = new Transaction(account, oldStock, account.getStock(), "MisKrat");
+        transactionList.add(transaction);
     }
 
     public void kratKoop(int index){
         totalStock += 24;
-        accounts.get(index).boughtCrate();
+
+        Account account = accounts.get(index);
+        int oldStock = account.getStock();
+
+        account.boughtCrate();
+
+        Transaction transaction = new Transaction(account, oldStock, account.getStock(), "Krat Gekocht");
+        transactionList.add(transaction);
     }
 
     /**

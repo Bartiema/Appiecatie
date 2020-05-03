@@ -35,14 +35,30 @@ public class StatistiekViewController implements Initializable {
      * the Method setting all the data in the ListView
      * first updates the data and then loads it into a observable list(aka just calling toString and making line seperation) then sets those Items
      */
-    public void setData(){
+    public void setData() throws IllegalAccessException {
         accountList.updateAll();
-        Account blank = accountList.get(6);
-        accountList.remove(blank);
-        ObservableList<Account> o1 = FXCollections.observableArrayList(accountList.getAll());
-        accountList.add(blank);
-        accountList.sort();
-        listView.setItems(o1);
+
+
+        Account blank = null;
+        for(Account a : accountList){
+            if (a.getName().equals(" ")){
+                blank = a;
+                break;
+            }
+        }
+
+        if(blank!= null) {
+            accountList.remove(blank);
+
+            ObservableList<Account> o1 = FXCollections.observableArrayList(accountList.getAll());
+
+            accountList.add(blank);
+            accountList.sort();
+
+            listView.setItems(o1);
+        }else{
+            throw new IllegalAccessException(" Blank not found");
+        }
         }
     }
 
