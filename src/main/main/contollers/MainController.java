@@ -208,7 +208,7 @@ public class MainController implements Initializable {
      * Then it will load in the statistiekPane
      * @param event - the button being pressed
      */
-    public void statistiekenView(ActionEvent event) {
+    public void statistiekenView(ActionEvent event) throws IllegalAccessException {
         if(mainPane.getChildren().contains(statistiekPane)) return;
         if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
