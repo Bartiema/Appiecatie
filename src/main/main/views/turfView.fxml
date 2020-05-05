@@ -19,7 +19,7 @@
             </Label>
             <Pane fx:id="AccPane5" layoutX="861.0" layoutY="476.0" prefHeight="410.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
                 <children>
-                    <Label fx:id="naamAcc5" layoutX="14.0" layoutY="14.0" text="Naam">
+                    <Label fx:id="naamAcc5" layoutX="14.0" layoutY="14.0" prefHeight="65.0" prefWidth="282.0" text="Naam">
                         <font>
                             <Font size="44.0" />
                         </font>
@@ -53,7 +53,7 @@
             </Pane>
             <Pane fx:id="AccPane4" layoutX="438.0" layoutY="476.0" prefHeight="410.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
                 <children>
-                    <Label fx:id="naamAcc4" layoutX="14.0" layoutY="14.0" text="Naam">
+                    <Label fx:id="naamAcc4" layoutX="14.0" layoutY="14.0" prefHeight="65.0" prefWidth="274.0" text="Naam">
                         <font>
                             <Font size="44.0" />
                         </font>
@@ -87,7 +87,7 @@
             </Pane>
             <Pane fx:id="AccPane3" layoutX="14.0" layoutY="476.0" prefHeight="410.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
                 <children>
-                    <Label fx:id="naamAcc3" layoutX="14.0" layoutY="14.0" text="Naam">
+                    <Label fx:id="naamAcc3" layoutX="14.0" layoutY="14.0" prefHeight="65.0" prefWidth="295.0" text="Naam">
                         <font>
                             <Font size="44.0" />
                         </font>
@@ -121,7 +121,7 @@
             </Pane>
             <Pane fx:id="AccPane2" layoutX="861.0" layoutY="49.0" prefHeight="410.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
                 <children>
-                    <Label fx:id="naamAcc2" layoutX="14.0" layoutY="14.0" text="Naam">
+                    <Label fx:id="naamAcc2" layoutX="14.0" layoutY="14.0" prefHeight="65.0" prefWidth="295.0" text="Naam">
                         <font>
                             <Font size="44.0" />
                         </font>
@@ -155,7 +155,7 @@
             </Pane>
             <Pane fx:id="AccPane1" layoutX="438.0" layoutY="49.0" prefHeight="410.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
                 <children>
-                    <Label fx:id="naamAcc1" layoutX="14.0" layoutY="14.0" text="Naam">
+                    <Label fx:id="naamAcc1" layoutX="14.0" layoutY="14.0" prefHeight="65.0" prefWidth="295.0" text="Naam">
                         <font>
                             <Font size="44.0" />
                         </font>
@@ -219,7 +219,7 @@
                             <Font size="36.0" />
                         </font>
                     </Label>
-                    <Label fx:id="naamAcc0" layoutX="14.0" layoutY="14.0" prefHeight="70.0" prefWidth="167.0" text="Naam">
+                    <Label fx:id="naamAcc0" layoutX="14.0" layoutY="14.0" prefHeight="75.0" prefWidth="295.0" text="Naam">
                         <font>
                             <Font size="52.0" />
                         </font>
