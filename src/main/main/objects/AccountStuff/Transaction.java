@@ -1,4 +1,4 @@
-package main.objects;
+package main.objects.AccountStuff;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

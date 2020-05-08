@@ -10,7 +10,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import main.objects.AccountList;
+import main.objects.AccountStuff.AccountList;
 
 import java.net.URL;
 import java.util.LinkedList;

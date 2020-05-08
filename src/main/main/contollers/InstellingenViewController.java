@@ -6,8 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import main.objects.Account;
-import main.objects.AccountList;
+import main.objects.AccountStuff.Account;
+import main.objects.AccountStuff.AccountList;
 
 import java.net.URL;
 import java.util.LinkedList;

@@ -1,4 +1,7 @@
-package main.objects;
+package main.objects.AccountStuff;
+
+import main.objects.AccountStuff.AccountList;
+import main.objects.AccountStuff.Transaction;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,7 +43,7 @@ public class TransactionList {
         return s.toString();
     }
 
-    public void toRead(File file ,AccountList accounts) throws FileNotFoundException, ParseException {
+    public void toRead(File file , AccountList accounts) throws FileNotFoundException, ParseException {
         Scanner scanner = new Scanner(file);
         while(scanner.hasNextLine()){
             add(Transaction.toRead(scanner.nextLine(), accounts));
