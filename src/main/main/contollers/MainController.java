@@ -19,6 +19,7 @@ import java.text.ParseException;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+//Todo: JavaDoc in all files, and making comments around the place to explain stuff.
 
 public class MainController implements Initializable {
     private AccountList accountList;
