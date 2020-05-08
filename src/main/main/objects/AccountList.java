@@ -205,4 +205,8 @@ public class AccountList implements Iterable<Account>{
     public void remove(Account account){
         accounts.remove(account);
     }
+
+    public void updateMonth() {
+        for(Account a: accounts) if (!a.isOld()) a.setDrankThisMonth(0);
+    }
 }

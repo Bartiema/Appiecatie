@@ -15,6 +15,7 @@ public class Account implements Comparable<Account> {
     private double drankPerDay;
     private double drankPerMonth;
     private boolean isOld;
+    private int drankThisMonth;
 
     public Account(){
         this.name = "Feut";
@@ -24,6 +25,7 @@ public class Account implements Comparable<Account> {
         this.drankPerMonth = 0;
         this.created = new Date();
         this.isOld = false;
+        this.drankThisMonth = 0;
     }
 
     /**
@@ -38,6 +40,7 @@ public class Account implements Comparable<Account> {
         this.drankPerMonth = 0;
         this.created = new Date();
         this.isOld = false;
+        this.drankThisMonth = 0;
     }
 
     /**
@@ -47,8 +50,9 @@ public class Account implements Comparable<Account> {
      * @param drankTotal - Total beer drank
      * @param created - Date of account Creation
      * @param isOld - Is it an old Housemate (if this is true this Account will only be displayed in Statistics)
+     * @param drankThisMonth - the number of beers drank in the current month
      */
-    public Account(String name, int stock, int drankTotal, Date created, boolean isOld){
+    public Account(String name, int stock, int drankTotal, Date created, boolean isOld, int drankThisMonth){
         this.name = name;
         this.stock = stock;
         this.created = created;
@@ -56,6 +60,7 @@ public class Account implements Comparable<Account> {
         this.drankPerDay = calculatePerDay(drankTotal);
         this.drankPerMonth = calculatePerMonth(drankTotal);
         this.isOld = isOld;
+        this.drankThisMonth = drankThisMonth;
     }
 
     public String getName() {
@@ -94,6 +99,14 @@ public class Account implements Comparable<Account> {
         this.stock = stock;
     }
 
+    public int getDrankThisMonth() {
+        return this.drankThisMonth;
+    }
+
+    public void setDrankThisMonth(int i) {
+        this.drankThisMonth = i;
+    }
+
     /**
      * a method to return the String to be Written to file
      * @return String
@@ -104,7 +117,8 @@ public class Account implements Comparable<Account> {
                 + stock + " - "
                 + drankTotal + " - "
                 + dateFormat.format(created) + " - "
-                + isOld;
+                + isOld + " - "
+                + drankThisMonth;
     }
 
     /**
@@ -125,10 +139,13 @@ public class Account implements Comparable<Account> {
 
         boolean isOld = true;
 
-        String isOldS = scanner.nextLine();
-        if(isOldS.equals(" - false")) isOld = false;
+        String isOldS = scanner.next();
+        if(isOldS.equals("false")) isOld = false;
 
-        return new Account(name, stock, drankTotal, date, isOld);
+        int drankThisMonth = scanner.nextInt();
+        scanner.close();
+
+        return new Account(name, stock, drankTotal, date, isOld, drankThisMonth);
     }
 
     /**
@@ -172,6 +189,7 @@ public class Account implements Comparable<Account> {
     public void beerDrank(){
         stock -= 1;
         drankTotal += 1;
+        drankThisMonth +=1;
     }
     /**
      * A method to update a account when he or some other idiot missclicked
@@ -180,6 +198,7 @@ public class Account implements Comparable<Account> {
     public void misBeer(){
         stock += 1;
         drankTotal -= 1;
+        drankThisMonth -= 1;
     }
     /**
      * A method to update a account when he bought a crate
@@ -242,7 +261,7 @@ public class Account implements Comparable<Account> {
     }
 
     /**
-     * Simple toString for ListView
+     * Simple toString for ListView aka Statisticks
      * @return - the String
      */
     @Override
@@ -251,6 +270,7 @@ public class Account implements Comparable<Account> {
         DecimalFormat decimalFormat = new DecimalFormat("######.##");
         return name + " - " +
                 drankTotal + " - " +
+                drankThisMonth + " - " +
                 decimalFormat.format(drankPerMonth) + " - " +
                 decimalFormat.format(drankPerDay) + " - " +
                 format.format(created);

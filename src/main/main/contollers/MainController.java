@@ -9,14 +9,19 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import main.objects.AccountList;
 import main.objects.MessageList;
+import main.objects.UpdatePerMonth;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
+import java.time.*;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 
 public class MainController implements Initializable {
@@ -126,6 +131,26 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
 
+        /*
+          Starting the Monthly reset
+         */
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool( 1 ) ;
+
+        UpdatePerMonth update = new UpdatePerMonth(this, accountList);
+
+        DayOfMonth domTarget = DayOfMonth.of( 15 ) ;
+        ZoneId z = ZoneId.of( "Africa/Tunis" ) ;
+        ZonedDateTime now = ZonedDateTime.now( z ) ;
+        DayOfMonth domToday = DayOfMonth.from( now ) ;
+        LocalDate today = now.toLocalDate() ;
+        LocalDate target = domTarget.atYearMonth( YearMonth.of( today ) ) ;
+        if( ! target.IsAfter( today ) ) {
+            target = target.plusMonths( 1 ) ;
+        }
+        ZonedDateTime start = target.atStartOfDay( z ) ;
+        Duration d = Duration.between( now , start ) ;
+
+        scheduler.schedule( update ,d.toSeconds() , TimeUnit.SECONDS  ) ;
     }
 
     public Label getMessageBoard(){
