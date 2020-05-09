@@ -11,11 +11,13 @@ public class Account implements Comparable<Account> {
     private String name;
     private int stock;
     private int drankTotal;
-    private Date created;
+    private Date joinedHouse;
     private double drankPerDay;
     private double drankPerMonth;
-    private boolean isOld;
     private int drankThisMonth;
+    private boolean isOld;
+    private Date leftHouse;
+
 
     public Account(){
         this.name = "Feut";
@@ -23,9 +25,10 @@ public class Account implements Comparable<Account> {
         this.drankTotal = 0;
         this.drankPerDay = 0;
         this.drankPerMonth = 0;
-        this.created = new Date();
+        this.joinedHouse = new Date();
         this.isOld = false;
         this.drankThisMonth = 0;
+        this.leftHouse = null;
     }
 
     /**
@@ -38,9 +41,10 @@ public class Account implements Comparable<Account> {
         this.drankTotal = 0;
         this.drankPerDay = 0;
         this.drankPerMonth = 0;
-        this.created = new Date();
+        this.joinedHouse = new Date();
         this.isOld = false;
         this.drankThisMonth = 0;
+        this.leftHouse = null;
     }
 
     /**
@@ -55,12 +59,35 @@ public class Account implements Comparable<Account> {
     public Account(String name, int stock, int drankTotal, Date created, boolean isOld, int drankThisMonth){
         this.name = name;
         this.stock = stock;
-        this.created = created;
+        this.joinedHouse = created;
         this.drankTotal = drankTotal;
         this.drankPerDay = calculatePerDay(drankTotal);
         this.drankPerMonth = calculatePerMonth(drankTotal);
         this.isOld = isOld;
         this.drankThisMonth = drankThisMonth;
+        this.leftHouse = null;
+    }
+
+    /**
+     * Constructor for read (existing) Accounts
+     * @param name - the Name of the Account
+     * @param stock - Amount of beers
+     * @param drankTotal - Total beer drank
+     * @param created - Date of account Creation
+     * @param isOld - Is it an old Housemate (if this is true this Account will only be displayed in Statistics)
+     * @param drankThisMonth - the number of beers drank in the current month
+     * @param left - The date the housemate left
+     */
+    public Account(String name, int stock, int drankTotal, Date created, boolean isOld, int drankThisMonth, Date left){
+        this.name = name;
+        this.stock = stock;
+        this.joinedHouse = created;
+        this.drankTotal = drankTotal;
+        this.drankPerDay = calculatePerDay(drankTotal);
+        this.drankPerMonth = calculatePerMonth(drankTotal);
+        this.isOld = isOld;
+        this.drankThisMonth = drankThisMonth;
+        this.leftHouse = left;
     }
 
     public String getName() {
@@ -75,8 +102,8 @@ public class Account implements Comparable<Account> {
         return drankTotal;
     }
 
-    public Date getCreated() {
-        return created;
+    public Date getJoinedHouse() {
+        return joinedHouse;
     }
 
     public double getDrankPerDay() {
@@ -107,18 +134,26 @@ public class Account implements Comparable<Account> {
         this.drankThisMonth = i;
     }
 
+    public Date getLeftHouse() {
+        return this.leftHouse;
+    }
+
     /**
      * a method to return the String to be Written to file
      * @return String
      */
     public String toWrite(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        return name + " - "
+        String s = name + " - "
                 + stock + " - "
                 + drankTotal + " - "
-                + dateFormat.format(created) + " - "
-                + isOld + " - "
-                + drankThisMonth;
+                + dateFormat.format(joinedHouse) + " - "
+                + drankThisMonth + " - "
+                + isOld;
+        if(isOld) {
+            s += " - " + dateFormat.format(leftHouse);
+        }
+        return s;
     }
 
     /**
@@ -137,15 +172,21 @@ public class Account implements Comparable<Account> {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         Date date = format.parse(scanner.next());
 
+        int drankThisMonth = scanner.nextInt();
+
         boolean isOld = true;
 
         String isOldS = scanner.next();
         if(isOldS.equals("false")) isOld = false;
 
-        int drankThisMonth = scanner.nextInt();
-        scanner.close();
-
-        return new Account(name, stock, drankTotal, date, isOld, drankThisMonth);
+        if(isOld) {
+            Date left = format.parse(scanner.next());
+            scanner.close();
+            return new Account(name, stock, drankTotal, date, isOld, drankThisMonth, left);
+        } else {
+            scanner.close();
+            return new Account(name, stock, drankTotal, date, isOld, drankThisMonth);
+        }
     }
 
     /**
@@ -154,9 +195,11 @@ public class Account implements Comparable<Account> {
      * @return the Double of the value
      */
     public double calculatePerDay(int drankTotal){
-       Date currentDate = new Date();
+        Date date = null;
+        if(isOld) date = leftHouse;
+        else date = new Date();
 
-        long diff = currentDate.getTime() - getCreated().getTime();
+        long diff = date.getTime() - getJoinedHouse().getTime();
         double nrDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 
         return drankTotal / nrDays;
@@ -168,12 +211,15 @@ public class Account implements Comparable<Account> {
      * @return the Double of the value
      */
     public double calculatePerMonth(int drankTotal){
-        Date currentDate = new Date();
-        int currentYear = currentDate.getYear();
-        int currentMonth = currentDate.getMonth();
+        Date date = null;
+        if(isOld) date = leftHouse;
+        else date = new Date();
 
-        int dateYear = getCreated().getYear();
-        int dateMonth = getCreated().getMonth();
+        int currentYear = date.getYear();
+        int currentMonth = date.getMonth();
+
+        int dateYear = getJoinedHouse().getYear();
+        int dateMonth = getJoinedHouse().getMonth();
 
         int differenceYear = currentYear - dateYear;
         int differenceMonth = currentMonth - dateMonth;
@@ -222,6 +268,7 @@ public class Account implements Comparable<Account> {
     public void setOld(){
         this.isOld = true;
         this.stock = 0;
+        this.leftHouse = new Date();
     }
 
     /**
@@ -247,7 +294,7 @@ public class Account implements Comparable<Account> {
                 drankTotal == account.drankTotal &&
                 isOld == account.isOld &&
                 name.equals(account.name) &&
-                created.equals(account.created);
+                joinedHouse.equals(account.joinedHouse);
     }
 
     /**
@@ -257,7 +304,7 @@ public class Account implements Comparable<Account> {
      */
     @Override
     public int compareTo(Account o) {
-        return this.created.compareTo(o.created);
+        return this.joinedHouse.compareTo(o.joinedHouse);
     }
 
     /**
@@ -273,6 +320,6 @@ public class Account implements Comparable<Account> {
                 drankThisMonth + " - " +
                 decimalFormat.format(drankPerMonth) + " - " +
                 decimalFormat.format(drankPerDay) + " - " +
-                format.format(created);
+                format.format(joinedHouse);
     }
 }
