@@ -1,9 +1,12 @@
-package main.objects;
+package main.objects.AccountStuff;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 
 public class AccountList implements Iterable<Account>{
     private LinkedList<Account> accounts;
@@ -204,5 +207,9 @@ public class AccountList implements Iterable<Account>{
 
     public void remove(Account account){
         accounts.remove(account);
+    }
+
+    public void updateMonth() {
+        for(Account a: accounts) if (!a.isOld()) a.setDrankThisMonth(0);
     }
 }

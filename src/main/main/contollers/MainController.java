@@ -7,8 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import main.objects.AccountList;
+import main.objects.AccountStuff.AccountList;
 import main.objects.MessageList;
+import main.objects.MonthlyUpdateStuff.MonthUpdater;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -18,12 +19,13 @@ import java.text.ParseException;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+//Todo: JavaDoc in all files, and making comments around the place to explain stuff.
 
 public class MainController implements Initializable {
     private AccountList accountList;
     private MessageList messages = new MessageList();
 
-    File accountFile = new File("Accounts");
+    File accountFile = new File("src\\main\\main\\files\\Accounts");
     File messageFile = new File("src\\main\\main\\files\\Messages");
     File transactionFile = new File("src\\main\\main\\files\\Transactions");
 
@@ -126,6 +128,11 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
 
+        /*
+          Starting the Monthly reset
+         */
+        MonthUpdater updater = new MonthUpdater(this, accountList);
+        updater.start();
     }
 
     public Label getMessageBoard(){
