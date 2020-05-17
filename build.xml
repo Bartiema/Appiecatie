@@ -16,8 +16,6 @@
     <target name="compile">
         <mkdir dir="${classes.dir}"/>
 
-        <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
-
         <copy todir="${classes.dir}/main">
             <fileset dir="${src.dir}/main/">
                 <exclude name="controllers"/>
@@ -25,6 +23,8 @@
                 <exclude name="App.java"/>
             </fileset>
         </copy>
+
+        <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
     </target>
 
     <target name="jar" depends="compile">
