@@ -16,7 +16,7 @@
     <target name="compile">
         <mkdir dir="${classes.dir}"/>
 
-        <copy todir="${classes.dir}/main">
+        <copy todir="${classes.dir}">
             <fileset dir="${src.dir}/main/">
                 <exclude name="controllers/*"/>
                 <exclude name="objects/*/*"/>
