@@ -1,4 +1,4 @@
-<project name="Appiecatie" basedir="." default="main" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+<project name="Appiecatie" basedir="." default="main">
 
     <property name="src.dir" value="src"/>
 
@@ -6,14 +6,8 @@
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="jar.dir" value="${build.dir}/jar"/>
 
-    <property name="main-class" value="main.main.App"/>
+    <property name="main-class" value="src.main.main.App"/>
 
-
-    <target name="default">
-        <taskdef resource="com/sun/javafx/tools/ant/antlib.xml"
-                 uri="javafx:com.sun.javafx.tools.ant"
-                 classpath=".:path/to/sdk/lib/ant-javafx.jar"/>
-    </target>
 
     <target name="clean">
         <delete dir="${build.dir}"/>
