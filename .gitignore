@@ -1,5 +1,5 @@
 
 out/
-src/main/main/files/Accounts
-src/main/main/files/Transactions
+src/main/resources/files/Accounts
+src/main/resources/files/Transactions
 

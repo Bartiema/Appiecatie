@@ -25,9 +25,9 @@ public class MainController implements Initializable {
     private AccountList accountList;
     private MessageList messages = new MessageList();
 
-    File accountFile = new File("src/main/main/files/Accounts");
-    File messageFile = new File("src/main/main/files/Messages");
-    File transactionFile = new File("src/main/main/files/Transactions");
+    File accountFile = new File("src\\main\\resources\\files\\Accounts");
+    File messageFile = new File("src\\main\\resources\\files\\Messages");
+    File transactionFile = new File("src\\main\\resources\\files\\Transactions");
 
     private Random random = new Random();
 

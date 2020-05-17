@@ -5,8 +5,8 @@
     <property name="build.dir" value="build"/>
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="jar.dir" value="${build.dir}/jar"/>
-    <property name="filesDir" value="${src.dir}/main/main/files"/>
-    <property name="viewsDir" value="${src.dir}/main/main/views"/>
+    <property name="resources.dir" value="src/main/resources"/>
+
 
     <property name="main-class" value="main.App"/>
 
@@ -26,8 +26,8 @@
             <manifest>
                 <attribute name="Main-Class" value="${main-class}"/>
             </manifest>
-            <fileset dir="${filesDir}" />
-            <fileset dir="${viewsDir}" />
+
+            <fileset dir="${resources.dir}" />
         </jar>
     </target>
 
