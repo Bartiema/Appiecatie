@@ -16,12 +16,15 @@
     <target name="compile">
         <mkdir dir="${classes.dir}"/>
 
-        <copy todir="${classes.dir}">
-            <fileset dir="${src.dir}/main/files"/>
-            <fileset dir="${src.dir}/main/views"/>
-        </copy>
-
         <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+
+        <copy todir="${classes.dir}/main">
+            <fileset dir="${src.dir}/main/">
+                <exclude name="controllers"/>
+                <exclude name="objects"/>
+                <exclude name="App.java"/>
+            </fileset>
+        </copy>
     </target>
 
     <target name="jar" depends="compile">
