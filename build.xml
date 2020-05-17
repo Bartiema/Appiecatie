@@ -1,12 +1,12 @@
 <project name="Appiecatie" basedir="." default="main">
 
-    <property name="src.dir" value="src"/>
+    <property name="src.dir" value="src/main"/>
 
     <property name="build.dir" value="build"/>
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="jar.dir" value="${build.dir}/jar"/>
 
-    <property name="main-class" value="src.main.main.App"/>
+    <property name="main-class" value="main.App"/>
 
 
     <target name="clean">
