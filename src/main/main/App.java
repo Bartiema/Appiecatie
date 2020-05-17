@@ -6,9 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.text.ParseException;
-
 public class App extends Application {
 
     @Override
@@ -20,7 +17,7 @@ public class App extends Application {
     }
 
 
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args){
 
 /*        FileWriter writer = new FileWriter(new File("Accounts"));
         Account a1 = new Account("Timothy");
