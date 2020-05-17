@@ -19,6 +19,7 @@
         <copy todir="${classes.dir}/main">
             <fileset dir="${src.dir}/main/">
                 <exclude name="controllers/*"/>
+                <exclude name="objects/*/*"/>
                 <exclude name="objects/*"/>
                 <exclude name="App.java"/>
             </fileset>
