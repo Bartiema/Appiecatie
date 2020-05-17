@@ -17,10 +17,10 @@
         <mkdir dir="${classes.dir}"/>
 
         <copy todir="${classes.dir}">
-            <fileset dir="${src.dir}/main/">
-                <exclude name="controllers/*"/>
-                <exclude name="objects/*/*"/>
-                <exclude name="objects/*"/>
+            <fileset dir="${src.dir}/">
+                <exclude name="controllers/*.java"/>
+                <exclude name="objects/*/*.java"/>
+                <exclude name="objects/*.java"/>
                 <exclude name="App.java"/>
             </fileset>
         </copy>
