@@ -13,7 +13,7 @@
         <mkdir dir="build/jar"/>
         <jar destfile="build/jar/Appiecatie.jar" basedir="build">
             <manifest>
-                <attribute name="Main-Class" value="oata.Appiecatie"/>
+                <attribute name="Main-Class" value="main.main.App"/>
             </manifest>
         </jar>
     </target>
