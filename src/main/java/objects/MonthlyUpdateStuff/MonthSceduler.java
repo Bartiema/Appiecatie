@@ -1,4 +1,4 @@
-package main.objects.MonthlyUpdateStuff;
+package objects.MonthlyUpdateStuff;
 
 import java.util.Date;
 import java.util.Timer;

@@ -1,4 +1,4 @@
-package main.contollers;
+package contollers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +10,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import main.objects.AccountStuff.AccountList;
+import objects.AccountStuff.AccountList;
 
 import java.net.URL;
 import java.util.LinkedList;

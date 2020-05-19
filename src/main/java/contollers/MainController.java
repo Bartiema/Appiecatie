@@ -1,4 +1,4 @@
-package main.contollers;
+package contollers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,9 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import main.objects.AccountStuff.AccountList;
-import main.objects.MessageList;
-import main.objects.MonthlyUpdateStuff.MonthUpdater;
+import objects.AccountStuff.AccountList;
+import objects.MessageList;
+import objects.MonthlyUpdateStuff.MonthUpdater;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -25,18 +25,18 @@ public class MainController implements Initializable {
     private AccountList accountList;
     private MessageList messages = new MessageList();
 
-    File accountFile = new File("src\\main\\resources\\files\\Accounts");
-    File messageFile = new File("src\\main\\resources\\files\\Messages");
-    File transactionFile = new File("src\\main\\resources\\files\\Transactions");
+    File accountFile = new File("src/main/resources/files/Accounts");
+    File messageFile = new File("src/main/resources/files/Messages");
+    File transactionFile = new File("src/main/resources/files/Transactions");
 
     private Random random = new Random();
 
     //the extra loaders for the other possible pages
-    FXMLLoader turfPageLoader = new FXMLLoader(getClass().getResource("/turfView.fxml"));
-    FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/statistiekView.fxml"));
-    FXMLLoader bierverliesPageLoader = new FXMLLoader(getClass().getResource("/bierVerliesView.fxml"));
-    FXMLLoader instellingenPageLoader = new FXMLLoader(getClass().getResource("/instellingenView.fxml"));
-    FXMLLoader transactionPageLoader = new FXMLLoader(getClass().getResource("/transactionView.fxml"));
+    FXMLLoader turfPageLoader = new FXMLLoader(getClass().getResource("/views/turfView.fxml"));
+    FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/views/statistiekView.fxml"));
+    FXMLLoader bierverliesPageLoader = new FXMLLoader(getClass().getResource("/views/bierVerliesView.fxml"));
+    FXMLLoader instellingenPageLoader = new FXMLLoader(getClass().getResource("/views/instellingenView.fxml"));
+    FXMLLoader transactionPageLoader = new FXMLLoader(getClass().getResource("/views/transactionView.fxml"));
 
     //the Panes containing all the extra gui
     private AnchorPane turfPane = turfPageLoader.load();
@@ -104,9 +104,9 @@ public class MainController implements Initializable {
         TurfViewController turfViewController = turfPageLoader.getController();
         turfViewController.setAccountList(accountList);
         turfViewController.setMainController(this);
-        turfViewController.setAllStocks();
-        turfViewController.setNames();
-        turfViewController.positiveBeer();
+//        turfViewController.setAllStocks();  TODO throws NPE
+//        turfViewController.setNames();  TODO throws NPE
+//        turfViewController.positiveBeer();  TODO throws NPE
 
         bierVerliesViewContoller.setAccountList(accountList);
         bierVerliesViewContoller.setMainController(this);

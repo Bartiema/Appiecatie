@@ -1,4 +1,4 @@
-package main.contollers;
+package contollers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,8 +9,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import main.objects.AccountStuff.Account;
-import main.objects.AccountStuff.AccountList;
+import objects.AccountStuff.Account;
+import objects.AccountStuff.AccountList;
 
 import java.net.URL;
 import java.util.LinkedList;

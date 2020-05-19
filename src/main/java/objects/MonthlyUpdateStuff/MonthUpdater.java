@@ -1,7 +1,7 @@
-package main.objects.MonthlyUpdateStuff;
+package objects.MonthlyUpdateStuff;
 
-import main.contollers.MainController;
-import main.objects.AccountStuff.AccountList;
+import contollers.MainController;
+import objects.AccountStuff.AccountList;
 
 public class MonthUpdater {
     private MonthSceduler monthSceduler;

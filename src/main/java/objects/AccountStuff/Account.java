@@ -1,4 +1,4 @@
-package main.objects.AccountStuff;
+package objects.AccountStuff;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;

@@ -1,7 +1,7 @@
-package main.objects.AccountStuff;
+package objects.AccountStuff;
 
-import main.objects.AccountStuff.AccountList;
-import main.objects.AccountStuff.Transaction;
+import objects.AccountStuff.AccountList;
+import objects.AccountStuff.Transaction;
 
 import java.io.File;
 import java.io.FileNotFoundException;

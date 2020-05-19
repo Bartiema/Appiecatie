@@ -1,8 +1,9 @@
-package main.objects.AccountStuff;
+package objects.AccountStuff;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Transaction {
@@ -75,7 +76,7 @@ public class Transaction {
         int oldStock = scanner.nextInt();
         int newStock = scanner.nextInt();
         String type = scanner.next();
-        SimpleDateFormat format = new SimpleDateFormat("H:mm dd MMMMM");
+        SimpleDateFormat format = new SimpleDateFormat("H:mm dd MMMMM", new Locale("nl"));
         Date date = format.parse(scanner.next());
         Account account = null;
 
