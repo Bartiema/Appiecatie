@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="901.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.contollers.StatistiekViewController">
+<AnchorPane prefHeight="901.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contollers.StatistiekViewController">
    <children>
       <ListView fx:id="listView" layoutX="14.0" layoutY="63.0" prefHeight="828.0" prefWidth="1251.0" style="-fx-font-size: 28pt" />
       <Text layoutX="15.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Naam - Totaal gezopen - deze maand gezopen - per maand - per dag - in huis getreden op" wrappingWidth="1250.999984741211">

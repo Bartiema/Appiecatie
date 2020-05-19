@@ -1,5 +1,8 @@
+# Gradle output
+.gradle
+build
 
-out/
+# Secret data files
 src/main/resources/files/Accounts
 src/main/resources/files/Transactions
 
