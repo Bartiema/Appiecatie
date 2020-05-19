@@ -1,5 +1,8 @@
-.idea/
-out/
+# Gradle output
+.gradle
+build
+
+# Secret data files
 src/main/resources/files/Accounts
 src/main/resources/files/Transactions
 
