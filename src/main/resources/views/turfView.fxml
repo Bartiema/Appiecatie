@@ -12,7 +12,7 @@
                     <Font size="24.0" />
                 </font>
             </Text>
-            <Label fx:id="totalStock" layoutX="184.0" text="##">
+            <Label fx:id="totalStock" layoutX="212.0" text="##">
                 <font>
                     <Font size="30.0" />
                 </font>
