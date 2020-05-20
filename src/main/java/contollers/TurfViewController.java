@@ -15,6 +15,8 @@ import objects.AccountStuff.AccountList;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class TurfViewController implements Initializable {
     private AccountList accountList;
@@ -201,6 +203,7 @@ public class TurfViewController implements Initializable {
     public void setAllStocks(){
         for(int i = 0; i<6;i++) accountStockList.get(i).setText(String.valueOf(accountList.get(i).getStock()));
         totalStock.setText(String.valueOf(accountList.getTotalStock()));
+        setPositiveTimer();
     }
 
     /**
@@ -287,5 +290,29 @@ public class TurfViewController implements Initializable {
             if(accountList.get(i).getStock()>=0) accountPaneList.get(i).setBackground(whiteBackground);
             if(accountList.get(i).getStock()<0) accountPaneList.get(i).setBackground(redBackground);
         }
+    }
+
+    public void setLongPositiveTimer() {
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                positiveBeer();
+            }
+        };
+
+        timer.schedule(timerTask, 300);
+    }
+
+    public void setPositiveTimer() {
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                positiveBeer();
+            }
+        };
+
+        timer.schedule(timerTask, 20);
     }
 }

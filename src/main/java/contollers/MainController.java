@@ -98,15 +98,14 @@ public class MainController implements Initializable {
         AnchorPane.setTopAnchor(turfPane, (double)125);
         mainPane.getChildren().add(turfPane);
 
-        statistiekViewController.setAccountList(accountList);
-        statistiekViewController.setMainController(this);
-
-        TurfViewController turfViewController = turfPageLoader.getController();
         turfViewController.setAccountList(accountList);
         turfViewController.setMainController(this);
         turfViewController.setAllStocks();  
         turfViewController.setNames();
-        turfViewController.positiveBeer();
+        turfViewController.setLongPositiveTimer();
+
+        statistiekViewController.setAccountList(accountList);
+        statistiekViewController.setMainController(this);
 
         bierVerliesViewContoller.setAccountList(accountList);
         bierVerliesViewContoller.setMainController(this);
@@ -205,7 +204,6 @@ public class MainController implements Initializable {
 
         turfViewController.setAllStocks();
         turfViewController.setNames();
-        turfViewController.positiveBeer();
     }
 
     /**
