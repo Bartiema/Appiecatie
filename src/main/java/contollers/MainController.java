@@ -39,11 +39,11 @@ public class MainController implements Initializable {
     FXMLLoader transactionPageLoader = new FXMLLoader(getClass().getResource("/views/transactionView.fxml"));
 
     //the Panes containing all the extra gui
-    private AnchorPane turfPane = turfPageLoader.load();
-    private AnchorPane statistiekPane = statistiekPageLoader.load();
-    private AnchorPane bierVerliesPane = bierverliesPageLoader.load();
-    private AnchorPane instellingenPane = instellingenPageLoader.load();
-    private AnchorPane transactionPane = transactionPageLoader.load();
+    private final AnchorPane turfPane = turfPageLoader.load();
+    private final AnchorPane statistiekPane = statistiekPageLoader.load();
+    private final AnchorPane bierVerliesPane = bierverliesPageLoader.load();
+    private final AnchorPane instellingenPane = instellingenPageLoader.load();
+    private final AnchorPane transactionPane = transactionPageLoader.load();
 
     //The controllers of the other Panes
     TurfViewController turfViewController = turfPageLoader.getController();
@@ -104,9 +104,9 @@ public class MainController implements Initializable {
         TurfViewController turfViewController = turfPageLoader.getController();
         turfViewController.setAccountList(accountList);
         turfViewController.setMainController(this);
-//        turfViewController.setAllStocks();  TODO throws NPE
-//        turfViewController.setNames();  TODO throws NPE
-//        turfViewController.positiveBeer();  TODO throws NPE
+        turfViewController.setAllStocks();  
+        turfViewController.setNames();
+        turfViewController.positiveBeer();
 
         bierVerliesViewContoller.setAccountList(accountList);
         bierVerliesViewContoller.setMainController(this);
