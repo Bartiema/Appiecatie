@@ -52,7 +52,7 @@ public class Transaction {
 
     @Override
     public String toString() {
-        SimpleDateFormat format = new SimpleDateFormat("H:mm dd MMMMM");
+        SimpleDateFormat format = new SimpleDateFormat("H:mm dd MMMMM", new Locale("nl"));
         return "Persoon: " + account.getName() +
                 " - Oude Stand: " + oldStock +
                 " - Nieuwe Stand: " + newStock +
@@ -61,7 +61,7 @@ public class Transaction {
     }
 
     public String toWrite(){
-        SimpleDateFormat format = new SimpleDateFormat("H:mm dd MMMMM");
+        SimpleDateFormat format = new SimpleDateFormat("H:mm dd MMMMM", new Locale("nl"));
         return account.getName() +
                 " - " + oldStock +
                 " - " + newStock +

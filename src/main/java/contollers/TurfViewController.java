@@ -301,7 +301,7 @@ public class TurfViewController implements Initializable {
             }
         };
 
-        timer.schedule(timerTask, 300);
+        timer.schedule(timerTask, 500);
     }
 
     public void setPositiveTimer() {
