@@ -212,4 +212,9 @@ public class AccountList implements Iterable<Account>{
     public void updateMonth() {
         for(Account a: accounts) if (!a.isOld()) a.setDrankThisMonth(0);
     }
+
+    public boolean containsBasedOnName(String name) {
+        for(Account a : accounts) if (!a.isOld() && a.getName().equals(name)) return true;
+        return false;
+    }
 }
