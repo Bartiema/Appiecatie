@@ -43,14 +43,14 @@ public class DataNodeList {
         return s1.toString();
     }
 
-    public LinkedList<DataNodeList> toRead(AccountList accountList, File file) throws FileNotFoundException, ParseException {
+    public static LinkedList<DataNodeList> toRead(AccountList accountList, File file) throws FileNotFoundException, ParseException {
         Scanner scanner = new Scanner(file);
         LinkedList<DataNodeList> res = new LinkedList<>();
         DataNodeList dataNodeList = null;
 
 
         while(scanner.hasNext()) {
-            String s = scanner.next();
+            String s = scanner.nextLine();
 
             if(accountList.containsBasedOnName(s)){
                 if(dataNodeList!=null) res.add(dataNodeList);

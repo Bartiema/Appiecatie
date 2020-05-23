@@ -46,11 +46,12 @@ public class DataNode {
     }
 
     public static DataNode toRead(String line) throws ParseException {
+        System.out.println(line);
         Scanner scanner = new Scanner(line);
         scanner.useDelimiter(" - ");
 
         int totalDrank = scanner.nextInt();
-        String date = scanner.nextLine();
+        String date = scanner.next();
 
         SimpleDateFormat format = new SimpleDateFormat("dd");
         Date dateInMonth = format.parse(date);

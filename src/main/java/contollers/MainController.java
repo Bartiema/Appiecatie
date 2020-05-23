@@ -10,12 +10,14 @@ import javafx.scene.layout.AnchorPane;
 import objects.AccountStuff.AccountList;
 import objects.MessageList;
 import objects.MonthlyUpdateStuff.MonthUpdater;
+import objects.lineChartStuff.DataNodeList;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -24,10 +26,12 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
     private AccountList accountList;
     private MessageList messages = new MessageList();
+    private LinkedList<DataNodeList> dataNodeLists;
 
     File accountFile = new File("src/main/resources/files/Accounts");
     File messageFile = new File("src/main/resources/files/Messages");
     File transactionFile = new File("src/main/resources/files/Transactions");
+    File LineChartDataFile = new File("src/main/resources/files/LineChartData");
 
     private Random random = new Random();
 
@@ -37,6 +41,7 @@ public class MainController implements Initializable {
     FXMLLoader bierverliesPageLoader = new FXMLLoader(getClass().getResource("/views/bierVerliesView.fxml"));
     FXMLLoader instellingenPageLoader = new FXMLLoader(getClass().getResource("/views/instellingenView.fxml"));
     FXMLLoader transactionPageLoader = new FXMLLoader(getClass().getResource("/views/transactionView.fxml"));
+    FXMLLoader lineChartPageLoader = new FXMLLoader(getClass().getResource("/views/lineChartView.fxml"));
 
     //the Panes containing all the extra gui
     private final AnchorPane turfPane = turfPageLoader.load();
@@ -44,6 +49,7 @@ public class MainController implements Initializable {
     private final AnchorPane bierVerliesPane = bierverliesPageLoader.load();
     private final AnchorPane instellingenPane = instellingenPageLoader.load();
     private final AnchorPane transactionPane = transactionPageLoader.load();
+    private final AnchorPane lineChartPane = lineChartPageLoader.load();
 
     //The controllers of the other Panes
     TurfViewController turfViewController = turfPageLoader.getController();
@@ -51,6 +57,11 @@ public class MainController implements Initializable {
     BierVerliesViewContoller bierVerliesViewContoller = bierverliesPageLoader.getController();
     InstellingenViewController instellingenViewController = instellingenPageLoader.getController();
     TransactionViewController transactionViewController = transactionPageLoader.getController();
+    LineChartController lineChartController = lineChartPageLoader.getController();
+
+    @FXML
+    private Button testButton;
+
 
     //The MessageBoard
     @FXML
@@ -77,13 +88,13 @@ public class MainController implements Initializable {
           Fetching the file to build the accountList
          */
         accountList = new AccountList();
-        FileWriter writer = null;
         try {
             accountList.toRead(accountFile);
             accountList.setTransactionList(transactionFile);
-            writer = new FileWriter(accountFile);
 
             messages.toRead(messageFile);
+
+            dataNodeLists = DataNodeList.toRead(accountList, LineChartDataFile);
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
@@ -94,6 +105,8 @@ public class MainController implements Initializable {
         accountList.sort();
         accountList.updateAll();
         accountList.updateTotalStock();
+
+
 
         AnchorPane.setTopAnchor(turfPane, (double)125);
         mainPane.getChildren().add(turfPane);
@@ -115,17 +128,6 @@ public class MainController implements Initializable {
 
         transactionViewController.setAccountList(accountList);
         transactionViewController.setMainController(this);
-
-        /*
-          Closing the Writer and saving before shutdown
-         */
-        try {
-            if (writer == null) throw new AssertionError();
-            writer.write(accountList.toWrite());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         /*
           Starting the Monthly reset
@@ -261,5 +263,17 @@ public class MainController implements Initializable {
         AnchorPane.setTopAnchor(transactionPane, (double)125);
         mainPane.getChildren().add(transactionPane);
         transactionViewController.setData();
+    }
+
+    public void lineChartView(ActionEvent event){
+        if(mainPane.getChildren().contains(lineChartPane)) return;
+        if(mainPane.getChildren().contains(turfPane)) mainPane.getChildren().remove(turfPane);
+        if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
+        if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
+        if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
+        if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
+
+        AnchorPane.setTopAnchor(lineChartPane, (double)125);
+        mainPane.getChildren().add(lineChartPane);
     }
  }
