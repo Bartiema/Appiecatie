@@ -9,25 +9,25 @@ import java.util.Scanner;
 
 public class DataNode {
     private int totalDrank;
-    private Date dateInMonth;
+    private int nrInMonth;
 
     public int getTotalDrank() {
         return totalDrank;
     }
 
-    public Date getDateInMonth() {
-        return dateInMonth;
+    public int getDateInMonth() {
+        return nrInMonth;
     }
 
     /**
      * Constructor for Read versions
      * @param totalDrank - The Amount Drank
-     * @param dateInMonth - The date of the Month this node is made in
+     * @param nrInMonth - The date of the Month this node is made in
      */
-    public DataNode(int totalDrank, Date dateInMonth) {
+    public DataNode(int totalDrank, int nrInMonth) {
 
         this.totalDrank = totalDrank;
-        this.dateInMonth = dateInMonth;
+        this.nrInMonth = nrInMonth;
     }
 
     /**
@@ -36,30 +36,27 @@ public class DataNode {
      */
     public DataNode(int totalDrank) {
         this.totalDrank = totalDrank;
-        this.dateInMonth = new Date();
+        this.nrInMonth = new Date().getDate();
     }
 
     public String toWrite() {
         SimpleDateFormat format = new SimpleDateFormat("dd");
         return  totalDrank + " - " +
-                format.format(dateInMonth);
+                format.format(nrInMonth);
     }
 
     public static DataNode toRead(String line) throws ParseException {
-        System.out.println(line);
         Scanner scanner = new Scanner(line);
         scanner.useDelimiter(" - ");
 
         int totalDrank = scanner.nextInt();
-        String date = scanner.next();
+        int nrInMonth = scanner.nextInt();
 
-        SimpleDateFormat format = new SimpleDateFormat("dd");
-        Date dateInMonth = format.parse(date);
 
-        return new DataNode(totalDrank, dateInMonth);
+        return new DataNode(totalDrank, nrInMonth);
     }
 
-    public XYChart.Data<Integer, Date> getXYChartData() {
-        return new XYChart.Data<Integer, Date>(totalDrank, dateInMonth);
+    public XYChart.Data getXYChartData() {
+        return new XYChart.Data(nrInMonth ,totalDrank);
     }
 }

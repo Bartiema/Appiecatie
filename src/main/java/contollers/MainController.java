@@ -129,6 +129,11 @@ public class MainController implements Initializable {
         transactionViewController.setAccountList(accountList);
         transactionViewController.setMainController(this);
 
+        lineChartController.setAccountList(accountList);
+        lineChartController.setDataNodeLists(dataNodeLists);
+        lineChartController.setMainController(this);
+
+
         /*
           Starting the Monthly reset
          */
@@ -200,6 +205,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
+        if(mainPane.getChildren().contains(lineChartPane)) mainPane.getChildren().remove(lineChartPane);
 
         AnchorPane.setTopAnchor(turfPane, (double)125);
         mainPane.getChildren().add(turfPane);
@@ -221,6 +227,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
+        if(mainPane.getChildren().contains(lineChartPane)) mainPane.getChildren().remove(lineChartPane);
 
         AnchorPane.setTopAnchor(statistiekPane, (double)125);
         mainPane.getChildren().add(statistiekPane);
@@ -234,6 +241,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
+        if(mainPane.getChildren().contains(lineChartPane)) mainPane.getChildren().remove(lineChartPane);
 
         AnchorPane.setTopAnchor(bierVerliesPane, (double)125);
         mainPane.getChildren().add(bierVerliesPane);
@@ -247,6 +255,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
+        if(mainPane.getChildren().contains(lineChartPane)) mainPane.getChildren().remove(lineChartPane);
 
         AnchorPane.setTopAnchor(instellingenPane, (double)125);
         mainPane.getChildren().add(instellingenPane);
@@ -259,6 +268,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
+        if(mainPane.getChildren().contains(lineChartPane)) mainPane.getChildren().remove(lineChartPane);
 
         AnchorPane.setTopAnchor(transactionPane, (double)125);
         mainPane.getChildren().add(transactionPane);
@@ -275,5 +285,6 @@ public class MainController implements Initializable {
 
         AnchorPane.setTopAnchor(lineChartPane, (double)125);
         mainPane.getChildren().add(lineChartPane);
+        lineChartController.setData();
     }
  }

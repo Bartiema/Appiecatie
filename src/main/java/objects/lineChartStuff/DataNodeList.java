@@ -1,7 +1,5 @@
 package objects.lineChartStuff;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
 import objects.AccountStuff.Account;
 import objects.AccountStuff.AccountList;
@@ -9,7 +7,6 @@ import objects.AccountStuff.AccountList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -59,17 +56,17 @@ public class DataNodeList {
                 dataNodeList.add(DataNode.toRead(s));
             }
         }
+        res.add(dataNodeList);
         return res;
     }
 
-    public XYChart.Series<Integer, Date> getXYChartSeries() {
-        LinkedList<XYChart.Data<Integer, Date>> XYdataNodes = new LinkedList<>();
+    public XYChart.Series getXYChartSeries() {
+        XYChart.Series res = new XYChart.Series();
+        res.setName(dataOwner.getName());
         for(DataNode d : dataNodes){
-            XYdataNodes.add(d.getXYChartData());
+            res.getData().add(d.getXYChartData());
         }
 
-        ObservableList<XYChart.Data<Integer, Date>> XYChartSeriesObservableList = FXCollections.observableArrayList(XYdataNodes);
-
-        return new XYChart.Series<Integer, Date>(dataOwner.getName(), XYChartSeriesObservableList);
+        return res;
     }
 }
