@@ -176,7 +176,7 @@ public class MainController implements Initializable {
     }
 
     /**
-     * A method to quickly write the updates to the file
+     * A method to quickly write the account and transaciton updates to the file
      */
     public void write(){
         try {
@@ -187,6 +187,20 @@ public class MainController implements Initializable {
             FileWriter transactionWriter = new FileWriter(transactionFile);
             transactionWriter.write(accountList.getTransactionList().toWrite());
             transactionWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeDayly() {
+        try{
+            FileWriter lineChartWriter = new FileWriter(LineChartDataFile);
+            StringBuilder s = new StringBuilder();
+            for(DataNodeList d : dataNodeLists){
+                s.append(d.toString()).append("\n");
+            }
+            lineChartWriter.write(s.toString());
+            lineChartWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
