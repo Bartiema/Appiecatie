@@ -18,6 +18,7 @@ dependencies {
     runtimeOnly "org.openjfx:javafx-controls:$javafx.version:win"
     runtimeOnly "org.openjfx:javafx-controls:$javafx.version:linux"
     runtimeOnly "org.openjfx:javafx-controls:$javafx.version:mac"
+
 }
 
 javafx {
