@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import objects.AccountStuff.Account;
 import objects.AccountStuff.AccountList;
+import objects.lineChartStuff.DataNode;
+import objects.lineChartStuff.DataNodeList;
 
 import java.net.URL;
 import java.util.LinkedList;
@@ -16,6 +18,7 @@ import java.util.ResourceBundle;
 public class InstellingenViewController implements Initializable {
     private AccountList accountList;
     private MainController mainController;
+    private LinkedList<DataNodeList> dataNodeLists;
 
     @FXML
     private Button newFeut;
@@ -117,6 +120,9 @@ public class InstellingenViewController implements Initializable {
     public void setMainController(MainController mainController){
         this.mainController = mainController;
     }
+    public void setDataNodeLists(LinkedList<DataNodeList> dataNodeLists) {
+        this.dataNodeLists = dataNodeLists;
+    }
 
     public void setData(){
         for(int i = 0; i<6; i++){
@@ -137,17 +143,23 @@ public class InstellingenViewController implements Initializable {
         accountList.add(feut);
         accountList.sort();
         mainController.write();
+        DataNodeList dataNodeList = new DataNodeList(feut);
+        DataNode dataNode = new DataNode(0, 0);
+        dataNodeList.add(dataNode);
+        dataNodeLists.add(dataNodeList);
+        mainController.writeDaily();
         setData();
     }
 
     public void makeOld(ActionEvent event) {
-        for(int i = 0; i<6; i++){
-            if(event.getSource().equals(uitgestemdList.get(i))){
-                accountList.get(i).setOld();
-            }
-        }
+        Account newOldDude = null;
+        for(int i = 0; i<6; i++) if (event.getSource().equals(uitgestemdList.get(i))) newOldDude = accountList.get(i);
+        for(int i = 0; i<dataNodeLists.size(); i++) if (dataNodeLists.get(i).getDataOwner().equals(newOldDude)) dataNodeLists.remove(i);
+
+        newOldDude.setOld();
         accountList.sort();
         mainController.write();
+        mainController.writeDaily();
         setData();
     }
 
@@ -159,6 +171,7 @@ public class InstellingenViewController implements Initializable {
             }
         }
         mainController.write();
+        mainController.writeDaily();
         setData();
     }
 

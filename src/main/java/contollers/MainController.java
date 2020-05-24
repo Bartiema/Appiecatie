@@ -118,6 +118,7 @@ public class MainController implements Initializable {
 
         instellingenViewController.setAccountList(accountList);
         instellingenViewController.setMainController(this);
+        instellingenViewController.setDataNodeLists(dataNodeLists);
 
         transactionViewController.setAccountList(accountList);
         transactionViewController.setMainController(this);
@@ -180,12 +181,12 @@ public class MainController implements Initializable {
         }
     }
 
-    public void writeDayly() {
+    public void writeDaily() {
         try{
             FileWriter lineChartWriter = new FileWriter(LineChartDataFile);
             StringBuilder s = new StringBuilder();
             for(DataNodeList d : dataNodeLists){
-                s.append(d.toString()).append("\n");
+                s.append(d.toWrite());
             }
             lineChartWriter.write(s.toString());
             lineChartWriter.close();

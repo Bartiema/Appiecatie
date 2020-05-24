@@ -3,7 +3,6 @@ package objects.lineChartStuff;
 import javafx.scene.chart.XYChart;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -40,9 +39,7 @@ public class DataNode {
     }
 
     public String toWrite() {
-        SimpleDateFormat format = new SimpleDateFormat("dd");
-        return  totalDrank + " - " +
-                format.format(nrInMonth);
+        return  totalDrank + " - " + nrInMonth;
     }
 
     public static DataNode toRead(String line) throws ParseException {
