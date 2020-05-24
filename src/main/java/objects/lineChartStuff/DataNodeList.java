@@ -69,4 +69,8 @@ public class DataNodeList {
 
         return res;
     }
+
+    public void removeAll(){
+        while(!dataNodes.isEmpty()) dataNodes.remove();
+    }
 }

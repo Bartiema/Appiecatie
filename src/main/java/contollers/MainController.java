@@ -9,8 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import objects.AccountStuff.AccountList;
 import objects.MessageList;
-import objects.MonthlyUpdateStuff.MonthUpdater;
 import objects.lineChartStuff.DataNodeList;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.impl.StdSchedulerFactory;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -123,11 +125,14 @@ public class MainController implements Initializable {
         transactionViewController.setAccountList(accountList);
         transactionViewController.setMainController(this);
 
-        /*
-          Starting the Monthly reset
-         */
-        MonthUpdater updater = new MonthUpdater(this, accountList);
-        updater.start();
+
+        //Daily scheduler
+        StdSchedulerFactory factory = new StdSchedulerFactory();
+        try {
+            Scheduler dayScheduler = factory.getScheduler();
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
     }
 
     public Label getMessageBoard(){
