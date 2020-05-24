@@ -155,7 +155,7 @@ public class StatistiekViewController implements Initializable {
                         if (!isEmpty()) {
                             this.setFont(new Font(24));
                             setText(item.toString());
-                            if(item % 24 == 0) {
+                            if(item % 24 == 0 && item != 0) {
                                 this.setTextFill(Color.GREEN);
                                 this.setText(item.toString() + " VO!");
                             }
@@ -175,7 +175,7 @@ public class StatistiekViewController implements Initializable {
                         if (!isEmpty()) {
                             this.setFont(new Font(24));
                             setText(item.toString());
-                            if(item % 24 == 0) {
+                            if(item % 24 == 0 && item != 0) {
                                 this.setTextFill(Color.GREEN);
                                 this.setText(item.toString() + " VO!");
                             }
