@@ -104,6 +104,7 @@ public class MainController implements Initializable {
         accountList.sort();
         accountList.updateAll();
         accountList.updateTotalStock();
+        accountList.getTransactionList().sort();
 
         AnchorPane.setTopAnchor(turfPane, (double)125);
         mainPane.getChildren().add(turfPane);

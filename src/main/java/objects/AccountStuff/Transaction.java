@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Transaction {
+public class Transaction implements Comparable<Transaction> {
     private Account account;
     private int oldStock;
     private int newStock;
@@ -87,5 +87,15 @@ public class Transaction {
         }
         scanner.close();
         return new Transaction(account, oldStock, newStock, type, date);
+    }
+
+    /**
+     * for Sorting
+     * @param o - the compaired object
+     * @return - int for sorting
+     */
+    @Override
+    public int compareTo(Transaction o) {
+        return o.date.compareTo(this.date);
     }
 }

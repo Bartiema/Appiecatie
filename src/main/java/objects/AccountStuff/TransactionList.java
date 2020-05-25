@@ -1,8 +1,5 @@
 package objects.AccountStuff;
 
-import objects.AccountStuff.AccountList;
-import objects.AccountStuff.Transaction;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -53,5 +50,9 @@ public class TransactionList {
 
     public List<Transaction> getAll() {
         return this.transactions;
+    }
+
+    public void sort(){
+        transactions.sort(Transaction::compareTo);
     }
 }
