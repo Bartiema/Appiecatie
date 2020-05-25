@@ -19,23 +19,6 @@ public class App extends Application {
 
     public static void main(String[] args){
 
-/*        FileWriter writer = new FileWriter(new File("Accounts"));
-        Account a1 = new Account("Timothy");
-        Account a2 = new Account("B3ni3");
-        Account a3 = new Account("Harry");
-        Account a4 = new Account("Bibi");
-        Account a5 = new Account("Wiski");
-        Account a6 = new Account("Feut");
-        AccountList l1 = new AccountList();
-        l1.add(a1);
-        l1.add(a2);
-        l1.add(a3);
-        l1.add(a4);
-        l1.add(a5);
-        l1.add(a6);
-        writer.write(l1.toWrite());
-        writer.close();*/
-
         launch(args);
     }
 }

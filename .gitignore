@@ -6,3 +6,7 @@ build
 src/main/resources/files/Accounts
 src/main/resources/files/Transactions
 
+#other stuff
+out
+.idea
+src/main/resources/files/LineChartData

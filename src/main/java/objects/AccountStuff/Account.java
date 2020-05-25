@@ -292,6 +292,7 @@ public class Account implements Comparable<Account> {
         Account account = (Account) o;
         return stock == account.stock &&
                 drankTotal == account.drankTotal &&
+                drankThisMonth == account.drankThisMonth &&
                 isOld == account.isOld &&
                 name.equals(account.name) &&
                 joinedHouse.equals(account.joinedHouse);

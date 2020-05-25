@@ -18,6 +18,8 @@ dependencies {
     runtimeOnly "org.openjfx:javafx-controls:$javafx.version:win"
     runtimeOnly "org.openjfx:javafx-controls:$javafx.version:linux"
     runtimeOnly "org.openjfx:javafx-controls:$javafx.version:mac"
+    compile group: 'org.quartz-scheduler', name: 'quartz', version: '2.3.0'
+
 }
 
 javafx {

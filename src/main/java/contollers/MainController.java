@@ -9,13 +9,20 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import objects.AccountStuff.AccountList;
 import objects.MessageList;
-import objects.MonthlyUpdateStuff.MonthUpdater;
+import objects.ScedulingStuff.New.DailyJob;
+import objects.ScedulingStuff.New.MonthlyJob;
+import objects.ScedulingStuff.Old.DayIterator;
+import objects.ScedulingStuff.Old.MonthIterator;
+import objects.lineChartStuff.DataNodeList;
+import org.quartz.*;
+import org.quartz.impl.StdSchedulerFactory;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -24,10 +31,12 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
     private AccountList accountList;
     private MessageList messages = new MessageList();
+    private LinkedList<DataNodeList> dataNodeLists;
 
     File accountFile = new File("src/main/resources/files/Accounts");
     File messageFile = new File("src/main/resources/files/Messages");
     File transactionFile = new File("src/main/resources/files/Transactions");
+    File LineChartDataFile = new File("src/main/resources/files/LineChartData");
 
     private Random random = new Random();
 
@@ -51,6 +60,7 @@ public class MainController implements Initializable {
     BierVerliesViewContoller bierVerliesViewContoller = bierverliesPageLoader.getController();
     InstellingenViewController instellingenViewController = instellingenPageLoader.getController();
     TransactionViewController transactionViewController = transactionPageLoader.getController();
+
 
     //The MessageBoard
     @FXML
@@ -77,13 +87,13 @@ public class MainController implements Initializable {
           Fetching the file to build the accountList
          */
         accountList = new AccountList();
-        FileWriter writer = null;
         try {
             accountList.toRead(accountFile);
             accountList.setTransactionList(transactionFile);
-            writer = new FileWriter(accountFile);
 
             messages.toRead(messageFile);
+
+            dataNodeLists = DataNodeList.toRead(accountList, LineChartDataFile);
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
@@ -100,38 +110,50 @@ public class MainController implements Initializable {
 
         turfViewController.setAccountList(accountList);
         turfViewController.setMainController(this);
-        turfViewController.setAllStocks();  
+        turfViewController.setAllStocks();
         turfViewController.setNames();
         turfViewController.setLongPositiveTimer();
 
         statistiekViewController.setAccountList(accountList);
         statistiekViewController.setMainController(this);
+        statistiekViewController.setDataNodeLists(dataNodeLists);
 
         bierVerliesViewContoller.setAccountList(accountList);
         bierVerliesViewContoller.setMainController(this);
 
         instellingenViewController.setAccountList(accountList);
         instellingenViewController.setMainController(this);
+        instellingenViewController.setDataNodeLists(dataNodeLists);
 
         transactionViewController.setAccountList(accountList);
         transactionViewController.setMainController(this);
 
-        /*
-          Closing the Writer and saving before shutdown
-         */
+
+        //Daily scheduler
+        StdSchedulerFactory factory = new StdSchedulerFactory();
         try {
-            if (writer == null) throw new AssertionError();
-            writer.write(accountList.toWrite());
-            writer.close();
-        } catch (IOException e) {
+            Scheduler scheduler = factory.getScheduler();
+            scheduler.start();
+
+            JobDataMap data = new JobDataMap();
+            data.put("accounts", accountList);
+            data.put("controller", this);
+            data.put("dataNodeLists", dataNodeLists);
+
+            JobDetail dailyJobDetail = JobBuilder.newJob(DailyJob.class).usingJobData(data).withIdentity("DailyJob","Group1").build();
+            JobDetail monthlyJobDetail = JobBuilder.newJob(MonthlyJob.class).usingJobData(data).withIdentity("MonthlyJob","Group2").build();
+
+            Trigger dailyTrigger = TriggerBuilder.newTrigger().startAt(new DayIterator().next()).withIdentity("DailyTrigger", "Group1").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInHours(24)).build();
+            Trigger monthlyTrigger = TriggerBuilder.newTrigger().startAt(new MonthIterator().next()).withIdentity("MonthlyTrigger", "Group2").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInMonths(1)).build();
+
+            scheduler.scheduleJob(dailyJobDetail, dailyTrigger);
+            scheduler.scheduleJob(monthlyJobDetail, monthlyTrigger);
+        } catch (SchedulerException e) {
             e.printStackTrace();
         }
 
-        /*
-          Starting the Monthly reset
-         */
-        MonthUpdater updater = new MonthUpdater(this, accountList);
-        updater.start();
+
+
     }
 
     public Label getMessageBoard(){
@@ -169,7 +191,7 @@ public class MainController implements Initializable {
     }
 
     /**
-     * A method to quickly write the updates to the file
+     * A method to quickly write the account and transaciton updates to the file
      */
     public void write(){
         try {
@@ -180,6 +202,20 @@ public class MainController implements Initializable {
             FileWriter transactionWriter = new FileWriter(transactionFile);
             transactionWriter.write(accountList.getTransactionList().toWrite());
             transactionWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeDaily() {
+        try{
+            FileWriter lineChartWriter = new FileWriter(LineChartDataFile);
+            StringBuilder s = new StringBuilder();
+            for(DataNodeList d : dataNodeLists){
+                s.append(d.toWrite());
+            }
+            lineChartWriter.write(s.toString());
+            lineChartWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
