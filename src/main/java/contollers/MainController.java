@@ -9,9 +9,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import objects.AccountStuff.AccountList;
 import objects.MessageList;
+import objects.ScedulingStuff.New.DailyJob;
+import objects.ScedulingStuff.New.MonthlyJob;
+import objects.ScedulingStuff.Old.DayIterator;
+import objects.ScedulingStuff.Old.MonthIterator;
 import objects.lineChartStuff.DataNodeList;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
+import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 
 import java.io.File;
@@ -107,7 +110,7 @@ public class MainController implements Initializable {
 
         turfViewController.setAccountList(accountList);
         turfViewController.setMainController(this);
-        turfViewController.setAllStocks();  
+        turfViewController.setAllStocks();
         turfViewController.setNames();
         turfViewController.setLongPositiveTimer();
 
@@ -129,10 +132,28 @@ public class MainController implements Initializable {
         //Daily scheduler
         StdSchedulerFactory factory = new StdSchedulerFactory();
         try {
-            Scheduler dayScheduler = factory.getScheduler();
+            Scheduler scheduler = factory.getScheduler();
+            scheduler.start();
+
+            JobDataMap data = new JobDataMap();
+            data.put("accounts", accountList);
+            data.put("controller", this);
+            data.put("dataNodeLists", dataNodeLists);
+
+            JobDetail dailyJobDetail = JobBuilder.newJob(DailyJob.class).usingJobData(data).withIdentity("DailyJob","Group1").build();
+            JobDetail monthlyJobDetail = JobBuilder.newJob(MonthlyJob.class).usingJobData(data).withIdentity("MonthlyJob","Group2").build();
+
+            Trigger dailyTrigger = TriggerBuilder.newTrigger().startAt(new DayIterator().next()).withIdentity("DailyTrigger", "Group1").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInHours(24)).build();
+            Trigger monthlyTrigger = TriggerBuilder.newTrigger().startAt(new MonthIterator().next()).withIdentity("MonthlyTrigger", "Group2").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInMonths(1)).build();
+
+            scheduler.scheduleJob(dailyJobDetail, dailyTrigger);
+            scheduler.scheduleJob(monthlyJobDetail, monthlyTrigger);
         } catch (SchedulerException e) {
             e.printStackTrace();
         }
+
+
+
     }
 
     public Label getMessageBoard(){
