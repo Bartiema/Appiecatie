@@ -18,6 +18,7 @@ import objects.AccountStuff.AccountList;
 import objects.lineChartStuff.DataNodeList;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
@@ -119,15 +120,15 @@ public class StatistiekViewController implements Initializable {
         nameColumn.setCellValueFactory(new PropertyValueFactory("name"));
         TableColumn<Account, Integer> totalDrankColumn = new TableColumn<>("Totaal gezopen");
         totalDrankColumn.setCellValueFactory(new PropertyValueFactory("drankTotal"));
-        TableColumn<Account, Integer> drankThisMonthColumn = new TableColumn<>("Deze maand gezopen");
+        TableColumn<Account, Integer> drankThisMonthColumn = new TableColumn<>("Deze maand ");
         drankThisMonthColumn.setCellValueFactory(new PropertyValueFactory("drankThisMonth"));
-        TableColumn<Account, Double> drankPerMonthColumn = new TableColumn<>("Gemiddeld per maand gezopen");
+        TableColumn<Account, Double> drankPerMonthColumn = new TableColumn<>("Gemiddeld per maand");
         drankPerMonthColumn.setCellValueFactory(new PropertyValueFactory("drankPerMonth"));
-        TableColumn<Account, Double> drankPerDayColumn = new TableColumn<>("Gemiddeld per dag gezopen");
+        TableColumn<Account, Double> drankPerDayColumn = new TableColumn<>("Gemiddeld per dag");
         drankPerDayColumn.setCellValueFactory(new PropertyValueFactory("drankPerDay"));
-        TableColumn<Account, Date> dateJoinedColumn = new TableColumn<>("Datum in huis gekomen");
+        TableColumn<Account, Date> dateJoinedColumn = new TableColumn<>("Datum in huis");
         dateJoinedColumn.setCellValueFactory(new PropertyValueFactory("joinedHouse"));
-        TableColumn<Account, Date> dateLeftColumn = new TableColumn<>("Datum uit huis getreden");
+        TableColumn<Account, Date> dateLeftColumn = new TableColumn<>("Datum uit huis");
         dateLeftColumn.setCellValueFactory(new PropertyValueFactory("leftHouse"));
 
         Callback<TableColumn<Account, String>, TableCell<Account, String>> stringCellFactory = new Callback<TableColumn<Account, String>, TableCell<Account, String>>() {
@@ -153,7 +154,7 @@ public class StatistiekViewController implements Initializable {
                     public void updateItem(Integer item, boolean empty) {
                         super.updateItem(item, empty);
                         if (!isEmpty()) {
-                            this.setFont(new Font(24));
+                            this.setFont(new Font(18));
                             setText(item.toString());
                             if(item % 24 == 0 && item != 0) {
                                 this.setTextFill(Color.GREEN);
@@ -172,12 +173,13 @@ public class StatistiekViewController implements Initializable {
                     @Override
                     public void updateItem(Double item, boolean empty) {
                         super.updateItem(item, empty);
+                        DecimalFormat decimalFormat = new DecimalFormat("######.##");
                         if (!isEmpty()) {
-                            this.setFont(new Font(24));
-                            setText(item.toString());
+                            this.setFont(new Font(18));
+                            setText(decimalFormat.format(item));
                             if(item % 24 == 0 && item != 0) {
                                 this.setTextFill(Color.GREEN);
-                                this.setText(item.toString() + " VO!");
+                                this.setText(decimalFormat.format(item) + " VO!");
                             }
 
                         }
