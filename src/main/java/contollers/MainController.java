@@ -208,6 +208,9 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * The method that updates the lineChartFile
+     */
     public void writeDaily() {
         try{
             FileWriter lineChartWriter = new FileWriter(LineChartDataFile);
