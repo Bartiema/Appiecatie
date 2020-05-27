@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import objects.AccountStuff.Account;
 import objects.AccountStuff.AccountList;
+import objects.JarfiniteitStuff.JarfStatList;
 import objects.lineChartStuff.DataNode;
 import objects.lineChartStuff.DataNodeList;
 
@@ -19,6 +20,7 @@ public class InstellingenViewController implements Initializable {
     private AccountList accountList;
     private MainController mainController;
     private LinkedList<DataNodeList> dataNodeLists;
+    private JarfStatList jarfStatList;
 
     @FXML
     private Button newFeut;
@@ -123,6 +125,9 @@ public class InstellingenViewController implements Initializable {
     public void setDataNodeLists(LinkedList<DataNodeList> dataNodeLists) {
         this.dataNodeLists = dataNodeLists;
     }
+    public void setJarfStatList(JarfStatList jarfStatList){
+        this.jarfStatList = jarfStatList;
+    }
 
     public void setData(){
         for(int i = 0; i<6; i++){
@@ -155,23 +160,26 @@ public class InstellingenViewController implements Initializable {
         Account newOldDude = null;
         for(int i = 0; i<6; i++) if (event.getSource().equals(uitgestemdList.get(i))) newOldDude = accountList.get(i);
         for(int i = 0; i<dataNodeLists.size(); i++) if (dataNodeLists.get(i).getDataOwner().equals(newOldDude)) dataNodeLists.remove(i);
-
+        jarfStatList.remove(newOldDude.getName());
         newOldDude.setOld();
         accountList.sort();
         mainController.write();
         mainController.writeDaily();
+        mainController.writeJarf();
         setData();
     }
 
     public void editConfimPress(ActionEvent event) {
         for(int i = 0; i<6; i++){
             if(event.getSource().equals((editConfirmList.get(i)))){
+                jarfStatList.getOnName(accountList.get(i).getName()).setName(editFieldList.get(i).getText());
                 accountList.get(i).setName(editFieldList.get(i).getText());
                 editFieldList.get(i).setText("");
             }
         }
         mainController.write();
         mainController.writeDaily();
+        mainController.writeJarf();
         setData();
     }
 

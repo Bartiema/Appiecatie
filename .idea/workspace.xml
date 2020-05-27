@@ -1,41 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="fixed transaction Parse errors">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/Accounts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/META-INF/Appiecatie.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/Transactions" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/main/App.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/main/contollers/MainController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/main/contollers/TransactionViewController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/main/objects/AccountStuff/Account.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/main/objects/AccountStuff/AccountList.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/main/objects/AccountStuff/Transaction.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/main/objects/AccountStuff/TransactionList.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/main/objects/MonthlyUpdateStuff/MonthIterator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/main/objects/MonthlyUpdateStuff/MonthSceduler$SchedulerTimerTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/main/objects/MonthlyUpdateStuff/MonthSceduler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/main/objects/MonthlyUpdateStuff/MonthTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/main/objects/MonthlyUpdateStuff/MonthUpdater.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/resources/files/Accounts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/resources/files/Messages" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/resources/files/Transactions" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/resources/views/bierVerliesView.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/resources/views/instellingenView.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/resources/views/mainView.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/resources/views/statistiekView.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/resources/views/transactionView.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/resources/views/turfView.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Appiecatie/transactionView.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/contollers/LineChartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/objects/lineChartStuff/DataNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/views/lineChartView.fxml" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="git ignore fix &quot;hopefully&quot;">
+      <change beforePath="$PROJECT_DIR$/src/main/java/contollers/InstellingenViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/contollers/InstellingenViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/contollers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/contollers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/JarfiniteitStuff/JarfStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/JarfiniteitStuff/JarfStat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/JarfiniteitStuff/JarfStatList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/JarfiniteitStuff/JarfStatList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/files/Accounts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/Accounts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/files/JarfStats" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/JarfStats" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/files/LineChartData" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/LineChartData" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/files/Transactions" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/Transactions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,14 +136,14 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\main\main\views" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\main\resources" />
       <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\main\main\files" />
       <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\main\main" />
       <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\sample\Views" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\main\main\views" />
     </key>
   </component>
   <component name="RunManager" selected="Application.MainApp">
@@ -236,6 +210,53 @@
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
       </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Appiecatie.main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Appiecatie.main" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -309,34 +330,6 @@
       <workItem from="1589978880487" duration="1682000" />
       <workItem from="1590090192261" duration="1879000" />
       <workItem from="1590231374686" duration="1776000" />
-    </task>
-    <task id="LOCAL-00030" summary="Transactions started">
-      <created>1587585666581</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1587585666581</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Started on the Transaction view">
-      <created>1587734595325</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1587734595325</updated>
-    </task>
-    <task id="LOCAL-00032" summary="visual of Transactions done">
-      <created>1588169711018</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1588169711018</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Transactions Finished">
-      <created>1588169897480</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1588169897480</updated>
     </task>
     <task id="LOCAL-00034" summary="Fixed some bugs">
       <created>1588515515583</created>
@@ -653,7 +646,35 @@
       <option name="project" value="LOCAL" />
       <updated>1590093511713</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="some Javadoc, Timer for Positive beer changed">
+      <created>1590495359692</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1590495359692</updated>
+    </task>
+    <task id="LOCAL-00080" summary="git ignore fix &quot;hopefully&quot;">
+      <created>1590495506194</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1590495506194</updated>
+    </task>
+    <task id="LOCAL-00081" summary="JarfStat start">
+      <created>1590526171425</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1590526171425</updated>
+    </task>
+    <task id="LOCAL-00082" summary="functioning jarfStats">
+      <created>1590588460992</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1590588460992</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -661,10 +682,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="fixed Statistic stuff" />
-    <MESSAGE value="added todo" />
-    <MESSAGE value="Transactions started" />
-    <MESSAGE value="Started on the Transaction view" />
     <MESSAGE value="visual of Transactions done" />
     <MESSAGE value="Transactions Finished" />
     <MESSAGE value="Fixed some bugs" />
@@ -686,7 +703,11 @@
     <MESSAGE value="final changes" />
     <MESSAGE value="fixed the non red thing" />
     <MESSAGE value="fixed transaction Parse errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed transaction Parse errors" />
+    <MESSAGE value="some Javadoc, Timer for Positive beer changed" />
+    <MESSAGE value="git ignore fix &quot;hopefully&quot;" />
+    <MESSAGE value="JarfStat start" />
+    <MESSAGE value="functioning jarfStats" />
+    <option name="LAST_COMMIT_MESSAGE" value="functioning jarfStats" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Code_Folding" timestamp="1585830401947">
@@ -711,21 +732,22 @@
     </state>
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1586857404785" />
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589642701268" />
-    <state x="719" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587585034703">
+    <state x="719" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590526002864">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="719" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585836178972" />
     <state x="719" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1587585034703" />
+    <state x="719" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590526002864" />
     <state x="740" y="224" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1585402784441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="224" key="#com.intellij.ide.macro.MacrosDialog/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1585402784441" />
-    <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1590232540088">
+    <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1590585079686">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585942362627" />
     <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1587584644831" />
-    <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590232540088" />
+    <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590585079686" />
     <state x="640" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1589924756940">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -747,12 +769,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="252" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1585318278383" />
-    <state x="587" y="114" key="CommitChangelistDialog2" timestamp="1590093511135">
+    <state x="587" y="114" key="CommitChangelistDialog2" timestamp="1590588460290">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="587" y="114" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588674827923" />
     <state x="587" y="114" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1587734594736" />
-    <state x="587" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590093511135" />
+    <state x="587" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590588460290" />
     <state x="694" y="281" key="EnvironmentVariablesDialog" timestamp="1585402794323">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -766,34 +788,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="830" y="413" key="Github.ShareDialog/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1585307699153" />
-    <state width="1877" height="237" key="GridCell.Tab.0.bottom" timestamp="1590093527274">
+    <state width="1877" height="237" key="GridCell.Tab.0.bottom" timestamp="1590588549167">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="237" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1589977454863" />
     <state width="1877" height="254" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588674833186" />
     <state width="1877" height="254" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1587734599001" />
-    <state width="1877" height="237" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590093527274" />
-    <state width="1877" height="237" key="GridCell.Tab.0.center" timestamp="1590093527274">
+    <state width="1877" height="237" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590588549167" />
+    <state width="1877" height="237" key="GridCell.Tab.0.center" timestamp="1590588549167">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="237" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1589977454863" />
     <state width="1877" height="254" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588674833186" />
     <state width="1877" height="254" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1587734599001" />
-    <state width="1877" height="237" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590093527274" />
-    <state width="1877" height="237" key="GridCell.Tab.0.left" timestamp="1590093527274">
+    <state width="1877" height="237" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590588549167" />
+    <state width="1877" height="237" key="GridCell.Tab.0.left" timestamp="1590588549167">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="237" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1589977454863" />
     <state width="1877" height="254" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588674833186" />
     <state width="1877" height="254" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1587734599001" />
-    <state width="1877" height="237" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590093527274" />
-    <state width="1877" height="237" key="GridCell.Tab.0.right" timestamp="1590093527274">
+    <state width="1877" height="237" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590588549167" />
+    <state width="1877" height="237" key="GridCell.Tab.0.right" timestamp="1590588549167">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="237" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1589977454863" />
     <state width="1877" height="254" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588674833186" />
     <state width="1877" height="254" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1587734599001" />
-    <state width="1877" height="237" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590093527274" />
+    <state width="1877" height="237" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590588549167" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1586353307575">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -814,6 +836,10 @@
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585655448263" />
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1586353307575" />
+    <state x="540" y="262" key="IDE.errors.dialog" timestamp="1590495224920">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="262" key="IDE.errors.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590495224920" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1588939151396">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -858,9 +884,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="666" y="148" key="refactoring.ChangeSignatureDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585922889903" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1590232757216">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1590498085154">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590232757216" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590498085154" />
   </component>
 </project>

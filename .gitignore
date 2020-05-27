@@ -5,8 +5,9 @@ build
 # Secret data files
 src/main/resources/files/Accounts
 src/main/resources/files/Transactions
+src/main/resources/files/LineChartData
 
 #other stuff
 out
 .idea
-src/main/resources/files/LineChartData
+
