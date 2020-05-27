@@ -13,6 +13,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -34,6 +35,8 @@ public class StatistiekViewController implements Initializable {
     private AccountList accountList;
     private MainController mainController;
     private LinkedList<DataNodeList> dataNodeLists;
+    private AnchorPane jarfGildePage;
+    private JarfGildeViewController jarfGildeViewController;
 
     @FXML
     private VBox container;
@@ -41,6 +44,8 @@ public class StatistiekViewController implements Initializable {
     private Button lineChartButton;
     @FXML
     private Button tabelButton;
+    @FXML
+    private Button jarfGildeButton;
 
     public void setAccountList(AccountList accountList){
         this.accountList = accountList;
@@ -50,6 +55,12 @@ public class StatistiekViewController implements Initializable {
     }
     public void setDataNodeLists(LinkedList<DataNodeList> dataNodeLists) {
         this.dataNodeLists = dataNodeLists;
+    }
+    public void setJarfGildePage(AnchorPane jarfGildePage){
+        this.jarfGildePage = jarfGildePage;
+    }
+    public void setJarfGildeViewController(JarfGildeViewController jarfGildeViewController){
+        this.jarfGildeViewController = jarfGildeViewController;
     }
 
     @Override
@@ -228,6 +239,14 @@ public class StatistiekViewController implements Initializable {
         tableView.setMinHeight(690);
 
         container.getChildren().add(tableView);
+    }
+
+    public void jarfGildeButton(ActionEvent actionEvent) {
+        if(container.getChildren().get(0) instanceof AnchorPane) return;
+        container.getChildren().remove(0);
+
+        container.getChildren().add(jarfGildePage);
+        jarfGildeViewController.setData();
     }
 }
 

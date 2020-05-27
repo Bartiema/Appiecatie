@@ -15,7 +15,7 @@ public class JarfStat implements Comparable<JarfStat>{
     public JarfStat(String name) {
         this.name = name;
         this.date = new Date();
-        this.quantity = 0;
+        this.quantity = 1;
     }
 
     public JarfStat(String name, Date date, int quantity){

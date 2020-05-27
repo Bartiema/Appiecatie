@@ -25,4 +25,8 @@ public class MonthIterator {
         calendar.add(Calendar.MONTH, 1);
         return calendar.getTime();
     }
+
+    public Date get(){
+        return calendar.getTime();
+    }
 }

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="689.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contollers.JarfGildeViewController">
+   <children>
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="110.0" prefWidth="580.0">
+         <children>
+            <Label fx:id="naamLabel0" layoutX="14.0" layoutY="20.0" text="Naam">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Button fx:id="jarfButton0" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="270.0" text="ik heb net gejarft">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Label fx:id="qtyLabel0" layoutX="500.0" layoutY="32.0" text="###">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+       <Pane layoutX="14.0" layoutY="124.0" prefHeight="110.0" prefWidth="580.0">
+           <children>
+               <Label fx:id="naamLabel1" layoutX="14.0" layoutY="20.0" text="Naam">
+                   <font>
+                       <Font size="48.0" />
+                   </font>
+               </Label>
+               <Button fx:id="jarfButton1" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="270.0" text="ik heb net gejarft">
+                   <font>
+                       <Font size="24.0" />
+                   </font>
+               </Button>
+               <Label fx:id="qtyLabel1" layoutX="500.0" layoutY="32.0" text="###">
+                   <font>
+                       <Font size="36.0" />
+                   </font>
+               </Label>
+           </children>
+       </Pane>
+       <Pane layoutX="14.0" layoutY="234.0" prefHeight="110.0" prefWidth="580.0">
+           <children>
+               <Label fx:id="naamLabel2" layoutX="14.0" layoutY="20.0" text="Naam">
+                   <font>
+                       <Font size="48.0" />
+                   </font>
+               </Label>
+               <Button fx:id="jarfButton2" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="270.0" text="ik heb net gejarft">
+                   <font>
+                       <Font size="24.0" />
+                   </font>
+               </Button>
+               <Label fx:id="qtyLabel2" layoutX="500.0" layoutY="32.0" text="###">
+                   <font>
+                       <Font size="36.0" />
+                   </font>
+               </Label>
+           </children>
+       </Pane>
+       <Pane layoutX="14.0" layoutY="344.0" prefHeight="110.0" prefWidth="580.0">
+           <children>
+               <Label fx:id="naamLabel3" layoutX="14.0" layoutY="20.0" text="Naam">
+                   <font>
+                       <Font size="48.0" />
+                   </font>
+               </Label>
+               <Button fx:id="jarfButton3" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="270.0" text="ik heb net gejarft">
+                   <font>
+                       <Font size="24.0" />
+                   </font>
+               </Button>
+               <Label fx:id="qtyLabel3" layoutX="500.0" layoutY="32.0" text="###">
+                   <font>
+                       <Font size="36.0" />
+                   </font>
+               </Label>
+           </children>
+       </Pane>
+       <Pane layoutX="14.0" layoutY="454.0" prefHeight="110.0" prefWidth="580.0">
+           <children>
+               <Label fx:id="naamLabel4" layoutX="14.0" layoutY="20.0" text="Naam">
+                   <font>
+                       <Font size="48.0" />
+                   </font>
+               </Label>
+               <Button fx:id="jarfButton4" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="270.0" text="ik heb net gejarft">
+                   <font>
+                       <Font size="24.0" />
+                   </font>
+               </Button>
+               <Label fx:id="qtyLabel4" layoutX="500.0" layoutY="32.0" text="###">
+                   <font>
+                       <Font size="36.0" />
+                   </font>
+               </Label>
+           </children>
+       </Pane>
+       <Pane layoutX="14.0" layoutY="564.0" prefHeight="110.0" prefWidth="580.0">
+           <children>
+               <Label fx:id="naamLabel5" layoutX="14.0" layoutY="20.0" text="Naam">
+                   <font>
+                       <Font size="48.0" />
+                   </font>
+               </Label>
+               <Button fx:id="jarfButton5" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="270.0" text="ik heb net gejarft">
+                   <font>
+                       <Font size="24.0" />
+                   </font>
+               </Button>
+               <Label fx:id="qtyLabel5" layoutX="500.0" layoutY="32.0" text="###">
+                   <font>
+                       <Font size="36.0" />
+                   </font>
+               </Label>
+           </children>
+       </Pane>
+      <Text layoutX="840.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jarfinitiet">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Text>
+      <Line endX="12.0" endY="648.0" layoutX="616.0" layoutY="41.0" startX="12.0" startY="-41.0" />
+      <Line endX="1250.0" />
+      <Line endX="1250.0" layoutY="689.0" />
+      <Line endX="1250.0" endY="689.0" startX="1250.0" />
+      <Line endY="689.0" />
+      <Line endX="520.5" layoutX="729.0" layoutY="96.0" startX="-100.0" />
+      <Pane fx:id="container" layoutX="640.0" layoutY="110.0" prefHeight="571.0" prefWidth="597.0" />
+   </children>
+</AnchorPane>

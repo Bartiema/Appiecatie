@@ -53,4 +53,13 @@ public class JarfStatList {
         for(JarfStat j: jarfStats) if(j.getName().equals(name)) return true;
         return false;
     }
+
+    public LinkedList<JarfStat> getAll(){
+        return jarfStats;
+    }
+
+    public JarfStat getOnName(String name){
+        for(JarfStat j: jarfStats) if(j.getName().equals(name)) return j;
+        return null;
+    }
 }
