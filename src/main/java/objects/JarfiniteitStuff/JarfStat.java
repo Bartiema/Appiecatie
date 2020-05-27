@@ -28,6 +28,10 @@ public class JarfStat implements Comparable<JarfStat>{
         return name;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
     public Date getDate() {
         return date;
     }

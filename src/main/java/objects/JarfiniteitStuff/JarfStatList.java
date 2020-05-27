@@ -25,8 +25,8 @@ public class JarfStatList {
         for(JarfStat j: jarfStats) jarfStats.remove(j);
     }
 
-    public void remove(JarfStat jarfStat){
-        jarfStats.removeIf(j -> j.equals(jarfStat));
+    public void remove(String name){
+        jarfStats.removeIf(j -> j.getName().equals(name));
     }
 
     public void sort(){

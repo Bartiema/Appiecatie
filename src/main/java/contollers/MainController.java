@@ -136,6 +136,7 @@ public class MainController implements Initializable {
         instellingenViewController.setAccountList(accountList);
         instellingenViewController.setMainController(this);
         instellingenViewController.setDataNodeLists(dataNodeLists);
+        instellingenViewController.setJarfStatList(jarfStatList);
 
         transactionViewController.setAccountList(accountList);
         transactionViewController.setMainController(this);
