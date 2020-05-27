@@ -1,5 +1,7 @@
 package objects.JarfiniteitStuff;
 
+import objects.ScedulingStuff.Old.MonthIterator;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -61,5 +63,13 @@ public class JarfStatList {
     public JarfStat getOnName(String name){
         for(JarfStat j: jarfStats) if(j.getName().equals(name)) return j;
         return null;
+    }
+
+    public LinkedList<JarfStat> getIfThisMonth(){
+        LinkedList<JarfStat> goodJarfStats = new LinkedList<>();
+        for(JarfStat j: jarfStats){
+            if(j.getDate().after(new MonthIterator().get())) goodJarfStats.add(j);
+        }
+        return goodJarfStats;
     }
 }

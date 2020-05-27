@@ -116,7 +116,7 @@ public class JarfGildeViewController implements Initializable {
         jarfStatList.sort();
         TableView<JarfStat> tableView = new TableView<>();
 
-        ObservableList<JarfStat> o1 = FXCollections.observableArrayList(jarfStatList.getAll());
+        ObservableList<JarfStat> o1 = FXCollections.observableArrayList(jarfStatList.getIfThisMonth());
 
         tableView.setItems(o1);
 
