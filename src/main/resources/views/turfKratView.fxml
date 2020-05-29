@@ -30,7 +30,7 @@
                     </Button>
                     <Button fx:id="kratKoop5" layoutY="100.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="200.0" prefWidth="404.0" text="Krat gekocht">
                         <font>
-                            <Font size="18.0" />
+                            <Font size="48.0" />
                         </font>
                     </Button>
                     <Label fx:id="stockAcc5" layoutX="330.0" layoutY="30.0" text="##">
@@ -54,7 +54,7 @@
                     </Button>
                     <Button fx:id="kratKoop4" layoutY="100.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="200.0" prefWidth="404.0" text="Krat gekocht">
                         <font>
-                            <Font size="18.0" />
+                            <Font size="48.0" />
                         </font>
                     </Button>
                     <Label fx:id="stockAcc4" layoutX="330.0" layoutY="30.0" text="##">
@@ -78,7 +78,7 @@
                     </Button>
                     <Button fx:id="kratKoop3" layoutY="100.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="200.0" prefWidth="404.0" text="Krat gekocht">
                         <font>
-                            <Font size="18.0" />
+                            <Font size="48.0" />
                         </font>
                     </Button>
                     <Label fx:id="stockAcc3" layoutX="330.0" layoutY="30.0" text="##">
@@ -102,7 +102,7 @@
                     </Button>
                     <Button fx:id="kratKoop2" layoutY="100.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="200.0" prefWidth="404.0" text="Krat gekocht">
                         <font>
-                            <Font size="18.0" />
+                            <Font size="48.0" />
                         </font>
                     </Button>
                     <Label fx:id="stockAcc2" layoutX="330.0" layoutY="30.0" text="##">
@@ -126,7 +126,7 @@
                     </Button>
                     <Button fx:id="kratKoop1" layoutY="100.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="200.0" prefWidth="404.0" text="Krat gekocht">
                         <font>
-                            <Font size="18.0" />
+                            <Font size="48.0" />
                         </font>
                     </Button>
                     <Label fx:id="stockAcc1" layoutX="330.0" layoutY="30.0" text="##">
@@ -150,7 +150,7 @@
                     </Button>
                     <Button fx:id="kratKoop0" layoutY="100.0" mnemonicParsing="false" onAction="#kratKoopButtonClicked" prefHeight="200.0" prefWidth="404.0" text="Krat gekocht" textOverrun="CENTER_WORD_ELLIPSIS">
                         <font>
-                            <Font size="18.0" />
+                            <Font size="48.0" />
                         </font>
                     </Button>
                     <Label fx:id="stockAcc0" layoutX="330.0" layoutY="30.0" text="##">

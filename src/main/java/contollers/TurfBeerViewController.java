@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TurfViewController implements Initializable {
+public class TurfBeerViewController implements Initializable {
     private AccountList accountList;
     private MainController mainController;
     //Zuiplevel slider

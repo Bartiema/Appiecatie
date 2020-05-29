@@ -9,32 +9,36 @@
    <children>
       <Pane id="topbar" prefHeight="125.0" prefWidth="1280.0">
          <children>
-            <Button fx:id="instellingen" layoutX="1080.0" mnemonicParsing="false" onAction="#instellingenView" prefHeight="120.0" prefWidth="200.0" text="Instellingen">
+            <Button fx:id="instellingen" layoutX="1120.0" mnemonicParsing="false" onAction="#instellingenView" prefHeight="120.0" prefWidth="160.0" text="Instellingen">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Label fx:id="messageBoard" layoutX="608.0" layoutY="4.0" prefHeight="112.0" prefWidth="467.0" text="AppieZicht">
+            <Label fx:id="messageBoard" alignment="CENTER" contentDisplay="CENTER" layoutX="645.0" layoutY="3.0" prefHeight="115.0" prefWidth="470.0" text="AppieZicht" wrapText="true">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="turvenButton" mnemonicParsing="false" onAction="#turfView" prefHeight="120.0" prefWidth="200.0" text="Turven">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Button>
-            <Button fx:id="statistiekenButton" layoutX="200.0" mnemonicParsing="false" onAction="#statistiekenView" prefHeight="120.0" prefWidth="200.0" text="Statistieken">
+            <Button fx:id="turvenBeerButton" mnemonicParsing="false" onAction="#turfBeerView" prefHeight="120.0" prefWidth="160.0" text="Turf bier" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bierverliesButton" layoutX="400.0" mnemonicParsing="false" onAction="#bierverliesView" prefHeight="120.0" prefWidth="200.0" text="Bierverlies">
+            <Button fx:id="statistiekenButton" layoutX="320.0" mnemonicParsing="false" onAction="#statistiekenView" prefHeight="120.0" prefWidth="160.0" text="Statistieken">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="bierverliesButton" layoutX="480.0" mnemonicParsing="false" onAction="#bierverliesView" prefHeight="120.0" prefWidth="160.0" text="Bierverlies">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
             <Line endX="1279.0" endY="124.99998474121094" startX="1.52587890625E-5" startY="124.99998474121094" strokeWidth="5.0" />
+            <Button fx:id="turvenKratButton" layoutX="160.0" mnemonicParsing="false" onAction="#turfKratView" prefHeight="120.0" prefWidth="160.0" text="Turf Kratten" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
          </children>
       </Pane>
    </children>
