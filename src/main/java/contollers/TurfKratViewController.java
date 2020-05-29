@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
@@ -18,13 +17,9 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TurfViewController implements Initializable {
+public class TurfKratViewController implements Initializable {
     private AccountList accountList;
     private MainController mainController;
-    //Zuiplevel slider
-    @FXML
-    private Slider levelSlider;
-
     //The Names and Stocks of the Bierview
     private LinkedList<Label> accountNameList = new LinkedList<>();
     private LinkedList<Label> accountStockList = new LinkedList<>();
@@ -70,36 +65,6 @@ public class TurfViewController implements Initializable {
     @FXML
     private Pane AccPane5;
 
-    //The beer drank buttons
-    private LinkedList<Button> beerDrankButtonList = new LinkedList<>();
-    @FXML
-    private Button beerDrank0;
-    @FXML
-    private Button beerDrank1;
-    @FXML
-    private Button beerDrank2;
-    @FXML
-    private Button beerDrank3;
-    @FXML
-    private Button beerDrank4;
-    @FXML
-    private Button beerDrank5;
-
-    //The misBeer button's
-    private  LinkedList<Button> misBeerButtonList = new LinkedList<>();
-    @FXML
-    private Button misBeer0;
-    @FXML
-    private Button misBeer1;
-    @FXML
-    private Button misBeer2;
-    @FXML
-    private Button misBeer3;
-    @FXML
-    private Button misBeer4;
-    @FXML
-    private Button misBeer5;
-
     //The KratKoop Button's
     private LinkedList<Button> kratKoopButtonList = new LinkedList<>();
     @FXML
@@ -130,7 +95,6 @@ public class TurfViewController implements Initializable {
     @FXML
     private Button misKrat5;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         accountNameList.add(naamAcc0);
@@ -153,20 +117,6 @@ public class TurfViewController implements Initializable {
         accountPaneList.add(AccPane3);
         accountPaneList.add(AccPane4);
         accountPaneList.add(AccPane5);
-
-        beerDrankButtonList.add(beerDrank0);
-        beerDrankButtonList.add(beerDrank1);
-        beerDrankButtonList.add(beerDrank2);
-        beerDrankButtonList.add(beerDrank3);
-        beerDrankButtonList.add(beerDrank4);
-        beerDrankButtonList.add(beerDrank5);
-
-        misBeerButtonList.add(misBeer0);
-        misBeerButtonList.add(misBeer1);
-        misBeerButtonList.add(misBeer2);
-        misBeerButtonList.add(misBeer3);
-        misBeerButtonList.add(misBeer4);
-        misBeerButtonList.add(misBeer5);
 
         kratKoopButtonList.add(kratKoop0);
         kratKoopButtonList.add(kratKoop1);
@@ -205,44 +155,6 @@ public class TurfViewController implements Initializable {
         totalStock.setText(String.valueOf(accountList.getTotalStock()));
         setPositiveTimer();
     }
-
-    /**
-     * What happens when someone takes a beer
-     * @param event - the button being clicked
-     */
-    public void drankButtonClicked(ActionEvent event) {
-        mainController.resetMessageBoard();
-        for(int i = 0; i<6 ; i++){
-            if(event.getSource().equals(beerDrankButtonList.get(i))){
-                accountList.beerDrank(i);
-                if(accountList.get(i).getStock()<0)  mainController.getMessageBoard().setText("Ga bier kopen met je hoofd");
-                accountStockList.get(i).setText(String.valueOf(accountList.get(i).getStock()));
-            }
-        }
-        if(mainController.randomise((int)levelSlider.getValue())) mainController.getMessageBoard().setText("Trek een Spies Amice");
-        totalStock.setText(String.valueOf(accountList.getTotalStock()));
-        mainController.write();
-        positiveBeer();
-    }
-    /**
-     * Method for handeling the misbeer button
-     * @param event - event
-     */
-    public void misBeerButtonClicked(ActionEvent event){
-        mainController.resetMessageBoard();
-        for(int i = 0; i<6 ; i++){
-            if(event.getSource().equals(misBeerButtonList.get(i))){
-                accountList.misBeer(i);
-                accountStockList.get(i).setText(String.valueOf(accountList.get(i).getStock()));
-            }
-        }
-        totalStock.setText(String.valueOf(accountList.getTotalStock()));
-        mainController.getMessageBoard().setText("Zieke feut die je bent");
-        mainController.write();
-        positiveBeer();
-
-    }
-
     /**
      * Method for handeling the miskrat button
      * @param event - event
@@ -316,3 +228,4 @@ public class TurfViewController implements Initializable {
         timer.schedule(timerTask, 100);
     }
 }
+
