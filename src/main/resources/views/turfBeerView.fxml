@@ -6,13 +6,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="831.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contollers.TurfBeerViewController">
         <children>
-            <Slider fx:id="levelSlider" layoutX="1076.0" layoutY="3.0" majorTickUnit="1.0" max="5.0" minorTickCount="0" prefHeight="35.0" prefWidth="200.0" snapToTicks="true" />
-            <Text layoutX="6.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totale voorraad: " wrappingWidth="274.0">
+            <Slider fx:id="levelSlider" layoutX="1076.0" layoutY="4.0" majorTickUnit="1.0" max="5.0" minorTickCount="0" prefHeight="50.0" prefWidth="200.0" snapToTicks="true" />
+            <Text layoutX="6.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totale voorraad: " wrappingWidth="274.0">
                 <font>
                     <Font size="24.0" />
                 </font>
             </Text>
-            <Label fx:id="totalStock" layoutX="212.0" text="##">
+            <Label fx:id="totalStock" layoutX="212.0" layoutY="10.0" text="##">
                 <font>
                     <Font size="30.0" />
                 </font>
@@ -89,7 +89,7 @@
                     </Label>
                 </children>
             </Pane>
-            <Pane fx:id="AccPane2" layoutX="861.0" layoutY="40.0" prefHeight="380.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
+            <Pane fx:id="AccPane2" layoutX="861.0" layoutY="57.0" prefHeight="380.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
                 <children>
                     <Label fx:id="naamAcc2" layoutX="14.0" layoutY="14.0" prefHeight="65.0" prefWidth="295.0" text="Naam">
                         <font>
@@ -113,7 +113,7 @@
                     </Label>
                 </children>
             </Pane>
-            <Pane fx:id="AccPane1" layoutX="438.0" layoutY="40.0" prefHeight="380.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
+            <Pane fx:id="AccPane1" layoutX="438.0" layoutY="57.0" prefHeight="380.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
                 <children>
                     <Label fx:id="naamAcc1" layoutX="14.0" layoutY="14.0" prefHeight="65.0" prefWidth="295.0" text="Naam">
                         <font>
@@ -137,7 +137,7 @@
                     </Label>
                 </children>
             </Pane>
-            <Pane fx:id="AccPane0" layoutX="14.0" layoutY="40.0" prefHeight="380.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
+            <Pane fx:id="AccPane0" layoutX="14.0" layoutY="57.0" prefHeight="380.0" prefWidth="405.0" style="-fx-background-color: ffffff;">
                 <children>
                     <Text layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0">
                         <font>
@@ -166,5 +166,10 @@
                     </Label>
                 </children>
             </Pane>
+      <Button layoutX="490.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="300.0" text="HJ is kut aan het doen">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
         </children>
     </AnchorPane>
