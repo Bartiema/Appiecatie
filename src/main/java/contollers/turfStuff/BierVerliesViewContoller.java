@@ -1,5 +1,6 @@
-package contollers;
+package contollers.turfStuff;
 
+import contollers.MainController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

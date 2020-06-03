@@ -1,5 +1,6 @@
-package contollers;
+package contollers.statistiekStuff;
 
+import contollers.MainController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

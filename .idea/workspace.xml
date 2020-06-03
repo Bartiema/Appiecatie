@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="git ignore fix &quot;hopefully&quot;">
-      <change beforePath="$PROJECT_DIR$/src/main/java/contollers/InstellingenViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/contollers/InstellingenViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/contollers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/contollers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objects/JarfiniteitStuff/JarfStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/JarfiniteitStuff/JarfStat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objects/JarfiniteitStuff/JarfStatList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/JarfiniteitStuff/JarfStatList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/files/Accounts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/Accounts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/files/JarfStats" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/JarfStats" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/files/LineChartData" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/LineChartData" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/files/Transactions" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/Transactions" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="split lineChartView.fxml and StatistiekView">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/contollers/statistiekStuff/LineChartViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/contollers/statistiekStuff/LineChartViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/ScedulingStuff/New/DailyJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/ScedulingStuff/New/DailyJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/lineChartStuff/DataNodeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/lineChartStuff/DataNodeList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +118,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="public" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/build.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/views" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -137,12 +133,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\main\resources\views\instellingenStuff" />
+      <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\main\resources\views\statistiekStuff" />
+      <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\main\resources\views\turfStuff" />
       <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\main\resources" />
       <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\main\main\files" />
-      <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\main\main" />
-      <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\sample\Views" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\main\resources\views" />
       <recent name="C:\Users\Bart van Maris\IdeaProjects\Appiecatie\src\main\main\views" />
     </key>
   </component>
@@ -330,48 +328,9 @@
       <workItem from="1589978880487" duration="1682000" />
       <workItem from="1590090192261" duration="1879000" />
       <workItem from="1590231374686" duration="1776000" />
-    </task>
-    <task id="LOCAL-00034" summary="Fixed some bugs">
-      <created>1588515515583</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1588515515583</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Fixed some bugs">
-      <created>1588515648610</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1588515648610</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Correct join dates for current accounts">
-      <created>1588516031433</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1588516031433</updated>
-    </task>
-    <task id="LOCAL-00037" summary="git Ignore Changes">
-      <created>1588516562083</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1588516562083</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Some fixes">
-      <created>1588516850441</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1588516850441</updated>
-    </task>
-    <task id="LOCAL-00039" summary="TurfView visuals done">
-      <created>1588587744156</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1588587744157</updated>
+      <workItem from="1590762338812" duration="2922000" />
+      <workItem from="1591125573979" duration="1267000" />
+      <workItem from="1591213403155" duration="2728000" />
     </task>
     <task id="LOCAL-00040" summary="Semi correcte standen qua totaal gezopen">
       <created>1588588006122</created>
@@ -674,7 +633,49 @@
       <option name="project" value="LOCAL" />
       <updated>1590588460992</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="split krat and beer turf stuff">
+      <created>1590763685157</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1590763685157</updated>
+    </task>
+    <task id="LOCAL-00084" summary="krat View finished">
+      <created>1590764669640</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1590764669640</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Linechart Update Moment changed">
+      <created>1591125856763</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1591125856763</updated>
+    </task>
+    <task id="LOCAL-00086" summary="HJ kut button, and some small edits to mainView look">
+      <created>1591126182986</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1591126182986</updated>
+    </task>
+    <task id="LOCAL-00087" summary="refractor into new directories">
+      <created>1591213751979</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1591213751979</updated>
+    </task>
+    <task id="LOCAL-00088" summary="split lineChartView.fxml and StatistiekView">
+      <created>1591214988872</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1591214988872</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -682,12 +683,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="visual of Transactions done" />
-    <MESSAGE value="Transactions Finished" />
-    <MESSAGE value="Fixed some bugs" />
-    <MESSAGE value="Correct join dates for current accounts" />
-    <MESSAGE value="git Ignore Changes" />
-    <MESSAGE value="Some fixes" />
     <MESSAGE value="TurfView visuals done" />
     <MESSAGE value="Semi correcte standen qua totaal gezopen" />
     <MESSAGE value="Finished Turfview" />
@@ -707,7 +702,13 @@
     <MESSAGE value="git ignore fix &quot;hopefully&quot;" />
     <MESSAGE value="JarfStat start" />
     <MESSAGE value="functioning jarfStats" />
-    <option name="LAST_COMMIT_MESSAGE" value="functioning jarfStats" />
+    <MESSAGE value="split krat and beer turf stuff" />
+    <MESSAGE value="krat View finished" />
+    <MESSAGE value="Linechart Update Moment changed" />
+    <MESSAGE value="HJ kut button, and some small edits to mainView look" />
+    <MESSAGE value="refractor into new directories" />
+    <MESSAGE value="split lineChartView.fxml and StatistiekView" />
+    <option name="LAST_COMMIT_MESSAGE" value="split lineChartView.fxml and StatistiekView" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Code_Folding" timestamp="1585830401947">
@@ -742,12 +743,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="224" key="#com.intellij.ide.macro.MacrosDialog/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1585402784441" />
-    <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1590585079686">
+    <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1591213879251">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585942362627" />
     <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1587584644831" />
-    <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590585079686" />
+    <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591213879251" />
     <state x="640" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1589924756940">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -756,10 +757,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="664" y="203" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585828346850" />
-    <state x="537" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588945032288">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590763707807">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="537" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588945032288" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590763707807" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585775561036">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -769,12 +770,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="252" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1585318278383" />
-    <state x="587" y="114" key="CommitChangelistDialog2" timestamp="1590588460290">
+    <state x="587" y="114" key="CommitChangelistDialog2" timestamp="1591214988297">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="587" y="114" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588674827923" />
     <state x="587" y="114" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1587734594736" />
-    <state x="587" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590588460290" />
+    <state x="587" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591214988297" />
     <state x="694" y="281" key="EnvironmentVariablesDialog" timestamp="1585402794323">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -788,34 +789,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="830" y="413" key="Github.ShareDialog/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1585307699153" />
-    <state width="1877" height="237" key="GridCell.Tab.0.bottom" timestamp="1590588549167">
+    <state width="1877" height="237" key="GridCell.Tab.0.bottom" timestamp="1591216131091">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="237" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1589977454863" />
     <state width="1877" height="254" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588674833186" />
     <state width="1877" height="254" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1587734599001" />
-    <state width="1877" height="237" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590588549167" />
-    <state width="1877" height="237" key="GridCell.Tab.0.center" timestamp="1590588549167">
+    <state width="1877" height="237" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591216131091" />
+    <state width="1877" height="237" key="GridCell.Tab.0.center" timestamp="1591216131090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="237" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1589977454863" />
     <state width="1877" height="254" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588674833186" />
     <state width="1877" height="254" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1587734599001" />
-    <state width="1877" height="237" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590588549167" />
-    <state width="1877" height="237" key="GridCell.Tab.0.left" timestamp="1590588549167">
+    <state width="1877" height="237" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591216131090" />
+    <state width="1877" height="237" key="GridCell.Tab.0.left" timestamp="1591216131090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="237" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1589977454863" />
     <state width="1877" height="254" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588674833186" />
     <state width="1877" height="254" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1587734599001" />
-    <state width="1877" height="237" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590588549167" />
-    <state width="1877" height="237" key="GridCell.Tab.0.right" timestamp="1590588549167">
+    <state width="1877" height="237" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591216131090" />
+    <state width="1877" height="237" key="GridCell.Tab.0.right" timestamp="1591216131090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="237" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1589977454863" />
     <state width="1877" height="254" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588674833186" />
     <state width="1877" height="254" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.720.440@0.0.1920.1040" timestamp="1587734599001" />
-    <state width="1877" height="237" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590588549167" />
+    <state width="1877" height="237" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591216131090" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1586353307575">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

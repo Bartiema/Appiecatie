@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="831.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contollers.StatistiekViewController">
+<AnchorPane prefHeight="831.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contollers.statistiekStuff.StatistiekViewController">
    <children>
       <VBox fx:id="container" layoutX="16.0" layoutY="125.0" prefHeight="689.0" prefWidth="1250.0" />
       <Button fx:id="lineChartButton" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#lineChart" prefHeight="100.0" prefWidth="150.0" text="Deze Maand">

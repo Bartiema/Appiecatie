@@ -11,7 +11,7 @@
          <children>
             <Button fx:id="instellingen" layoutX="1120.0" mnemonicParsing="false" onAction="#instellingenView" prefHeight="120.0" prefWidth="160.0" text="Instellingen">
                <font>
-                  <Font size="24.0" />
+                  <Font size="22.0" />
                </font>
             </Button>
             <Label fx:id="messageBoard" alignment="CENTER" contentDisplay="CENTER" layoutX="645.0" layoutY="3.0" prefHeight="115.0" prefWidth="470.0" text="AppieZicht" wrapText="true">
@@ -24,7 +24,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="statistiekenButton" layoutX="320.0" mnemonicParsing="false" onAction="#statistiekenView" prefHeight="120.0" prefWidth="160.0" text="Statistieken">
+            <Button fx:id="statistiekenButton" layoutX="320.0" mnemonicParsing="false" onAction="#statistiekenView" prefHeight="120.0" prefWidth="160.0" text="Statistiek">
                <font>
                   <Font size="24.0" />
                </font>
