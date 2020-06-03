@@ -1,9 +1,7 @@
 package objects.ScedulingStuff.New;
 
 import contollers.MainController;
-import objects.AccountStuff.Account;
 import objects.AccountStuff.AccountList;
-import objects.lineChartStuff.DataNode;
 import objects.lineChartStuff.DataNodeList;
 import org.quartz.Job;
 import org.quartz.JobDataMap;
@@ -20,9 +18,7 @@ public class DailyJob implements Job {
         MainController controller = (MainController) data.get("controller");
         LinkedList<DataNodeList> dataNodeLists = (LinkedList<DataNodeList>) data.get("dataNodeLists");
 
-        for(Account a : accounts)
-            for (DataNodeList d : dataNodeLists)
-                if (a.equals(d.getDataOwner())) d.add(new DataNode(a.getDrankThisMonth()));
+        for (DataNodeList d : dataNodeLists) d.update();
 
         controller.writeDaily();
         controller.write();

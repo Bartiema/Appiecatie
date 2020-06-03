@@ -7,6 +7,7 @@ import objects.AccountStuff.AccountList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -72,5 +73,25 @@ public class DataNodeList {
 
     public void removeAll(){
         while(!dataNodes.isEmpty()) dataNodes.remove();
+    }
+
+    public void removeOnDate(int date) {
+        for(DataNode d : dataNodes)
+            if (d.getDateInMonth() == date) {
+                dataNodes.remove(d);
+                break;
+            }
+    }
+
+    public void update(){
+        boolean contains = false;
+        int date = new Date().getDate();
+        for(DataNode d : dataNodes)
+            if (d.getDateInMonth() == date) {
+                contains = true;
+                break;
+            }
+        if(contains) this.removeOnDate(date);
+        this.add(new DataNode(dataOwner.getDrankThisMonth()));
     }
 }
