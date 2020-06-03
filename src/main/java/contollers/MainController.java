@@ -1,5 +1,12 @@
 package contollers;
 
+import contollers.instellingenStuff.InstellingenViewController;
+import contollers.instellingenStuff.TransactionViewController;
+import contollers.statistiekStuff.JarfGildeViewController;
+import contollers.statistiekStuff.StatistiekViewController;
+import contollers.turfStuff.BierVerliesViewContoller;
+import contollers.turfStuff.TurfBeerViewController;
+import contollers.turfStuff.TurfKratViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,13 +51,13 @@ public class MainController implements Initializable {
     private Random random = new Random();
 
     //the extra loaders for the other possible pages
-    FXMLLoader turfBeerPageLoader = new FXMLLoader(getClass().getResource("/views/turfBeerView.fxml"));
-    FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/views/statistiekView.fxml"));
-    FXMLLoader bierverliesPageLoader = new FXMLLoader(getClass().getResource("/views/bierVerliesView.fxml"));
-    FXMLLoader instellingenPageLoader = new FXMLLoader(getClass().getResource("/views/instellingenView.fxml"));
-    FXMLLoader transactionPageLoader = new FXMLLoader(getClass().getResource("/views/transactionView.fxml"));
-    FXMLLoader jarfStatPageLoader = new FXMLLoader(getClass().getResource("/views/jarfGildeView.fxml"));
-    FXMLLoader turfKratPageLoader = new FXMLLoader(getClass().getResource("/views/turfKratView.fxml"));
+    FXMLLoader turfBeerPageLoader = new FXMLLoader(getClass().getResource("/views/turfStuff/turfBeerView.fxml"));
+    FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/views/statistiekStuff/statistiekView.fxml"));
+    FXMLLoader bierverliesPageLoader = new FXMLLoader(getClass().getResource("/views/turfStuff/bierVerliesView.fxml"));
+    FXMLLoader instellingenPageLoader = new FXMLLoader(getClass().getResource("/views/instellingenStuff/instellingenView.fxml"));
+    FXMLLoader transactionPageLoader = new FXMLLoader(getClass().getResource("/views/instellingenStuff/transactionView.fxml"));
+    FXMLLoader jarfStatPageLoader = new FXMLLoader(getClass().getResource("/views/statistiekStuff/jarfGildeView.fxml"));
+    FXMLLoader turfKratPageLoader = new FXMLLoader(getClass().getResource("/views/turfStuff/turfKratView.fxml"));
 
     //the Panes containing all the extra gui
     private final AnchorPane turfBeerPane = turfBeerPageLoader.load();
