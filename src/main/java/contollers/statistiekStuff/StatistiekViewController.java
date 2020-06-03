@@ -6,9 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -36,8 +33,12 @@ public class StatistiekViewController implements Initializable {
     private AccountList accountList;
     private MainController mainController;
     private LinkedList<DataNodeList> dataNodeLists;
+
     private AnchorPane jarfGildePage;
     private JarfGildeViewController jarfGildeViewController;
+
+    private AnchorPane lineChartPage;
+    private LineChartViewController lineChartViewController;
 
     @FXML
     private VBox container;
@@ -63,6 +64,13 @@ public class StatistiekViewController implements Initializable {
     public void setJarfGildeViewController(JarfGildeViewController jarfGildeViewController){
         this.jarfGildeViewController = jarfGildeViewController;
     }
+    public void setLineChartPage(AnchorPane lineChartPage){
+        this.lineChartPage = lineChartPage;
+    }
+    public void setLineChartViewController(LineChartViewController lineChartViewController){
+        this.lineChartViewController = lineChartViewController;
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -80,30 +88,11 @@ public class StatistiekViewController implements Initializable {
         }
 
     public void lineChart(ActionEvent actionEvent) {
-        if(container.getChildren().get(0) instanceof LineChart) return;
+        if(container.getChildren().get(0).equals(lineChartPage)) return;
         container.getChildren().remove(0);
 
-        NumberAxis YAxis = new NumberAxis();
-        YAxis.setLabel("Hoeveelheid bier gezopen");
-        NumberAxis XAxis = new NumberAxis();
-        XAxis.setLabel("Hoeveelste dag in maand");
-        XAxis.setAutoRanging(false);
-        XAxis.setTickUnit(1);
-        XAxis.setUpperBound(31);
-        YAxis.setLowerBound(1);
-
-        LineChart lineChart = new LineChart(XAxis, YAxis);
-
-        for(DataNodeList d : dataNodeLists){
-            XYChart.Series series = d.getXYChartSeries();
-            lineChart.getData().add(series);
-
-        }
-
-        lineChart.setMinHeight(690);
-
-
-        container.getChildren().add(lineChart);
+        container.getChildren().add(lineChartPage);
+        lineChartViewController.setData();
     }
 
     public void tabelButton(ActionEvent actionEvent) throws IllegalAccessException {
@@ -243,7 +232,7 @@ public class StatistiekViewController implements Initializable {
     }
 
     public void jarfGildeButton(ActionEvent actionEvent) {
-        if(container.getChildren().get(0) instanceof AnchorPane) return;
+        if(container.getChildren().get(0).equals(jarfGildePage)) return;
         container.getChildren().remove(0);
 
         container.getChildren().add(jarfGildePage);

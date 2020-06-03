@@ -3,6 +3,7 @@ package contollers;
 import contollers.instellingenStuff.InstellingenViewController;
 import contollers.instellingenStuff.TransactionViewController;
 import contollers.statistiekStuff.JarfGildeViewController;
+import contollers.statistiekStuff.LineChartViewController;
 import contollers.statistiekStuff.StatistiekViewController;
 import contollers.turfStuff.BierVerliesViewContoller;
 import contollers.turfStuff.TurfBeerViewController;
@@ -58,6 +59,7 @@ public class MainController implements Initializable {
     FXMLLoader transactionPageLoader = new FXMLLoader(getClass().getResource("/views/instellingenStuff/transactionView.fxml"));
     FXMLLoader jarfStatPageLoader = new FXMLLoader(getClass().getResource("/views/statistiekStuff/jarfGildeView.fxml"));
     FXMLLoader turfKratPageLoader = new FXMLLoader(getClass().getResource("/views/turfStuff/turfKratView.fxml"));
+    FXMLLoader lineChartPageLoader = new FXMLLoader(getClass().getResource("/views/statistiekStuff/lineChartView.fxml"));
 
     //the Panes containing all the extra gui
     private final AnchorPane turfBeerPane = turfBeerPageLoader.load();
@@ -65,8 +67,9 @@ public class MainController implements Initializable {
     private final AnchorPane bierVerliesPane = bierverliesPageLoader.load();
     private final AnchorPane instellingenPane = instellingenPageLoader.load();
     private final AnchorPane transactionPane = transactionPageLoader.load();
-    private final AnchorPane jarfGildePage = jarfStatPageLoader.load();
-    private final AnchorPane turfKratPage = turfKratPageLoader.load();
+    private final AnchorPane jarfGildePane = jarfStatPageLoader.load();
+    private final AnchorPane turfKratPane = turfKratPageLoader.load();
+    private final AnchorPane lineChartPane = lineChartPageLoader.load();
 
     //The controllers of the other Panes
     TurfBeerViewController turfBeerViewController = turfBeerPageLoader.getController();
@@ -76,6 +79,7 @@ public class MainController implements Initializable {
     TransactionViewController transactionViewController = transactionPageLoader.getController();
     JarfGildeViewController jarfGildeViewController = jarfStatPageLoader.getController();
     TurfKratViewController turfKratViewController = turfKratPageLoader.getController();
+    LineChartViewController lineChartViewController = lineChartPageLoader.getController();
 
 
     //The MessageBoard
@@ -139,8 +143,10 @@ public class MainController implements Initializable {
         statistiekViewController.setAccountList(accountList);
         statistiekViewController.setMainController(this);
         statistiekViewController.setDataNodeLists(dataNodeLists);
-        statistiekViewController.setJarfGildePage(jarfGildePage);
+        statistiekViewController.setJarfGildePage(jarfGildePane);
         statistiekViewController.setJarfGildeViewController(jarfGildeViewController);
+        statistiekViewController.setLineChartPage(lineChartPane);
+        statistiekViewController.setLineChartViewController(lineChartViewController);
 
         bierVerliesViewContoller.setAccountList(accountList);
         bierVerliesViewContoller.setMainController(this);
@@ -159,6 +165,10 @@ public class MainController implements Initializable {
 
         turfKratViewController.setAccountList(accountList);
         turfKratViewController.setMainController(this);
+
+        lineChartViewController.setAccountList(accountList);
+        lineChartViewController.setDataNodeLists(dataNodeLists);
+        lineChartViewController.setMainController(this);
 
 
         //Daily scheduler
@@ -279,7 +289,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
-        if(mainPane.getChildren().contains(turfKratPage)) mainPane.getChildren().remove(turfKratPage);
+        if(mainPane.getChildren().contains(turfKratPane)) mainPane.getChildren().remove(turfKratPane);
 
         AnchorPane.setTopAnchor(turfBeerPane, (double)125);
         mainPane.getChildren().add(turfBeerPane);
@@ -301,7 +311,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
-        if(mainPane.getChildren().contains(turfKratPage)) mainPane.getChildren().remove(turfKratPage);
+        if(mainPane.getChildren().contains(turfKratPane)) mainPane.getChildren().remove(turfKratPane);
 
         AnchorPane.setTopAnchor(statistiekPane, (double)125);
         mainPane.getChildren().add(statistiekPane);
@@ -315,7 +325,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
-        if(mainPane.getChildren().contains(turfKratPage)) mainPane.getChildren().remove(turfKratPage);
+        if(mainPane.getChildren().contains(turfKratPane)) mainPane.getChildren().remove(turfKratPane);
 
         AnchorPane.setTopAnchor(bierVerliesPane, (double)125);
         mainPane.getChildren().add(bierVerliesPane);
@@ -329,7 +339,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
-        if(mainPane.getChildren().contains(turfKratPage)) mainPane.getChildren().remove(turfKratPage);
+        if(mainPane.getChildren().contains(turfKratPane)) mainPane.getChildren().remove(turfKratPane);
 
         AnchorPane.setTopAnchor(instellingenPane, (double)125);
         mainPane.getChildren().add(instellingenPane);
@@ -342,7 +352,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
-        if(mainPane.getChildren().contains(turfKratPage)) mainPane.getChildren().remove(turfKratPage);
+        if(mainPane.getChildren().contains(turfKratPane)) mainPane.getChildren().remove(turfKratPane);
 
         AnchorPane.setTopAnchor(transactionPane, (double)125);
         mainPane.getChildren().add(transactionPane);
@@ -350,15 +360,15 @@ public class MainController implements Initializable {
     }
 
     public void turfKratView(ActionEvent event){
-        if(mainPane.getChildren().contains(turfKratPage)) return;
+        if(mainPane.getChildren().contains(turfKratPane)) return;
         if(mainPane.getChildren().contains(turfBeerPane)) mainPane.getChildren().remove(turfBeerPane);
         if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
 
-        AnchorPane.setTopAnchor(turfKratPage, (double)125);
-        mainPane.getChildren().add(turfKratPage);
+        AnchorPane.setTopAnchor(turfKratPane, (double)125);
+        mainPane.getChildren().add(turfKratPane);
 
         turfKratViewController.setAllStocks();
         turfKratViewController.setNames();

@@ -23,6 +23,7 @@ public class DailyJob implements Job {
         for(Account a : accounts)
             for (DataNodeList d : dataNodeLists)
                 if (a.equals(d.getDataOwner())) d.add(new DataNode(a.getDrankThisMonth()));
+
         controller.writeDaily();
         controller.write();
     }

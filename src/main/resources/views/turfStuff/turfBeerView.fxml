@@ -166,7 +166,7 @@
                     </Label>
                 </children>
             </Pane>
-      <Button layoutX="490.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="300.0" text="HJ is kut aan het doen">
+      <Button layoutX="490.0" layoutY="4.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" text="HJ is kut aan het doen">
          <font>
             <Font size="18.0" />
          </font>
