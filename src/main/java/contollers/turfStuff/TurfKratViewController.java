@@ -171,6 +171,7 @@ public class TurfKratViewController implements Initializable {
         mainController.getMessageBoard().setText("Zieke mega-feut die je bent");
         totalStock.setText(String.valueOf(accountList.getTotalStock()));
         mainController.write();
+        divisibleBy24();
         positiveBeer();
     }
 
@@ -189,6 +190,7 @@ public class TurfKratViewController implements Initializable {
         mainController.getMessageBoard().setText("Mooie lul die je bent");
         totalStock.setText(String.valueOf(accountList.getTotalStock()));
         positiveBeer();
+        divisibleBy24();
         mainController.write();
 
     }
@@ -205,28 +207,26 @@ public class TurfKratViewController implements Initializable {
         }
     }
 
-    public void setLongPositiveTimer() {
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                positiveBeer();
-            }
-        };
-
-        timer.schedule(timerTask, 1000);
-    }
-
     public void setPositiveTimer() {
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
                 positiveBeer();
+                divisibleBy24();
             }
         };
 
         timer.schedule(timerTask, 100);
+    }
+
+    public void divisibleBy24(){
+        if(accountList.getTotalStock() % 24 == 0 && accountList.getTotalStock()!=0) totalStock.setTextFill(Color.YELLOWGREEN);
+        else totalStock.setTextFill(Color.BLACK);
+        for(Label l: accountStockList){
+            if(Integer.parseInt(l.getText()) % 24 == 0 && Integer.parseInt(l.getText()) != 0) l.setTextFill(Color.GREEN);
+            else l.setTextFill(Color.BLACK);
+        }
     }
 }
 
