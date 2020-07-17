@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import objects.AccountStuff.Account;
 import objects.AccountStuff.AccountList;
+import objects.AudioOutputOverHead;
 import objects.JarfiniteitStuff.JarfStatList;
 import objects.lineChartStuff.DataNode;
 import objects.lineChartStuff.DataNodeList;
@@ -167,6 +168,7 @@ public class InstellingenViewController implements Initializable {
         mainController.write();
         mainController.writeDaily();
         mainController.writeJarf();
+        AudioOutputOverHead.playAudio("src/main/resources/sounds/ChurchBell.wav");
         setData();
     }
 

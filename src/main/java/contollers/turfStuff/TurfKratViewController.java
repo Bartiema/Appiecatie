@@ -11,6 +11,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import objects.AccountStuff.AccountList;
+import objects.AudioOutputOverHead;
 
 import java.net.URL;
 import java.util.LinkedList;
@@ -173,6 +174,7 @@ public class TurfKratViewController implements Initializable {
         mainController.write();
         divisibleBy24();
         positiveBeer();
+        AudioOutputOverHead.playAudio("src/main/resources/sounds/Pling.wav");
     }
 
     /**
@@ -191,6 +193,7 @@ public class TurfKratViewController implements Initializable {
         totalStock.setText(String.valueOf(accountList.getTotalStock()));
         positiveBeer();
         divisibleBy24();
+        AudioOutputOverHead.playAudio("src/main/resources/sounds/Pling.wav");
         mainController.write();
 
     }

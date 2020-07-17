@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import objects.AccountStuff.Account;
 import objects.AccountStuff.AccountList;
+import objects.AudioOutputOverHead;
 
 import java.net.URL;
 import java.util.LinkedList;
@@ -274,5 +275,6 @@ public class BierVerliesViewContoller implements Initializable {
         krattenField.setText("");
         pintenField.setText("");
         mainController.write();
+        AudioOutputOverHead.playAudio("src/main/resources/sounds/Pling.wav");
     }
 }

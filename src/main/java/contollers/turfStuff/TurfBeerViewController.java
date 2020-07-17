@@ -12,6 +12,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import objects.AccountStuff.AccountList;
+import objects.AudioOutputOverHead;
 
 import java.net.URL;
 import java.util.LinkedList;
@@ -178,9 +179,12 @@ public class TurfBeerViewController implements Initializable {
         }
         if(mainController.randomise((int)levelSlider.getValue())) mainController.getMessageBoard().setText("Trek een Spies Amice");
         totalStock.setText(String.valueOf(accountList.getTotalStock()));
+
         mainController.write();
         positiveBeer();
         divisibleBy24();
+
+        AudioOutputOverHead.playAudio("src/main/resources/sounds/Pling.wav");
     }
     /**
      * Method for handeling the misbeer button
@@ -199,6 +203,7 @@ public class TurfBeerViewController implements Initializable {
         mainController.write();
         positiveBeer();
         divisibleBy24();
+        AudioOutputOverHead.playAudio("src/main/resources/sounds/Pling.wav");
 
     }
 

@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 import objects.AccountStuff.AccountList;
+import objects.AudioOutputOverHead;
 import objects.JarfiniteitStuff.JarfStat;
 import objects.JarfiniteitStuff.JarfStatList;
 
@@ -205,6 +206,7 @@ public class JarfGildeViewController implements Initializable {
 
     public void jarfButton(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
+        AudioOutputOverHead.playAudio("src/main/resources/sounds/Cheer.wav");
         for (int i =0; i<6; i++){
             if(button.equals(jarfButtonList.get(i))){
                 if(jarfStatList.contains(accountList.get(i).getName())){
