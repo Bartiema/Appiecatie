@@ -72,6 +72,21 @@ public class JarfGildeViewController implements Initializable {
     @FXML
     private Label qtyLabel5;
 
+    private LinkedList<Button> misJarfList;
+    @FXML
+    private Button misJarf0;
+    @FXML
+    private Button misJarf1;
+    @FXML
+    private Button misJarf2;
+    @FXML
+    private Button misJarf3;
+    @FXML
+    private Button misJarf4;
+    @FXML
+    private Button misJarf5;
+
+
     @FXML
     private Pane container;
 
@@ -100,6 +115,14 @@ public class JarfGildeViewController implements Initializable {
         qtyLabelList.add(qtyLabel3);
         qtyLabelList.add(qtyLabel4);
         qtyLabelList.add(qtyLabel5);
+
+        misJarfList = new LinkedList<>();
+        misJarfList.add(misJarf0);
+        misJarfList.add(misJarf1);
+        misJarfList.add(misJarf2);
+        misJarfList.add(misJarf3);
+        misJarfList.add(misJarf4);
+        misJarfList.add(misJarf5);
     }
 
 
@@ -198,6 +221,17 @@ public class JarfGildeViewController implements Initializable {
                 }
             }
         }
+    }
 
+    public void misJarfButton(ActionEvent actionEvent){
+        Button button = (Button) actionEvent.getSource();
+        for(int i =0; i<6; i++){
+            if(button.equals(misJarfList.get(i))){
+                jarfStatList.getOnName(accountList.get(i).getName()).reduce();
+                setData();
+                mainController.writeJarf();
+                return;
+            }
+        }
     }
 }
