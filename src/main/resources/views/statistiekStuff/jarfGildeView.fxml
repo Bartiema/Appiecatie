@@ -14,16 +14,20 @@
                   <Font size="48.0" />
                </font>
             </Label>
-            <Button fx:id="jarfButton0" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="270.0" text="ik heb net gejarft">
+            <Button fx:id="jarfButton0" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="220.0" text="ik heb net gejarft">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Label fx:id="qtyLabel0" layoutX="500.0" layoutY="32.0" text="###">
+            <Label fx:id="qtyLabel0" layoutX="510.0" layoutY="32.0" text="###">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
+            <Button fx:id="misJarf0" layoutX="402.0" layoutY="1.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="100.0" text="misJarf" onAction="#misJarfButton">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
          </children>
       </Pane>
        <Pane layoutX="14.0" layoutY="124.0" prefHeight="110.0" prefWidth="580.0">
@@ -33,16 +37,20 @@
                        <Font size="48.0" />
                    </font>
                </Label>
-               <Button fx:id="jarfButton1" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="270.0" text="ik heb net gejarft">
+               <Button fx:id="jarfButton1" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="220.0" text="ik heb net gejarft">
                    <font>
                        <Font size="24.0" />
                    </font>
                </Button>
-               <Label fx:id="qtyLabel1" layoutX="500.0" layoutY="32.0" text="###">
+               <Label fx:id="qtyLabel1" layoutX="510.0" layoutY="32.0" text="###">
                    <font>
                        <Font size="36.0" />
                    </font>
                </Label>
+               <Button fx:id="misJarf1" layoutX="402.0" layoutY="1.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="100.0" text="misJarf" onAction="#misJarfButton">
+                   <font>
+                       <Font size="18.0" />
+                   </font></Button>
            </children>
        </Pane>
        <Pane layoutX="14.0" layoutY="234.0" prefHeight="110.0" prefWidth="580.0">
@@ -52,16 +60,20 @@
                        <Font size="48.0" />
                    </font>
                </Label>
-               <Button fx:id="jarfButton2" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="270.0" text="ik heb net gejarft">
+               <Button fx:id="jarfButton2" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="220.0" text="ik heb net gejarft">
                    <font>
                        <Font size="24.0" />
                    </font>
                </Button>
-               <Label fx:id="qtyLabel2" layoutX="500.0" layoutY="32.0" text="###">
+               <Label fx:id="qtyLabel2" layoutX="510.0" layoutY="32.0" text="###">
                    <font>
                        <Font size="36.0" />
                    </font>
                </Label>
+               <Button fx:id="misJarf2" layoutX="402.0" layoutY="1.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="100.0" text="misJarf" onAction="#misJarfButton">
+                   <font>
+                       <Font size="18.0" />
+                   </font></Button>
            </children>
        </Pane>
        <Pane layoutX="14.0" layoutY="344.0" prefHeight="110.0" prefWidth="580.0">
@@ -71,16 +83,20 @@
                        <Font size="48.0" />
                    </font>
                </Label>
-               <Button fx:id="jarfButton3" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="270.0" text="ik heb net gejarft">
+               <Button fx:id="jarfButton3" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="220.0" text="ik heb net gejarft">
                    <font>
                        <Font size="24.0" />
                    </font>
                </Button>
-               <Label fx:id="qtyLabel3" layoutX="500.0" layoutY="32.0" text="###">
+               <Label fx:id="qtyLabel3" layoutX="510.0" layoutY="32.0" text="###">
                    <font>
                        <Font size="36.0" />
                    </font>
                </Label>
+               <Button fx:id="misJarf3" layoutX="402.0" layoutY="1.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="100.0" text="misJarf" onAction="#misJarfButton">
+                   <font>
+                       <Font size="18.0" />
+                   </font></Button>
            </children>
        </Pane>
        <Pane layoutX="14.0" layoutY="454.0" prefHeight="110.0" prefWidth="580.0">
@@ -90,16 +106,20 @@
                        <Font size="48.0" />
                    </font>
                </Label>
-               <Button fx:id="jarfButton4" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="270.0" text="ik heb net gejarft">
+               <Button fx:id="jarfButton4" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="220.0" text="ik heb net gejarft">
                    <font>
                        <Font size="24.0" />
                    </font>
                </Button>
-               <Label fx:id="qtyLabel4" layoutX="500.0" layoutY="32.0" text="###">
+               <Label fx:id="qtyLabel4" layoutX="510.0" layoutY="32.0" text="###">
                    <font>
                        <Font size="36.0" />
                    </font>
                </Label>
+               <Button fx:id="misJarf4" layoutX="402.0" layoutY="1.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="100.0" text="misJarf" onAction="#misJarfButton">
+                   <font>
+                       <Font size="18.0" />
+                   </font></Button>
            </children>
        </Pane>
        <Pane layoutX="14.0" layoutY="564.0" prefHeight="110.0" prefWidth="580.0">
@@ -109,16 +129,20 @@
                        <Font size="48.0" />
                    </font>
                </Label>
-               <Button fx:id="jarfButton5" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="270.0" text="ik heb net gejarft">
+               <Button fx:id="jarfButton5" layoutX="182.0" mnemonicParsing="false" onAction="#jarfButton" prefHeight="110.0" prefWidth="220.0" text="ik heb net gejarft">
                    <font>
                        <Font size="24.0" />
                    </font>
                </Button>
-               <Label fx:id="qtyLabel5" layoutX="500.0" layoutY="32.0" text="###">
+               <Label fx:id="qtyLabel5" layoutX="510.0" layoutY="32.0" text="###">
                    <font>
                        <Font size="36.0" />
                    </font>
                </Label>
+               <Button fx:id="misJarf5" layoutX="402.0" layoutY="1.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="100.0" text="misJarf" onAction="#misJarfButton">
+                   <font>
+                       <Font size="18.0" />
+                   </font></Button>
            </children>
        </Pane>
       <Text layoutX="840.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jarfiniteit">

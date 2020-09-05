@@ -43,13 +43,15 @@ public class MainController implements Initializable {
     private LinkedList<DataNodeList> dataNodeLists;
     private JarfStatList jarfStatList;
 
+
+    private Random random = new Random();
+
     File accountFile = new File("src/main/resources/files/Accounts");
     File messageFile = new File("src/main/resources/files/Messages");
     File transactionFile = new File("src/main/resources/files/Transactions");
     File LineChartDataFile = new File("src/main/resources/files/LineChartData");
     File JarfStatFile = new File("src/main/resources/files/JarfStats");
 
-    private Random random = new Random();
 
     //the extra loaders for the other possible pages
     FXMLLoader turfBeerPageLoader = new FXMLLoader(getClass().getResource("/views/turfStuff/turfBeerView.fxml"));
@@ -169,6 +171,7 @@ public class MainController implements Initializable {
         lineChartViewController.setAccountList(accountList);
         lineChartViewController.setDataNodeLists(dataNodeLists);
         lineChartViewController.setMainController(this);
+
 
 
         //Daily scheduler

@@ -78,4 +78,9 @@ public class JarfStat implements Comparable<JarfStat>{
 
         return new JarfStat(name, date, qty);
     }
+
+    public void reduce(){
+        if(quantity>0) quantity--;
+        this.date = new Date(1,1,1);
+    }
 }
