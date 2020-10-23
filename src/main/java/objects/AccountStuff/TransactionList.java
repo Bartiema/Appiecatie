@@ -16,7 +16,7 @@ public class TransactionList {
 
     public void add(Transaction transaction){
         transactions.addFirst(transaction);
-        if(size()>100) transactions.removeLast();
+        if(size()>200) transactions.removeLast();
     }
 
     public int size() {
