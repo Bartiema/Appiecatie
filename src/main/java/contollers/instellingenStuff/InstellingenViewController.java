@@ -156,6 +156,8 @@ public class InstellingenViewController implements Initializable {
         dataNodeLists.add(dataNodeList);
         mainController.writeDaily();
         setData();
+        mainController.sleepTimerUpdate();
+
     }
 
     public void makeOld(ActionEvent event) {
@@ -170,6 +172,7 @@ public class InstellingenViewController implements Initializable {
         mainController.writeJarf();
         AudioOutputOverHead.playAudio("src/main/resources/sounds/ChurchBell.wav");
         setData();
+        mainController.sleepTimerUpdate();
     }
 
     public void editConfimPress(ActionEvent event) {
@@ -184,6 +187,7 @@ public class InstellingenViewController implements Initializable {
         mainController.writeDaily();
         mainController.writeJarf();
         setData();
+        mainController.sleepTimerUpdate();
     }
 
     public void TransactionView(ActionEvent actionEvent) {

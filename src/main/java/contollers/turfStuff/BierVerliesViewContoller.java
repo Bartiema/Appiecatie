@@ -144,6 +144,7 @@ public class BierVerliesViewContoller implements Initializable {
             krattenPane.setBorder(whiteBorder);
             pintenPane.setBorder(blackBorder);
         }
+        mainController.sleepTimerUpdate();
     }
 
     public void numpad(ActionEvent event){
@@ -173,6 +174,7 @@ public class BierVerliesViewContoller implements Initializable {
             builder.delete(builder.length()-1,builder.length());
         }
         currentSelection.setText(builder.toString());
+        mainController.sleepTimerUpdate();
     }
 
     public void everyoneButton(ActionEvent event){
@@ -183,6 +185,7 @@ public class BierVerliesViewContoller implements Initializable {
         namePane3.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
         namePane4.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
         namePane5.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
+        mainController.sleepTimerUpdate();
     }
 
     public void namePanePress(MouseEvent mouseEvent) {
@@ -236,6 +239,7 @@ public class BierVerliesViewContoller implements Initializable {
                 namePane5.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
             }
         }
+        mainController.sleepTimerUpdate();
     }
 
     public void confirmBierverlies(ActionEvent event){
@@ -276,5 +280,6 @@ public class BierVerliesViewContoller implements Initializable {
         pintenField.setText("");
         mainController.write();
         AudioOutputOverHead.playAudio("src/main/resources/sounds/Pling.wav");
+        mainController.sleepTimerUpdate();
     }
 }

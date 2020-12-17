@@ -98,15 +98,16 @@ public class AccountList implements Iterable<Account>{
      */
     public void calculateBierVerlies(int actualStock, LinkedList<Account> people){
         int verlies = totalStock - actualStock;
-        int lossPP = verlies/people.size();
-        for(Account a : people){
-            for(Account b : accounts){
-                if(a.equals(b)){
-                    for(int i = 0; i<lossPP; i++){
-                        b.beerDrank();
-                    }
-                }
-            }
+        if(verlies>=0) {
+            int lossPP = verlies / people.size();
+            for (Account a : people)
+                for (Account b : accounts)
+                    if (a.equals(b)) for (int i = 0; i < lossPP; i++) b.beerDrank();
+        } else {
+            int gainPP = -verlies / people.size();
+            for(Account a : people)
+                for(Account b : accounts)
+                    if(a.equals(b)) for (int i = 0; i < gainPP; i++) b.misBeer();
         }
     }
 

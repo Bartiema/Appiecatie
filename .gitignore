@@ -6,6 +6,7 @@ build
 src/main/resources/files/Accounts
 src/main/resources/files/Transactions
 src/main/resources/files/LineChartData
+src/main/resources/files/JarfStats
 
 #other stuff
 out
