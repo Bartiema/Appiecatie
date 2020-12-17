@@ -185,6 +185,7 @@ public class TurfBeerViewController implements Initializable {
         divisibleBy24();
 
         AudioOutputOverHead.playAudio("src/main/resources/sounds/Pling.wav");
+        mainController.sleepTimerUpdate();
     }
     /**
      * Method for handeling the misbeer button
@@ -204,6 +205,7 @@ public class TurfBeerViewController implements Initializable {
         positiveBeer();
         divisibleBy24();
         AudioOutputOverHead.playAudio("src/main/resources/sounds/Pling.wav");
+        mainController.sleepTimerUpdate();
 
     }
 

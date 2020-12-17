@@ -90,7 +90,7 @@ public class StatistiekViewController implements Initializable {
     public void lineChart(ActionEvent actionEvent) {
         if(container.getChildren().get(0).equals(lineChartPage)) return;
         container.getChildren().remove(0);
-
+        mainController.sleepTimerUpdate();
         container.getChildren().add(lineChartPage);
         lineChartViewController.setData();
     }
@@ -98,7 +98,7 @@ public class StatistiekViewController implements Initializable {
     public void tabelButton(ActionEvent actionEvent) throws IllegalAccessException {
         if(container.getChildren().get(0) instanceof TableView) return;
         container.getChildren().remove(0);
-
+        mainController.sleepTimerUpdate();
         tabelSet();
     }
 
@@ -237,6 +237,8 @@ public class StatistiekViewController implements Initializable {
 
         container.getChildren().add(jarfGildePage);
         jarfGildeViewController.setData();
+        mainController.sleepTimerUpdate();
+
     }
 }
 

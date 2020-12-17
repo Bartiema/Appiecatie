@@ -207,6 +207,7 @@ public class JarfGildeViewController implements Initializable {
     public void jarfButton(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
         AudioOutputOverHead.playAudio("src/main/resources/sounds/Cheer.wav");
+        mainController.sleepTimerUpdate();
         for (int i =0; i<6; i++){
             if(button.equals(jarfButtonList.get(i))){
                 if(jarfStatList.contains(accountList.get(i).getName())){
@@ -227,6 +228,7 @@ public class JarfGildeViewController implements Initializable {
 
     public void misJarfButton(ActionEvent actionEvent){
         Button button = (Button) actionEvent.getSource();
+        mainController.sleepTimerUpdate();
         for(int i =0; i<6; i++){
             if(button.equals(misJarfList.get(i))){
                 jarfStatList.getOnName(accountList.get(i).getName()).reduce();

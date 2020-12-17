@@ -19,6 +19,7 @@ import objects.AccountStuff.AccountList;
 import objects.JarfiniteitStuff.JarfStatList;
 import objects.MessageList;
 import objects.ScedulingStuff.New.DailyJob;
+import objects.ScedulingStuff.New.MinuteJob;
 import objects.ScedulingStuff.New.MonthlyJob;
 import objects.ScedulingStuff.Old.DayIterator;
 import objects.ScedulingStuff.Old.MonthIterator;
@@ -31,6 +32,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -42,6 +45,7 @@ public class MainController implements Initializable {
     private MessageList messages = new MessageList();
     private LinkedList<DataNodeList> dataNodeLists;
     private JarfStatList jarfStatList;
+    private LocalTime timeOfLastAction = LocalTime.now();
 
 
     private Random random = new Random();
@@ -174,28 +178,38 @@ public class MainController implements Initializable {
 
 
 
-        //Daily scheduler
+        //Daily and Montly scheduler
         StdSchedulerFactory factory = new StdSchedulerFactory();
         try {
             Scheduler scheduler = factory.getScheduler();
             scheduler.start();
-
+            //Data for daily and montly task
             JobDataMap data = new JobDataMap();
             data.put("accounts", accountList);
             data.put("controller", this);
             data.put("dataNodeLists", dataNodeLists);
+            //Data for display procces
+            Runtime rt = Runtime.getRuntime();
+            JobDataMap dataMap = new JobDataMap();
+            dataMap.put("runtime", rt);
+            dataMap.put("time", timeOfLastAction);
+
 
             JobDetail dailyJobDetail = JobBuilder.newJob(DailyJob.class).usingJobData(data).withIdentity("DailyJob","Group1").build();
             JobDetail monthlyJobDetail = JobBuilder.newJob(MonthlyJob.class).usingJobData(data).withIdentity("MonthlyJob","Group2").build();
+            JobDetail minuteJobDetail = JobBuilder.newJob(MinuteJob.class).usingJobData(dataMap).withIdentity("MinuteJob","Group3").build();
 
             Trigger dailyTrigger = TriggerBuilder.newTrigger().startAt(new DayIterator().next()).withIdentity("DailyTrigger", "Group1").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInHours(24)).build();
             Trigger monthlyTrigger = TriggerBuilder.newTrigger().startAt(new MonthIterator().next()).withIdentity("MonthlyTrigger", "Group2").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInMonths(1)).build();
+            Trigger minuteTrigger = TriggerBuilder.newTrigger().startAt(new Date()).withIdentity("MinuteTrigger", "Group3").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInMinutes(1)).build();
 
             scheduler.scheduleJob(dailyJobDetail, dailyTrigger);
             scheduler.scheduleJob(monthlyJobDetail, monthlyTrigger);
+            scheduler.scheduleJob(minuteJobDetail, minuteTrigger);
         } catch (SchedulerException e) {
             e.printStackTrace();
         }
+
 
 
 
@@ -203,6 +217,9 @@ public class MainController implements Initializable {
 
     public Label getMessageBoard(){
         return this.messageBoard;
+    }
+    public void sleepTimerUpdate() {
+        timeOfLastAction = LocalTime.now();
     }
 
     /**
@@ -299,6 +316,7 @@ public class MainController implements Initializable {
 
         turfBeerViewController.setAllStocks();
         turfBeerViewController.setNames();
+        sleepTimerUpdate();
     }
 
     /**
@@ -320,6 +338,7 @@ public class MainController implements Initializable {
         mainPane.getChildren().add(statistiekPane);
 
         statistiekViewController.setData();
+        sleepTimerUpdate();
     }
 
     public void bierverliesView(ActionEvent event){
@@ -334,6 +353,7 @@ public class MainController implements Initializable {
         mainPane.getChildren().add(bierVerliesPane);
 
         bierVerliesViewContoller.setData();
+        sleepTimerUpdate();
     }
 
     public void instellingenView(ActionEvent event){
@@ -347,6 +367,7 @@ public class MainController implements Initializable {
         AnchorPane.setTopAnchor(instellingenPane, (double)125);
         mainPane.getChildren().add(instellingenPane);
         instellingenViewController.setData();
+        sleepTimerUpdate();
     }
 
     public void transactionView(){
@@ -360,6 +381,7 @@ public class MainController implements Initializable {
         AnchorPane.setTopAnchor(transactionPane, (double)125);
         mainPane.getChildren().add(transactionPane);
         transactionViewController.setData();
+        sleepTimerUpdate();
     }
 
     public void turfKratView(ActionEvent event){
@@ -375,6 +397,7 @@ public class MainController implements Initializable {
 
         turfKratViewController.setAllStocks();
         turfKratViewController.setNames();
+        sleepTimerUpdate();
     }
 
  }

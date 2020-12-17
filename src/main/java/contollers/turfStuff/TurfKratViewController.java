@@ -175,6 +175,7 @@ public class TurfKratViewController implements Initializable {
         divisibleBy24();
         positiveBeer();
         AudioOutputOverHead.playAudio("src/main/resources/sounds/Pling.wav");
+        mainController.sleepTimerUpdate();
     }
 
     /**
@@ -195,6 +196,7 @@ public class TurfKratViewController implements Initializable {
         divisibleBy24();
         AudioOutputOverHead.playAudio("src/main/resources/sounds/Pling.wav");
         mainController.write();
+        mainController.sleepTimerUpdate();
 
     }
 

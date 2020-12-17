@@ -70,6 +70,7 @@ public class LineChartViewController implements Initializable {
 
     public void update(ActionEvent event) {
         for(DataNodeList d : dataNodeLists) d.update();
+        mainController.sleepTimerUpdate();
         setData();
     }
 }
