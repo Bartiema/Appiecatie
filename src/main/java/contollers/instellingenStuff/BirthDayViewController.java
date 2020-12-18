@@ -12,7 +12,9 @@ import javafx.scene.paint.Paint;
 import objects.AccountStuff.AccountList;
 
 import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
@@ -181,7 +183,23 @@ public class BirthDayViewController implements Initializable {
         mainController.sleepTimerUpdate();
     }
 
-    public void confirm(ActionEvent actionEvent) {
+    public void confirm(ActionEvent actionEvent) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM");
+        int day = Integer.parseInt(dayLabel.getText());
+        int month = Integer.parseInt(monthLabel.getText());
+
+        if(month>12) return;
+        if(month % 2 == 1 && day > 31) return;
+        if(month == 2 && day > 29) return;
+        if(month % 2 == 0 && day > 30) return;
+
+        Date date = format.parse(day + "-" +  month);
+        for(int i = 0; i<6; i++){
+            if(actionEvent.getSource().equals(confirmButtonList.get(i))){
+                accountList.get(i).setBirthDay(date);
+                break;
+            }
+        }
+        setData();
     }
 }
