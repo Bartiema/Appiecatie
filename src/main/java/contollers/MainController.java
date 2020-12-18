@@ -1,5 +1,6 @@
 package contollers;
 
+import contollers.instellingenStuff.BirthDayViewController;
 import contollers.instellingenStuff.InstellingenViewController;
 import contollers.instellingenStuff.TransactionViewController;
 import contollers.statistiekStuff.JarfGildeViewController;
@@ -68,6 +69,7 @@ public class MainController implements Initializable {
     FXMLLoader jarfStatPageLoader = new FXMLLoader(getClass().getResource("/views/statistiekStuff/jarfGildeView.fxml"));
     FXMLLoader turfKratPageLoader = new FXMLLoader(getClass().getResource("/views/turfStuff/turfKratView.fxml"));
     FXMLLoader lineChartPageLoader = new FXMLLoader(getClass().getResource("/views/statistiekStuff/lineChartView.fxml"));
+    FXMLLoader birthDayPageLoader = new FXMLLoader(getClass().getResource("/views/instellingenStuff/birthDayView.fxml"));
 
     //the Panes containing all the extra gui
     private final AnchorPane turfBeerPane = turfBeerPageLoader.load();
@@ -78,6 +80,7 @@ public class MainController implements Initializable {
     private final AnchorPane jarfGildePane = jarfStatPageLoader.load();
     private final AnchorPane turfKratPane = turfKratPageLoader.load();
     private final AnchorPane lineChartPane = lineChartPageLoader.load();
+    private final AnchorPane birthDayPane = birthDayPageLoader.load();
 
     //The controllers of the other Panes
     TurfBeerViewController turfBeerViewController = turfBeerPageLoader.getController();
@@ -88,6 +91,7 @@ public class MainController implements Initializable {
     JarfGildeViewController jarfGildeViewController = jarfStatPageLoader.getController();
     TurfKratViewController turfKratViewController = turfKratPageLoader.getController();
     LineChartViewController lineChartViewController = lineChartPageLoader.getController();
+    BirthDayViewController birthDayViewController = birthDayPageLoader.getController();
 
 
     //The MessageBoard
@@ -177,6 +181,9 @@ public class MainController implements Initializable {
         lineChartViewController.setAccountList(accountList);
         lineChartViewController.setDataNodeLists(dataNodeLists);
         lineChartViewController.setMainController(this);
+
+        birthDayViewController.setAccountList(accountList);
+        birthDayViewController.setMainController(this);
 
 
 
@@ -316,6 +323,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
         if(mainPane.getChildren().contains(turfKratPane)) mainPane.getChildren().remove(turfKratPane);
+        if(mainPane.getChildren().contains(birthDayPane)) mainPane.getChildren().remove(birthDayPane);
 
         AnchorPane.setTopAnchor(turfBeerPane, (double)125);
         mainPane.getChildren().add(turfBeerPane);
@@ -339,6 +347,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
         if(mainPane.getChildren().contains(turfKratPane)) mainPane.getChildren().remove(turfKratPane);
+        if(mainPane.getChildren().contains(birthDayPane)) mainPane.getChildren().remove(birthDayPane);
 
         AnchorPane.setTopAnchor(statistiekPane, (double)125);
         mainPane.getChildren().add(statistiekPane);
@@ -354,6 +363,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
         if(mainPane.getChildren().contains(turfKratPane)) mainPane.getChildren().remove(turfKratPane);
+        if(mainPane.getChildren().contains(birthDayPane)) mainPane.getChildren().remove(birthDayPane);
 
         AnchorPane.setTopAnchor(bierVerliesPane, (double)125);
         mainPane.getChildren().add(bierVerliesPane);
@@ -369,6 +379,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
         if(mainPane.getChildren().contains(turfKratPane)) mainPane.getChildren().remove(turfKratPane);
+        if(mainPane.getChildren().contains(birthDayPane)) mainPane.getChildren().remove(birthDayPane);
 
         AnchorPane.setTopAnchor(instellingenPane, (double)125);
         mainPane.getChildren().add(instellingenPane);
@@ -383,6 +394,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
         if(mainPane.getChildren().contains(turfKratPane)) mainPane.getChildren().remove(turfKratPane);
+        if(mainPane.getChildren().contains(birthDayPane)) mainPane.getChildren().remove(birthDayPane);
 
         AnchorPane.setTopAnchor(transactionPane, (double)125);
         mainPane.getChildren().add(transactionPane);
@@ -397,6 +409,7 @@ public class MainController implements Initializable {
         if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
         if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
         if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
+        if(mainPane.getChildren().contains(birthDayPane)) mainPane.getChildren().remove(birthDayPane);
 
         AnchorPane.setTopAnchor(turfKratPane, (double)125);
         mainPane.getChildren().add(turfKratPane);
@@ -407,6 +420,18 @@ public class MainController implements Initializable {
     }
 
     public void birthDayView(){
+        if(mainPane.getChildren().contains(birthDayPane)) return;
+        if(mainPane.getChildren().contains(turfBeerPane)) mainPane.getChildren().remove(turfBeerPane);
+        if(mainPane.getChildren().contains(statistiekPane)) mainPane.getChildren().remove(statistiekPane);
+        if(mainPane.getChildren().contains(bierVerliesPane)) mainPane.getChildren().remove(bierVerliesPane);
+        if(mainPane.getChildren().contains(instellingenPane)) mainPane.getChildren().remove(instellingenPane);
+        if(mainPane.getChildren().contains(transactionPane)) mainPane.getChildren().remove(transactionPane);
+        if(mainPane.getChildren().contains(turfKratPane)) mainPane.getChildren().remove(turfKratPane);
 
+        AnchorPane.setTopAnchor(birthDayPane, (double)125);
+        mainPane.getChildren().add(birthDayPane);
+
+        birthDayViewController.setData();
+        sleepTimerUpdate();
     }
  }
