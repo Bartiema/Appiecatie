@@ -21,6 +21,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class TurfBeerViewController implements Initializable {
+
     private AccountList accountList;
     private MainController mainController;
     //Zuiplevel slider
@@ -102,6 +103,10 @@ public class TurfBeerViewController implements Initializable {
     @FXML
     private Button misBeer5;
 
+    @FXML
+    private Button HJbutton;
+    @FXML
+    private Label HJlabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -161,6 +166,7 @@ public class TurfBeerViewController implements Initializable {
     public void setAllStocks(){
         for(int i = 0; i<6;i++) accountStockList.get(i).setText(String.valueOf(accountList.get(i).getStock()));
         totalStock.setText(String.valueOf(accountList.getTotalStock()));
+        HJlabel.setText(String.valueOf(mainController.getHJcounter()));
         setPositiveTimer();
     }
 
@@ -254,5 +260,10 @@ public class TurfBeerViewController implements Initializable {
             if(Integer.parseInt(l.getText()) % 24 == 0 && Integer.parseInt(l.getText()) != 0) l.setTextFill(Color.GREEN);
             else l.setTextFill(Color.BLACK);
         }
+    }
+
+    public void HJcounter(ActionEvent actionEvent) {
+        mainController.increaseHJcounter();
+        HJlabel.setText(String.valueOf(mainController.getHJcounter()));
     }
 }

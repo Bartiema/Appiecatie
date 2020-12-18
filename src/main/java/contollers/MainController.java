@@ -49,6 +49,7 @@ public class MainController implements Initializable {
 
 
     private Random random = new Random();
+    private int HJcounter = random.nextInt(999);
 
     File accountFile = new File("src/main/resources/files/Accounts");
     File messageFile = new File("src/main/resources/files/Messages");
@@ -221,6 +222,8 @@ public class MainController implements Initializable {
     public void sleepTimerUpdate() {
         timeOfLastAction = LocalTime.now();
     }
+    public int getHJcounter() { return HJcounter; }
+    public void increaseHJcounter() {HJcounter++;}
 
     /**
      * The method reseting the Messageboard pulling a string out of the Messages file
