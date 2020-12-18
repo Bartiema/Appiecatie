@@ -120,22 +120,31 @@ public class StatistiekViewController implements Initializable {
             o1 = FXCollections.observableArrayList(accountList.getAll());
             accountList.add(blank);
             accountList.sort();
-        }else throw new IllegalAccessException(" Blank not found");
+        }else throw new IllegalAccessException("Blank not found");
 
         tableView.setItems(o1);
 
         TableColumn<Account, String> nameColumn = new TableColumn<>("Naam");
         nameColumn.setCellValueFactory(new PropertyValueFactory("name"));
+
         TableColumn<Account, Integer> totalDrankColumn = new TableColumn<>("Totaal gezopen");
         totalDrankColumn.setCellValueFactory(new PropertyValueFactory("drankTotal"));
+
         TableColumn<Account, Integer> drankThisMonthColumn = new TableColumn<>("Deze maand ");
         drankThisMonthColumn.setCellValueFactory(new PropertyValueFactory("drankThisMonth"));
+
         TableColumn<Account, Double> drankPerMonthColumn = new TableColumn<>("Gemiddeld per maand");
         drankPerMonthColumn.setCellValueFactory(new PropertyValueFactory("drankPerMonth"));
+
         TableColumn<Account, Double> drankPerDayColumn = new TableColumn<>("Gemiddeld per dag");
         drankPerDayColumn.setCellValueFactory(new PropertyValueFactory("drankPerDay"));
+
+        TableColumn<Account, Date> birthDayColumn = new TableColumn<>("Verjaardag");
+        birthDayColumn.setCellValueFactory(new PropertyValueFactory("birthDay"));
+
         TableColumn<Account, Date> dateJoinedColumn = new TableColumn<>("Datum in huis");
         dateJoinedColumn.setCellValueFactory(new PropertyValueFactory("joinedHouse"));
+
         TableColumn<Account, Date> dateLeftColumn = new TableColumn<>("Datum uit huis");
         dateLeftColumn.setCellValueFactory(new PropertyValueFactory("leftHouse"));
 
@@ -215,6 +224,26 @@ public class StatistiekViewController implements Initializable {
                 };
             }
         };
+        Callback<TableColumn<Account, Date>, TableCell<Account, Date>> birthdateCellFactory = new Callback<TableColumn<Account, Date>, TableCell<Account, Date>>() {
+            public TableCell<Account, Date> call(TableColumn param) {
+                return new TableCell<Account, Date>() {
+
+                    @Override
+                    public void updateItem(Date item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (!isEmpty()) {
+                            this.setFont(new Font(18));
+                            if(item == null){
+                                setText("");
+                            } else {
+                                SimpleDateFormat format = new SimpleDateFormat("dd-MMM", new Locale("NL"));
+                                setText(format.format(item));
+                            }
+                        }
+                    }
+                };
+            }
+        };
 
         nameColumn.setCellFactory(stringCellFactory);
         totalDrankColumn.setCellFactory(intCellFactory);
@@ -223,8 +252,9 @@ public class StatistiekViewController implements Initializable {
         drankPerDayColumn.setCellFactory(doubleCellFactory);
         dateJoinedColumn.setCellFactory(dateCellFactory);
         dateLeftColumn.setCellFactory(dateCellFactory);
+        birthDayColumn.setCellFactory(birthdateCellFactory);
 
-        tableView.getColumns().setAll(nameColumn, totalDrankColumn, drankThisMonthColumn, drankPerMonthColumn, drankPerDayColumn, dateJoinedColumn, dateLeftColumn);
+        tableView.getColumns().setAll(nameColumn, totalDrankColumn, drankThisMonthColumn, drankPerMonthColumn, drankPerDayColumn, birthDayColumn, dateJoinedColumn, dateLeftColumn);
 
         tableView.setMinHeight(690);
 

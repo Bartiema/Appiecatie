@@ -334,6 +334,7 @@ public class Account implements Comparable<Account> {
                 drankThisMonth + " - " +
                 decimalFormat.format(drankPerMonth) + " - " +
                 decimalFormat.format(drankPerDay) + " - " +
+                format.format(birthDay) + " - " +
                 format.format(joinedHouse);
     }
 }
