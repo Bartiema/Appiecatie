@@ -19,6 +19,7 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class InstellingenViewController implements Initializable {
+
     private AccountList accountList;
     private MainController mainController;
     private LinkedList<DataNodeList> dataNodeLists;
@@ -26,6 +27,8 @@ public class InstellingenViewController implements Initializable {
 
     @FXML
     private Button newFeut;
+    @FXML
+    private Button birthDayButton;
 
     private LinkedList<Label> naamLabelList = new LinkedList<>();
     @FXML
@@ -193,4 +196,6 @@ public class InstellingenViewController implements Initializable {
     public void TransactionView(ActionEvent actionEvent) {
         mainController.transactionView();
     }
+
+    public void birthDayView(ActionEvent actionEvent) { mainController.birthDayView(); }
 }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="831.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contollers.instellingenStuff.BirthDayViewController">
+   <children>
+      <Pane layoutX="15.0" layoutY="14.0" prefHeight="100.0" prefWidth="1250.0">
+         <children>
+            <Label fx:id="naamLabel0" prefHeight="100.0" prefWidth="425.0" text="Naam">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+       <Pane layoutX="15.0" layoutY="124.0" prefHeight="100.0" prefWidth="1250.0">
+           <children>
+               <Label fx:id="naamLabel1" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+           </children>
+       </Pane>
+       <Pane layoutX="15.0" layoutY="234.0" prefHeight="100.0" prefWidth="1250.0">
+           <children>
+               <Label fx:id="naamLabel2" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+           </children>
+       </Pane>
+       <Pane layoutX="15.0" layoutY="344.0" prefHeight="100.0" prefWidth="1250.0">
+           <children>
+               <Label fx:id="naamLabel3" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+           </children>
+       </Pane>
+       <Pane layoutX="15.0" layoutY="454.0" prefHeight="100.0" prefWidth="1250.0">
+           <children>
+               <Label fx:id="naamLabel4" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+           </children>
+       </Pane>
+       <Pane layoutX="15.0" layoutY="564.0" prefHeight="100.0" prefWidth="1250.0">
+           <children>
+               <Label fx:id="naamLabel5" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+           </children>
+       </Pane>
+   </children>
+</AnchorPane>

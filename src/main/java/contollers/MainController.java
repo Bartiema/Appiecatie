@@ -406,4 +406,7 @@ public class MainController implements Initializable {
         sleepTimerUpdate();
     }
 
+    public void birthDayView(){
+
+    }
  }
