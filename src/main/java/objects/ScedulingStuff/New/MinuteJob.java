@@ -1,5 +1,6 @@
 package objects.ScedulingStuff.New;
 
+import objects.AudioOutputOverHead;
 import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
@@ -30,6 +31,9 @@ public class MinuteJob implements Job {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        if(currentTime.getHour() == 16 && currentTime.getMinute() == 55){
+            AudioOutputOverHead.playAudio("src/main/resources/sounds/Io_Vivat.wav");
         }
     }
 }
