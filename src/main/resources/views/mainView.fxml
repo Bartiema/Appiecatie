@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0" style="-fx-background-color: &quot;3c9ee0&quot;;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contollers.MainController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1280.0" style="-fx-background-color: &quot;3c9ee0&quot;;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contollers.MainController">
    <children>
       <Pane id="topbar" prefHeight="125.0" prefWidth="1280.0">
          <children>
@@ -39,6 +39,7 @@
                <font>
                   <Font size="24.0" />
                </font></Button>
+            <Text layoutX="655.0" layoutY="116.0" opacity="0.25" strokeType="OUTSIDE" strokeWidth="0.0" text="Timothy, B3nni3, Harry, Bibi, Wiski, Brody  (SO naar Yoshi)" />
          </children>
       </Pane>
    </children>
