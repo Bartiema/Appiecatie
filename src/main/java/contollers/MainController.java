@@ -46,6 +46,7 @@ public class MainController implements Initializable {
     private LinkedList<DataNodeList> dataNodeLists;
     private JarfStatList jarfStatList;
     private LocalTime timeOfLastAction = LocalTime.now();
+    private boolean screenOn = true;
 
 
     private Random random = new Random();
@@ -193,6 +194,7 @@ public class MainController implements Initializable {
             Runtime rt = Runtime.getRuntime();
             JobDataMap dataMap = new JobDataMap();
             dataMap.put("runtime", rt);
+            dataMap.put("screen", screenOn);
             dataMap.put("time", timeOfLastAction);
 
 
@@ -221,6 +223,7 @@ public class MainController implements Initializable {
     }
     public void sleepTimerUpdate() {
         timeOfLastAction = LocalTime.now();
+        screenOn = true;
     }
     public int getHJcounter() { return HJcounter; }
     public void increaseHJcounter() {HJcounter++;}
