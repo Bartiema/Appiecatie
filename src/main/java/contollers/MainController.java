@@ -3,9 +3,9 @@ package contollers;
 import contollers.instellingenStuff.BirthDayViewController;
 import contollers.instellingenStuff.InstellingenViewController;
 import contollers.instellingenStuff.TransactionViewController;
-import contollers.statistiekStuff.JarfGildeViewController;
-import contollers.statistiekStuff.LineChartViewController;
-import contollers.statistiekStuff.StatistiekViewController;
+import contollers.extrasStuff.JarfGildeViewController;
+import contollers.extrasStuff.LineChartViewController;
+import contollers.extrasStuff.ExtrasViewController;
 import contollers.turfStuff.BierVerliesViewContoller;
 import contollers.turfStuff.TurfBeerViewController;
 import contollers.turfStuff.TurfKratViewController;
@@ -17,7 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import objects.AccountStuff.AccountList;
-import objects.JarfiniteitStuff.JarfStatList;
+import objects.JarfiniteitStuff.JarfList;
 import objects.MessageList;
 import objects.ScedulingStuff.New.DailyJob;
 import objects.ScedulingStuff.New.MinuteJob;
@@ -45,7 +45,7 @@ public class MainController implements Initializable {
     private AccountList accountList;
     private MessageList messages = new MessageList();
     private LinkedList<DataNodeList> dataNodeLists;
-    private JarfStatList jarfStatList;
+    private LinkedList<JarfList> jarfLists;
     private LocalTime timeOfLastAction = LocalTime.now();
     private boolean screenOn = true;
 
@@ -62,13 +62,13 @@ public class MainController implements Initializable {
 
     //the extra loaders for the other possible pages
     FXMLLoader turfBeerPageLoader = new FXMLLoader(getClass().getResource("/views/turfStuff/turfBeerView.fxml"));
-    FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/views/statistiekStuff/statistiekView.fxml"));
+    FXMLLoader statistiekPageLoader = new FXMLLoader(getClass().getResource("/views/extrasStuff/extrasView.fxml"));
     FXMLLoader bierverliesPageLoader = new FXMLLoader(getClass().getResource("/views/turfStuff/bierVerliesView.fxml"));
     FXMLLoader instellingenPageLoader = new FXMLLoader(getClass().getResource("/views/instellingenStuff/instellingenView.fxml"));
     FXMLLoader transactionPageLoader = new FXMLLoader(getClass().getResource("/views/instellingenStuff/transactionView.fxml"));
-    FXMLLoader jarfStatPageLoader = new FXMLLoader(getClass().getResource("/views/statistiekStuff/jarfGildeView.fxml"));
+    FXMLLoader jarfStatPageLoader = new FXMLLoader(getClass().getResource("/views/extrasStuff/jarfGildeView.fxml"));
     FXMLLoader turfKratPageLoader = new FXMLLoader(getClass().getResource("/views/turfStuff/turfKratView.fxml"));
-    FXMLLoader lineChartPageLoader = new FXMLLoader(getClass().getResource("/views/statistiekStuff/lineChartView.fxml"));
+    FXMLLoader lineChartPageLoader = new FXMLLoader(getClass().getResource("/views/extrasStuff/lineChartView.fxml"));
     FXMLLoader birthDayPageLoader = new FXMLLoader(getClass().getResource("/views/instellingenStuff/birthDayView.fxml"));
 
     //the Panes containing all the extra gui
@@ -84,7 +84,7 @@ public class MainController implements Initializable {
 
     //The controllers of the other Panes
     TurfBeerViewController turfBeerViewController = turfBeerPageLoader.getController();
-    StatistiekViewController statistiekViewController = statistiekPageLoader.getController();
+    ExtrasViewController extrasViewController = statistiekPageLoader.getController();
     BierVerliesViewContoller bierVerliesViewContoller = bierverliesPageLoader.getController();
     InstellingenViewController instellingenViewController = instellingenPageLoader.getController();
     TransactionViewController transactionViewController = transactionPageLoader.getController();
@@ -121,7 +121,6 @@ public class MainController implements Initializable {
           Fetching the file to build the accountList
          */
         accountList = new AccountList();
-        jarfStatList = new JarfStatList();
         try {
             accountList.toRead(accountFile);
             accountList.setTransactionList(transactionFile);
@@ -129,8 +128,8 @@ public class MainController implements Initializable {
             messages.toRead(messageFile);
 
             dataNodeLists = DataNodeList.toRead(accountList, LineChartDataFile);
+            jarfLists = JarfList.toRead(JarfStatFile , accountList);
 
-            jarfStatList.toRead(JarfStatFile);
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
@@ -152,13 +151,13 @@ public class MainController implements Initializable {
         turfBeerViewController.setNames();
         turfBeerViewController.setLongPositiveTimer();
 
-        statistiekViewController.setAccountList(accountList);
-        statistiekViewController.setMainController(this);
-        statistiekViewController.setDataNodeLists(dataNodeLists);
-        statistiekViewController.setJarfGildePage(jarfGildePane);
-        statistiekViewController.setJarfGildeViewController(jarfGildeViewController);
-        statistiekViewController.setLineChartPage(lineChartPane);
-        statistiekViewController.setLineChartViewController(lineChartViewController);
+        extrasViewController.setAccountList(accountList);
+        extrasViewController.setMainController(this);
+        extrasViewController.setDataNodeLists(dataNodeLists);
+        extrasViewController.setJarfGildePage(jarfGildePane);
+        extrasViewController.setJarfGildeViewController(jarfGildeViewController);
+        extrasViewController.setLineChartPage(lineChartPane);
+        extrasViewController.setLineChartViewController(lineChartViewController);
 
         bierVerliesViewContoller.setAccountList(accountList);
         bierVerliesViewContoller.setMainController(this);
@@ -166,13 +165,12 @@ public class MainController implements Initializable {
         instellingenViewController.setAccountList(accountList);
         instellingenViewController.setMainController(this);
         instellingenViewController.setDataNodeLists(dataNodeLists);
-        instellingenViewController.setJarfStatList(jarfStatList);
 
         transactionViewController.setAccountList(accountList);
         transactionViewController.setMainController(this);
 
         jarfGildeViewController.setAccountList(accountList);
-        jarfGildeViewController.setJarfStatList(jarfStatList);
+        jarfGildeViewController.setJarfLists(jarfLists);
         jarfGildeViewController.setMainController(this);
 
         turfKratViewController.setAccountList(accountList);
@@ -302,7 +300,11 @@ public class MainController implements Initializable {
     public void writeJarf(){
         try {
             FileWriter jarfStatWriter = new FileWriter(JarfStatFile);
-            jarfStatWriter.write(jarfStatList.toWrite());
+            StringBuilder s = new StringBuilder();
+            for(JarfList j : jarfLists){
+                s.append(j.toWrite());
+            }
+            jarfStatWriter.write(s.toString());
             jarfStatWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -352,7 +354,7 @@ public class MainController implements Initializable {
         AnchorPane.setTopAnchor(statistiekPane, (double)125);
         mainPane.getChildren().add(statistiekPane);
 
-        statistiekViewController.setData();
+        extrasViewController.setData();
         sleepTimerUpdate();
     }
 

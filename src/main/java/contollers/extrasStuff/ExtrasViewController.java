@@ -1,4 +1,4 @@
-package contollers.statistiekStuff;
+package contollers.extrasStuff;
 
 import contollers.MainController;
 import javafx.collections.FXCollections;
@@ -28,7 +28,7 @@ import java.util.LinkedList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class StatistiekViewController implements Initializable {
+public class ExtrasViewController implements Initializable {
 
     private AccountList accountList;
     private MainController mainController;

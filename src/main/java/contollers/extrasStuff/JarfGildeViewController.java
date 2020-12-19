@@ -1,4 +1,4 @@
-package contollers.statistiekStuff;
+package contollers.extrasStuff;
 
 import contollers.MainController;
 import javafx.collections.FXCollections;
@@ -13,8 +13,8 @@ import javafx.scene.text.Font;
 import javafx.util.Callback;
 import objects.AccountStuff.AccountList;
 import objects.AudioOutputOverHead;
-import objects.JarfiniteitStuff.JarfStat;
-import objects.JarfiniteitStuff.JarfStatList;
+import objects.JarfiniteitStuff.Jarf;
+import objects.JarfiniteitStuff.JarfList;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -24,9 +24,9 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class JarfGildeViewController implements Initializable {
-    private JarfStatList jarfStatList;
     private AccountList accountList;
     private MainController mainController;
+    private LinkedList<JarfList> jarfLists;
 
 
     private LinkedList<Label> naamLabelList;
@@ -133,27 +133,32 @@ public class JarfGildeViewController implements Initializable {
     public void setMainController(MainController controller){
         this.mainController = controller;
     }
-    public void setJarfStatList(JarfStatList jarfStatList){
-        this.jarfStatList = jarfStatList;
+    public void setJarfLists(LinkedList<JarfList> jarfLists){
+        this.jarfLists = jarfLists;
     }
 
-    public void setData(){
-        jarfStatList.sort();
-        TableView<JarfStat> tableView = new TableView<>();
 
-        ObservableList<JarfStat> o1 = FXCollections.observableArrayList(jarfStatList.getIfThisMonth());
+    public void setData(){
+
+        TableView<Jarf> tableView = new TableView<>();
+        LinkedList<Jarf> temp = new LinkedList<>();
+        for(JarfList j: jarfLists){
+           temp.add(j.getLastJarf());
+        }
+
+        ObservableList<Jarf> o1 = FXCollections.observableArrayList(temp);
 
         tableView.setItems(o1);
 
-        TableColumn<JarfStat, String> nameColumn = new TableColumn<>("Naam");
+        TableColumn<Jarf, String> nameColumn = new TableColumn<>("Naam");
         nameColumn.setCellValueFactory(new PropertyValueFactory("name"));
-        TableColumn<JarfStat, Date> dateTableColumn = new TableColumn<>("Datum van Jarf");
+        TableColumn<Jarf, Date> dateTableColumn = new TableColumn<>("Datum van Jarf");
         dateTableColumn.setCellValueFactory(new PropertyValueFactory("date"));
 
 
-        Callback<TableColumn<JarfStat, String>, TableCell<JarfStat, String>> stringCellFactory = new Callback<TableColumn<JarfStat, String>, TableCell<JarfStat, String>>() {
-            public TableCell<JarfStat, String> call(TableColumn param) {
-                return new TableCell<JarfStat, String>() {
+        Callback<TableColumn<Jarf, String>, TableCell<Jarf, String>> stringCellFactory = new Callback<TableColumn<Jarf, String>, TableCell<Jarf, String>>() {
+            public TableCell<Jarf, String> call(TableColumn param) {
+                return new TableCell<Jarf, String>() {
 
                     @Override
                     public void updateItem(String item, boolean empty) {
@@ -166,9 +171,9 @@ public class JarfGildeViewController implements Initializable {
                 };
             }
         };
-        Callback<TableColumn<JarfStat, Date>, TableCell<JarfStat, Date>> dateCellFactory = new Callback<TableColumn<JarfStat, Date>, TableCell<JarfStat, Date>>() {
-            public TableCell<JarfStat, Date> call(TableColumn param) {
-                return new TableCell<JarfStat, Date>() {
+        Callback<TableColumn<Jarf, Date>, TableCell<Jarf, Date>> dateCellFactory = new Callback<TableColumn<Jarf, Date>, TableCell<Jarf, Date>>() {
+            public TableCell<Jarf, Date> call(TableColumn param) {
+                return new TableCell<Jarf, Date>() {
 
                     @Override
                     public void updateItem(Date item, boolean empty) {
@@ -199,8 +204,7 @@ public class JarfGildeViewController implements Initializable {
 
         for(int i =0; i<6; i++){
             naamLabelList.get(i).setText(accountList.get(i).getName());
-            if(jarfStatList.contains(accountList.get(i).getName())) qtyLabelList.get(i).setText(String.valueOf(jarfStatList.getOnName(accountList.get(i).getName()).getQuantity()));
-            else qtyLabelList.get(i).setText("");
+            qtyLabelList.get(i).setText(String.valueOf(jarfLists.get(i).nrJarfs()));
         }
     }
 
@@ -208,34 +212,26 @@ public class JarfGildeViewController implements Initializable {
         Button button = (Button) actionEvent.getSource();
         AudioOutputOverHead.playAudio("src/main/resources/sounds/Cheer.wav");
         mainController.sleepTimerUpdate();
-        for (int i =0; i<6; i++){
-            if(button.equals(jarfButtonList.get(i))){
-                if(jarfStatList.contains(accountList.get(i).getName())){
-                    jarfStatList.getOnName(accountList.get(i).getName()).update();
-                    setData();
-                    mainController.writeJarf();
-                    return;
-                }else{
-                    jarfStatList.add(new JarfStat(accountList.get(i).getName()));
-                    jarfStatList.sort();
-                    setData();
-                    mainController.writeJarf();
-                    return;
-                }
+        for(int i = 0; i<6 ; i++){
+            if(jarfButtonList.get(i).equals(button)){
+                jarfLists.get(i).addJarf();
+                break;
             }
         }
+        setData();
+        mainController.writeJarf();
     }
 
     public void misJarfButton(ActionEvent actionEvent){
         Button button = (Button) actionEvent.getSource();
         mainController.sleepTimerUpdate();
-        for(int i =0; i<6; i++){
-            if(button.equals(misJarfList.get(i))){
-                jarfStatList.getOnName(accountList.get(i).getName()).reduce();
-                setData();
-                mainController.writeJarf();
-                return;
+        for(int i = 0; i<6 ; i++){
+            if(misJarfList.get(i).equals(button)){
+                jarfLists.get(i).removeJarf();
+                break;
             }
         }
+        setData();
+        mainController.writeJarf();
     }
 }

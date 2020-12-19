@@ -1,4 +1,4 @@
-package contollers.statistiekStuff;
+package contollers.extrasStuff;
 
 import contollers.MainController;
 import javafx.event.ActionEvent;

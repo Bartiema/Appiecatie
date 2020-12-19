@@ -24,7 +24,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="statistiekenButton" layoutX="320.0" mnemonicParsing="false" onAction="#statistiekenView" prefHeight="120.0" prefWidth="160.0" text="Statistiek">
+            <Button fx:id="statistiekenButton" layoutX="320.0" mnemonicParsing="false" onAction="#statistiekenView" prefHeight="120.0" prefWidth="160.0" text="Extra's">
                <font>
                   <Font size="24.0" />
                </font>
