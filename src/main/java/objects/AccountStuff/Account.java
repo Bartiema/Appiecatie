@@ -158,6 +158,10 @@ public class Account implements Comparable<Account> {
 
     public int getDrankThisYear() { return this.drankThisYear; }
 
+    public void setDrankThisYear(int i) {
+        this.drankThisYear = i;
+    }
+
     /**
      * a method to return the String to be Written to file
      * @return String

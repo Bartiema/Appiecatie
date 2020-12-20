@@ -50,6 +50,7 @@ public class YearlyJob implements Job {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+            accounts.updateYear();
+            controller.write();
         }
 }
