@@ -27,6 +27,7 @@ public class Account implements Comparable<Account> {
         this.drankPerDay = 0;
         this.drankPerMonth = 0;
         this.joinedHouse = new Date();
+        this.birthDay = new Date();
         this.isOld = false;
         this.drankThisMonth = 0;
         this.leftHouse = null;
@@ -43,6 +44,7 @@ public class Account implements Comparable<Account> {
         this.drankPerDay = 0;
         this.drankPerMonth = 0;
         this.joinedHouse = new Date();
+        this.birthDay = new Date();
         this.isOld = false;
         this.drankThisMonth = 0;
         this.leftHouse = null;

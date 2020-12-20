@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import objects.AccountStuff.Account;
 import objects.AccountStuff.AccountList;
 import objects.AudioOutputOverHead;
+import objects.JarfiniteitStuff.JarfList;
 import objects.lineChartStuff.DataNode;
 import objects.lineChartStuff.DataNodeList;
 
@@ -22,6 +23,7 @@ public class InstellingenViewController implements Initializable {
     private AccountList accountList;
     private MainController mainController;
     private LinkedList<DataNodeList> dataNodeLists;
+    private LinkedList<JarfList> jarfLists;
 
     @FXML
     private Button newFeut;
@@ -128,6 +130,9 @@ public class InstellingenViewController implements Initializable {
     public void setDataNodeLists(LinkedList<DataNodeList> dataNodeLists) {
         this.dataNodeLists = dataNodeLists;
     }
+    public void setJarfLists(LinkedList<JarfList> jarfLists) {
+        this.jarfLists = jarfLists;
+    }
 
     public void setData(){
         for(int i = 0; i<6; i++){
@@ -147,12 +152,19 @@ public class InstellingenViewController implements Initializable {
         Account feut = new Account();
         accountList.add(feut);
         accountList.sort();
+
         mainController.write();
+
         DataNodeList dataNodeList = new DataNodeList(feut);
         DataNode dataNode = new DataNode(0, 0);
         dataNodeList.add(dataNode);
         dataNodeLists.add(dataNodeList);
+
+        JarfList jarfList = new JarfList(feut.getName());
+        jarfLists.addLast(jarfList);
+
         mainController.writeDaily();
+        mainController.writeJarf();
         setData();
         mainController.sleepTimerUpdate();
 
@@ -162,7 +174,8 @@ public class InstellingenViewController implements Initializable {
         Account newOldDude = null;
         for(int i = 0; i<6; i++) if (event.getSource().equals(uitgestemdList.get(i))) newOldDude = accountList.get(i);
         for(int i = 0; i<dataNodeLists.size(); i++) if (dataNodeLists.get(i).getDataOwner().equals(newOldDude)) dataNodeLists.remove(i);
-        //jarfStatList.remove(newOldDude.getName());
+        for(int i = 0; i<jarfLists.size(); i++) if (jarfLists.get(i).getOwner().equals(newOldDude.getName())) jarfLists.remove(i);
+
         newOldDude.setOld();
         accountList.sort();
         mainController.write();
@@ -176,7 +189,7 @@ public class InstellingenViewController implements Initializable {
     public void editConfimPress(ActionEvent event) {
         for(int i = 0; i<6; i++){
             if(event.getSource().equals((editConfirmList.get(i)))){
-               // jarfStatList.getOnName(accountList.get(i).getName()).setName(editFieldList.get(i).getText());
+                jarfLists.get(i).setOwner(editFieldList.get(i).getText());
                 accountList.get(i).setName(editFieldList.get(i).getText());
                 editFieldList.get(i).setText("");
             }

@@ -19,6 +19,10 @@ public class JarfList {
         jarfList = new LinkedList<>();
     }
 
+    public void setOwner(String s){
+        owner = s;
+    }
+
     public LinkedList<Date> getAll(){
         return jarfList;
     }
