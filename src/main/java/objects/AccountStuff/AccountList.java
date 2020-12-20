@@ -3,10 +3,7 @@ package objects.AccountStuff;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class AccountList implements Iterable<Account>{
     private LinkedList<Account> accounts;
@@ -218,4 +215,10 @@ public class AccountList implements Iterable<Account>{
         for(Account a : accounts) if (!a.isOld() && a.getName().equals(name)) return true;
         return false;
     }
+
+    public boolean isBirthday(Date date){
+        for(Account a : accounts){ if (!a.isOld() && a.getBirthDay().getDay() == date.getDay() && a.getBirthDay().getMonth() == date.getMonth()) return true; }
+        return false;
+    }
+
 }

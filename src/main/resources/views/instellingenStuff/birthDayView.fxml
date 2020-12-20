@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="831.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contollers.instellingenStuff.BirthDayViewController">
+   <children>
+      <Pane layoutX="15.0" layoutY="14.0" prefHeight="100.0" prefWidth="615.0">
+         <children>
+            <Label fx:id="naamLabel0" prefHeight="100.0" prefWidth="425.0" text="Naam">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+            <Label fx:id="birthDayLabel0" layoutX="425.0" prefHeight="100.0" prefWidth="120.0" text="##-##" textAlignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="confirm0" layoutX="545.0" mnemonicParsing="false" onAction="#confirm" prefHeight="100.0" prefWidth="70.0" text="Pas aan" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+       <Pane layoutX="15.0" layoutY="147.0" prefHeight="100.0" prefWidth="615.0">
+           <children>
+               <Label fx:id="naamLabel1" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+               <Label fx:id="birthDayLabel1" layoutX="425.0" prefHeight="100.0" prefWidth="120.0" text="##-##" textAlignment="CENTER">
+                   <font>
+                       <Font size="36.0" />
+                   </font>
+               </Label>
+               <Button fx:id="confirm1" layoutX="545.0" mnemonicParsing="false" onAction="#confirm" prefHeight="100.0" prefWidth="70.0" text="Pas aan" wrapText="true">
+                   <font>
+                       <Font size="14.0" />
+                   </font>
+               </Button>
+           </children>
+       </Pane>
+       <Pane layoutX="15.0" layoutY="280.0" prefHeight="100.0" prefWidth="615.0">
+           <children>
+               <Label fx:id="naamLabel2" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+               <Label fx:id="birthDayLabel2" layoutX="425.0" prefHeight="100.0" prefWidth="120.0" text="##-##" textAlignment="CENTER">
+                   <font>
+                       <Font size="36.0" />
+                   </font>
+               </Label>
+               <Button fx:id="confirm2" layoutX="545.0" mnemonicParsing="false" onAction="#confirm" prefHeight="100.0" prefWidth="70.0" text="Pas aan" wrapText="true">
+                   <font>
+                       <Font size="14.0" />
+                   </font>
+               </Button>
+           </children>
+       </Pane>
+       <Pane layoutX="15.0" layoutY="413.0" prefHeight="100.0" prefWidth="615.0">
+           <children>
+               <Label fx:id="naamLabel3" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+               <Label fx:id="birthDayLabel3" layoutX="425.0" prefHeight="100.0" prefWidth="120.0" text="##-##" textAlignment="CENTER">
+                   <font>
+                       <Font size="36.0" />
+                   </font>
+               </Label>
+               <Button fx:id="confirm3" layoutX="545.0" mnemonicParsing="false" onAction="#confirm" prefHeight="100.0" prefWidth="70.0" text="Pas aan" wrapText="true">
+                   <font>
+                       <Font size="14.0" />
+                   </font>
+               </Button>
+           </children>
+       </Pane>
+       <Pane layoutX="15.0" layoutY="546.0" prefHeight="100.0" prefWidth="615.0">
+           <children>
+               <Label fx:id="naamLabel4" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+               <Label fx:id="birthDayLabel4" layoutX="425.0" prefHeight="100.0" prefWidth="120.0" text="##-##" textAlignment="CENTER">
+                   <font>
+                       <Font size="36.0" />
+                   </font>
+               </Label>
+               <Button fx:id="confirm4" layoutX="545.0" mnemonicParsing="false" onAction="#confirm" prefHeight="100.0" prefWidth="70.0" text="Pas aan" wrapText="true">
+                   <font>
+                       <Font size="14.0" />
+                   </font>
+               </Button>
+           </children>
+       </Pane>
+       <Pane layoutX="15.0" layoutY="682.0" prefHeight="100.0" prefWidth="615.0">
+           <children>
+               <Label fx:id="naamLabel5" prefHeight="100.0" prefWidth="425.0" text="Naam">
+                   <font>
+                       <Font size="64.0" />
+                   </font>
+               </Label>
+               <Label fx:id="birthDayLabel5" layoutX="425.0" prefHeight="100.0" prefWidth="120.0" text="##-##" textAlignment="CENTER">
+                   <font>
+                       <Font size="36.0" />
+                   </font>
+               </Label>
+               <Button fx:id="confirm5" layoutX="545.0" mnemonicParsing="false" onAction="#confirm" prefHeight="100.0" prefWidth="70.0" text="Pas aan" wrapText="true">
+                   <font>
+                       <Font size="14.0" />
+                   </font>
+               </Button>
+           </children>
+       </Pane>
+       <Button fx:id="button3" layoutX="932.0" layoutY="334.0" mnemonicParsing="false" onAction="#numpad" prefHeight="150.0" prefWidth="150.0" text="3">
+           <font>
+               <Font size="48.0" />
+           </font></Button>
+       <Button fx:id="button1" layoutX="632.0" layoutY="334.0" mnemonicParsing="false" onAction="#numpad" prefHeight="150.0" prefWidth="150.0" text="1">
+           <font>
+               <Font size="48.0" />
+           </font></Button>
+       <Button fx:id="button2" layoutX="782.0" layoutY="334.0" mnemonicParsing="false" onAction="#numpad" prefHeight="150.0" prefWidth="150.0" text="2">
+           <font>
+               <Font size="48.0" />
+           </font></Button>
+       <Button fx:id="button8" layoutX="782.0" layoutY="634.0" mnemonicParsing="false" onAction="#numpad" prefHeight="150.0" prefWidth="150.0" text="8">
+           <font>
+               <Font size="48.0" />
+           </font></Button>
+       <Button fx:id="button5" layoutX="782.0" layoutY="484.0" mnemonicParsing="false" onAction="#numpad" prefHeight="150.0" prefWidth="150.0" text="5">
+           <font>
+               <Font size="48.0" />
+           </font></Button>
+       <Button fx:id="button6" layoutX="932.0" layoutY="484.0" mnemonicParsing="false" onAction="#numpad" prefHeight="150.0" prefWidth="150.0" text="6">
+           <font>
+               <Font size="48.0" />
+           </font></Button>
+       <Button fx:id="button0" layoutX="1082.0" layoutY="634.0" mnemonicParsing="false" onAction="#numpad" prefHeight="150.0" prefWidth="150.0" text="0">
+           <font>
+               <Font size="48.0" />
+           </font></Button>
+       <Button fx:id="button9" layoutX="932.0" layoutY="634.0" mnemonicParsing="false" onAction="#numpad" prefHeight="150.0" prefWidth="150.0" text="9">
+           <font>
+               <Font size="48.0" />
+           </font></Button>
+       <Button fx:id="button4" layoutX="632.0" layoutY="484.0" mnemonicParsing="false" onAction="#numpad" prefHeight="150.0" prefWidth="150.0" text="4">
+           <font>
+               <Font size="48.0" />
+           </font></Button>
+       <Button fx:id="button7" layoutX="632.0" layoutY="634.0" mnemonicParsing="false" onAction="#numpad" prefHeight="150.0" prefWidth="150.0" text="7">
+           <font>
+               <Font size="48.0" />
+           </font></Button>
+       <Pane fx:id="monthPane" layoutX="951.0" layoutY="156.0" onMouseClicked="#setCurrentSelection" prefHeight="115.0" prefWidth="270.0" style="-fx-background-color: white;">
+           <children>
+               <Label fx:id="monthLabel" layoutX="6.0" layoutY="6.0">
+                   <font>
+                       <Font size="72.0" />
+                   </font>
+               </Label>
+           </children>
+       </Pane>
+       <Pane fx:id="dayPane" layoutX="644.0" layoutY="156.0" onMouseClicked="#setCurrentSelection" prefHeight="115.0" prefWidth="270.0" style="-fx-background-color: white;">
+           <children>
+               <Label fx:id="dayLabel" layoutX="6.0" layoutY="6.0">
+                   <font>
+                       <Font size="72.0" />
+                   </font>
+               </Label>
+           </children>
+       </Pane>
+       <Button fx:id="buttonDel" layoutX="1082.0" layoutY="484.0" mnemonicParsing="false" onAction="#numpad" prefHeight="150.0" prefWidth="150.0" text="Del">
+           <font>
+               <Font size="48.0" />
+           </font>
+       </Button>
+      <Text layoutX="690.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dag: ">
+         <font>
+            <Font size="72.0" />
+         </font>
+      </Text>
+      <Text layoutX="967.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maand:">
+         <font>
+            <Font size="72.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

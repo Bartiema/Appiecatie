@@ -43,7 +43,7 @@ public class TransactionList {
     public void toRead(File file , AccountList accounts) throws FileNotFoundException, ParseException {
         Scanner scanner = new Scanner(file);
         while(scanner.hasNextLine()){
-            add(Transaction.toRead(scanner.nextLine(), accounts));
+            this.add(Transaction.toRead(scanner.nextLine(), accounts));
         }
         scanner.close();
     }
