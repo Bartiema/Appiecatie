@@ -84,6 +84,15 @@ public class DataNodeList {
             }
     }
 
+    public int getDrankOnDate(int date){
+        for (int i = 0; i < dataNodes.size(); i++) {
+            if(dataNodes.get(i).getDateNr() == date) {
+                return dataNodes.get(i).getTotalDrank();
+            }
+        }
+      return 0;
+    }
+
     public void update(int drank , int nrDate){
         boolean contains = false;
         for(DataNode d : dataNodes)

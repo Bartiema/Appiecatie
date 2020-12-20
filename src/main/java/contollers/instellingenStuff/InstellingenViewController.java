@@ -198,7 +198,7 @@ public class InstellingenViewController implements Initializable {
         try {
             if(file.createNewFile()){
                 FileWriter writer = new FileWriter(file);
-                writer.write(s.toString());
+                writer.write(s);
                 writer.close();
             } else {
                 Scanner sc = new Scanner(file);
