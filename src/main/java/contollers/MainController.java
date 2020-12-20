@@ -1,12 +1,9 @@
 package contollers;
 
-import contollers.extrasStuff.JarfGraphViewController;
+import contollers.extrasStuff.*;
 import contollers.instellingenStuff.BirthDayViewController;
 import contollers.instellingenStuff.InstellingenViewController;
 import contollers.instellingenStuff.TransactionViewController;
-import contollers.extrasStuff.JarfGildeViewController;
-import contollers.extrasStuff.LineChartViewController;
-import contollers.extrasStuff.ExtrasViewController;
 import contollers.turfStuff.BierVerliesViewContoller;
 import contollers.turfStuff.TurfBeerViewController;
 import contollers.turfStuff.TurfKratViewController;
@@ -76,6 +73,7 @@ public class MainController implements Initializable {
     FXMLLoader lineChartPageLoader = new FXMLLoader(getClass().getResource("/views/extrasStuff/lineChartView.fxml"));
     FXMLLoader birthDayPageLoader = new FXMLLoader(getClass().getResource("/views/instellingenStuff/birthDayView.fxml"));
     FXMLLoader jarfGraphPageLoader = new FXMLLoader(getClass().getResource("/views/extrasStuff/jarfGraphView.fxml"));
+    FXMLLoader barChartPageLoader = new FXMLLoader(getClass().getResource("/views/extrasStuff/barChartView.fxml"));
 
     //the Panes containing all the extra gui
     private final AnchorPane turfBeerPane = turfBeerPageLoader.load();
@@ -88,6 +86,7 @@ public class MainController implements Initializable {
     private final AnchorPane lineChartPane = lineChartPageLoader.load();
     private final AnchorPane birthDayPane = birthDayPageLoader.load();
     private final AnchorPane jarfGraphPane = jarfGraphPageLoader.load();
+    private final AnchorPane barChartPane = barChartPageLoader.load();
 
     //The controllers of the other Panes
     TurfBeerViewController turfBeerViewController = turfBeerPageLoader.getController();
@@ -100,6 +99,7 @@ public class MainController implements Initializable {
     LineChartViewController lineChartViewController = lineChartPageLoader.getController();
     BirthDayViewController birthDayViewController = birthDayPageLoader.getController();
     JarfGraphViewController jarfGraphViewController = jarfGraphPageLoader.getController();
+    BarChartViewController barChartViewController = barChartPageLoader.getController();
 
 
     //The MessageBoard
@@ -169,6 +169,8 @@ public class MainController implements Initializable {
         extrasViewController.setLineChartViewController(lineChartViewController);
         extrasViewController.setJarfGraphPage(jarfGraphPane);
         extrasViewController.setJarfGraphViewController(jarfGraphViewController);
+        extrasViewController.setBarChartPage(barChartPane);
+        extrasViewController.setBarChartViewController(barChartViewController);
 
         bierVerliesViewContoller.setAccountList(accountList);
         bierVerliesViewContoller.setMainController(this);
@@ -199,6 +201,10 @@ public class MainController implements Initializable {
         jarfGraphViewController.setAccountList(accountList);
         jarfGraphViewController.setJarfLists(jarfLists);
         jarfGraphViewController.setMainController(this);
+
+        barChartViewController.setAccountList(accountList);
+        barChartViewController.setMainController(this);
+        barChartViewController.setYearNodeLists(yearNodeLists);
 
 
 

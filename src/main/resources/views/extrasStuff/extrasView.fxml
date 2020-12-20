@@ -31,7 +31,7 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <Button layoutX="465.0" layoutY="15.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="150.0" text="Staafgrafiek per maand" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="barChartButton" layoutX="465.0" layoutY="15.0" mnemonicParsing="false" onAction="#barChart" prefHeight="100.0" prefWidth="150.0" text="Staafgrafiek per maand" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="16.0" />
          </font>
