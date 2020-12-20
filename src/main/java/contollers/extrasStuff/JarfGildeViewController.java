@@ -145,6 +145,7 @@ public class JarfGildeViewController implements Initializable {
         for(JarfList j: jarfLists){
            temp.add(j.getLastJarf());
         }
+        temp.sort(Jarf::compareTo);
 
         ObservableList<Jarf> o1 = FXCollections.observableArrayList(temp);
 
