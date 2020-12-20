@@ -1,4 +1,4 @@
-package objects.ScedulingStuff.New;
+package objects.ScedulingStuff.Jobs;
 
 import objects.AudioOutputOverHead;
 import org.quartz.Job;

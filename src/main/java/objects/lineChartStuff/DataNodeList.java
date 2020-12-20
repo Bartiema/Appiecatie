@@ -47,7 +47,7 @@ public class DataNodeList {
         DataNodeList dataNodeList = null;
 
 
-        while(scanner.hasNext()) {
+        while(scanner.hasNextLine()) {
             String s = scanner.nextLine();
 
             if(accountList.containsBasedOnName(s)){

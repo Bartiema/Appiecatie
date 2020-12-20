@@ -1,4 +1,4 @@
-package objects.ScedulingStuff.New;
+package objects.ScedulingStuff.Jobs;
 
 import contollers.MainController;
 import objects.AccountStuff.AccountList;
@@ -9,7 +9,6 @@ import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
-import java.util.Date;
 import java.util.LinkedList;
 
 public class MonthlyJob implements Job {

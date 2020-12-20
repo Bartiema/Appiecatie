@@ -20,11 +20,13 @@ import javafx.scene.layout.AnchorPane;
 import objects.AccountStuff.AccountList;
 import objects.JarfiniteitStuff.JarfList;
 import objects.MessageList;
-import objects.ScedulingStuff.New.DailyJob;
-import objects.ScedulingStuff.New.MinuteJob;
-import objects.ScedulingStuff.New.MonthlyJob;
-import objects.ScedulingStuff.Old.DayIterator;
-import objects.ScedulingStuff.Old.MonthIterator;
+import objects.ScedulingStuff.Iterators.YearIterator;
+import objects.ScedulingStuff.Jobs.DailyJob;
+import objects.ScedulingStuff.Jobs.MinuteJob;
+import objects.ScedulingStuff.Jobs.MonthlyJob;
+import objects.ScedulingStuff.Iterators.DayIterator;
+import objects.ScedulingStuff.Iterators.MonthIterator;
+import objects.ScedulingStuff.Jobs.YearlyJob;
 import objects.lineChartStuff.DataNodeList;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
@@ -173,7 +175,7 @@ public class MainController implements Initializable {
 
         instellingenViewController.setAccountList(accountList);
         instellingenViewController.setMainController(this);
-        instellingenViewController.setDataNodeLists(monthNodeLists);
+        instellingenViewController.setMonthNodeLists(monthNodeLists);
         instellingenViewController.setJarfLists(jarfLists);
 
         transactionViewController.setAccountList(accountList);
@@ -222,14 +224,17 @@ public class MainController implements Initializable {
             JobDetail dailyJobDetail = JobBuilder.newJob(DailyJob.class).usingJobData(data).withIdentity("DailyJob","Group1").build();
             JobDetail monthlyJobDetail = JobBuilder.newJob(MonthlyJob.class).usingJobData(data).withIdentity("MonthlyJob","Group2").build();
             JobDetail minuteJobDetail = JobBuilder.newJob(MinuteJob.class).usingJobData(dataMap).withIdentity("MinuteJob","Group3").build();
+            JobDetail yearlyJobDetail = JobBuilder.newJob(YearlyJob.class).usingJobData(data).withIdentity("YearlyJob", "Group4").build();
 
             Trigger dailyTrigger = TriggerBuilder.newTrigger().startAt(new DayIterator().next()).withIdentity("DailyTrigger", "Group1").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInHours(24)).build();
             Trigger monthlyTrigger = TriggerBuilder.newTrigger().startAt(new MonthIterator().next()).withIdentity("MonthlyTrigger", "Group2").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInMonths(1)).build();
             Trigger minuteTrigger = TriggerBuilder.newTrigger().startAt(new Date()).withIdentity("MinuteTrigger", "Group3").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInMinutes(1)).build();
+            Trigger yearlyTrigger = TriggerBuilder.newTrigger().startAt(new YearIterator().next()).withIdentity("YearlyTrigger", "Group4").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInYears(1)).build();
 
             scheduler.scheduleJob(dailyJobDetail, dailyTrigger);
             scheduler.scheduleJob(monthlyJobDetail, monthlyTrigger);
             scheduler.scheduleJob(minuteJobDetail, minuteTrigger);
+            scheduler.scheduleJob(yearlyJobDetail, yearlyTrigger);
         } catch (SchedulerException e) {
             e.printStackTrace();
         }
