@@ -1,5 +1,6 @@
 package objects.JarfiniteitStuff;
 
+import javafx.scene.chart.XYChart;
 import objects.AccountStuff.AccountList;
 
 import java.io.File;
@@ -90,4 +91,36 @@ public class JarfList {
         return s.toString();
     }
 
+    public XYChart.Series getXYChartSeries() {
+        XYChart.Series<String, Integer> res = new XYChart.Series<>();
+        res.setName(this.owner);
+        int maandag = 0;
+        int dinsdag = 0;
+        int woensdag = 0;
+        int donderdag = 0;
+        int vrijdag = 0;
+        int zaterdag = 0;
+        int zondag = 0;
+
+        for(Date d : jarfList){
+            if(d.getDay() == 1) maandag++;
+            if(d.getDay() == 2) dinsdag++;
+            if(d.getDay() == 3) woensdag++;
+            if(d.getDay() == 4) donderdag++;
+            if(d.getDay() == 5) vrijdag++;
+            if(d.getDay() == 6) zaterdag++;
+            if(d.getDay() == 0) zondag++;
+        }
+        System.out.println(maandag + " " + dinsdag + " " + woensdag + " " + donderdag + " " + vrijdag + " " + zaterdag + " " + zondag);
+        XYChart.Data<String, Integer> maData =  new XYChart.Data("Maandag" ,maandag);
+        XYChart.Data<String, Integer> dinData =  new XYChart.Data("Dinsdag" ,dinsdag);
+        XYChart.Data<String, Integer> woeData =  new XYChart.Data("Woensdag" ,woensdag);
+        XYChart.Data<String, Integer> donData =  new XYChart.Data("Donderdag" ,donderdag);
+        XYChart.Data<String, Integer> vrijData =  new XYChart.Data("Vrijdag" ,vrijdag);
+        XYChart.Data<String, Integer> zatData =  new XYChart.Data("Zaterdag" ,zaterdag);
+        XYChart.Data<String, Integer> zonData =  new XYChart.Data("Zondag" ,zondag);
+
+        res.getData().addAll(maData, dinData, woeData, donData, vrijData, zatData, zonData);
+        return res;
+    }
 }

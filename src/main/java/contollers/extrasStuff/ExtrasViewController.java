@@ -40,6 +40,9 @@ public class ExtrasViewController implements Initializable {
     private AnchorPane lineChartPage;
     private LineChartViewController lineChartViewController;
 
+    private AnchorPane jarfGraphPage;
+    private JarfGraphViewController jarfGraphViewController;
+
     @FXML
     private VBox container;
     @FXML
@@ -48,6 +51,8 @@ public class ExtrasViewController implements Initializable {
     private Button tabelButton;
     @FXML
     private Button jarfGildeButton;
+    @FXML
+    private Button jarfGraphButton;
 
     public void setAccountList(AccountList accountList){
         this.accountList = accountList;
@@ -69,6 +74,12 @@ public class ExtrasViewController implements Initializable {
     }
     public void setLineChartViewController(LineChartViewController lineChartViewController){
         this.lineChartViewController = lineChartViewController;
+    }
+    public void setJarfGraphPage(AnchorPane jarfGraphPage){
+        this.jarfGraphPage = jarfGraphPage;
+    }
+    public void setJarfGraphViewController(JarfGraphViewController jarfGraphViewController){
+        this.jarfGraphViewController = jarfGraphViewController;
     }
 
 
@@ -269,6 +280,15 @@ public class ExtrasViewController implements Initializable {
         jarfGildeViewController.setData();
         mainController.sleepTimerUpdate();
 
+    }
+
+    public void JarfGraph(ActionEvent actionEvent) {
+        if(container.getChildren().get(0).equals(jarfGraphPage)) return;
+        container.getChildren().remove(0);
+
+        container.getChildren().add(jarfGraphPage);
+        jarfGraphViewController.setData();
+        mainController.sleepTimerUpdate();
     }
 }
 
