@@ -16,6 +16,7 @@ public class Account implements Comparable<Account> {
     private double drankPerDay;
     private double drankPerMonth;
     private int drankThisMonth;
+    private int drankThisYear;
     private boolean isOld;
     private Date leftHouse;
 
@@ -30,6 +31,7 @@ public class Account implements Comparable<Account> {
         this.birthDay = new Date();
         this.isOld = false;
         this.drankThisMonth = 0;
+        this.drankThisYear = 0;
         this.leftHouse = null;
     }
 
@@ -47,6 +49,7 @@ public class Account implements Comparable<Account> {
         this.birthDay = new Date();
         this.isOld = false;
         this.drankThisMonth = 0;
+        this.drankThisYear = 0;
         this.leftHouse = null;
     }
 
@@ -59,7 +62,7 @@ public class Account implements Comparable<Account> {
      * @param isOld - Is it an old Housemate (if this is true this Account will only be displayed in Statistics)
      * @param drankThisMonth - the number of beers drank in the current month
      */
-    public Account(String name, int stock, int drankTotal, Date created, Date birthDay, boolean isOld, int drankThisMonth){
+    public Account(String name, int stock, int drankTotal, Date created, Date birthDay, boolean isOld, int drankThisMonth, int drankthisYear){
         this.name = name;
         this.stock = stock;
         this.joinedHouse = created;
@@ -69,6 +72,7 @@ public class Account implements Comparable<Account> {
         this.drankPerMonth = calculatePerMonth(drankTotal);
         this.isOld = isOld;
         this.drankThisMonth = drankThisMonth;
+        this.drankThisYear = drankthisYear;
         this.leftHouse = null;
     }
 
@@ -82,7 +86,7 @@ public class Account implements Comparable<Account> {
      * @param drankThisMonth - the number of beers drank in the current month
      * @param left - The date the housemate left
      */
-    public Account(String name, int stock, int drankTotal, Date created, Date birthDay, boolean isOld, int drankThisMonth, Date left){
+    public Account(String name, int stock, int drankTotal, Date created, Date birthDay, boolean isOld, int drankThisMonth, int drankThisYear, Date left){
         this.name = name;
         this.stock = stock;
         this.joinedHouse = created;
@@ -92,6 +96,7 @@ public class Account implements Comparable<Account> {
         this.drankPerMonth = calculatePerMonth(drankTotal);
         this.isOld = isOld;
         this.drankThisMonth = drankThisMonth;
+        this.drankThisYear = drankThisYear;
         this.leftHouse = left;
     }
 
@@ -151,6 +156,8 @@ public class Account implements Comparable<Account> {
         this.birthDay = birthDay;
     }
 
+    public int getDrankThisYear() { return this.drankThisYear; }
+
     /**
      * a method to return the String to be Written to file
      * @return String
@@ -163,6 +170,7 @@ public class Account implements Comparable<Account> {
                 + dateFormat.format(joinedHouse) + " - "
                 + dateFormat.format(birthDay) + " - "
                 + drankThisMonth + " - "
+                + drankThisYear + " - "
                 + isOld;
         if(isOld) {
             s += " - " + dateFormat.format(leftHouse);
@@ -188,6 +196,7 @@ public class Account implements Comparable<Account> {
         Date birthday = format.parse(scanner.next());
 
         int drankThisMonth = scanner.nextInt();
+        int drankthisYear = scanner.nextInt();
 
         boolean isOld = true;
 
@@ -197,10 +206,10 @@ public class Account implements Comparable<Account> {
         if(isOld) {
             Date left = format.parse(scanner.next());
             scanner.close();
-            return new Account(name, stock, drankTotal, created, birthday, isOld, drankThisMonth, left);
+            return new Account(name, stock, drankTotal, created, birthday, isOld, drankThisMonth, drankthisYear, left);
         } else {
             scanner.close();
-            return new Account(name, stock, drankTotal, created, birthday, isOld, drankThisMonth);
+            return new Account(name, stock, drankTotal, created, birthday, isOld, drankThisMonth, drankthisYear);
         }
     }
 
@@ -251,6 +260,7 @@ public class Account implements Comparable<Account> {
         stock -= 1;
         drankTotal += 1;
         drankThisMonth +=1;
+        drankThisYear +=1;
     }
     /**
      * A method to update a account when he or some other idiot missclicked
@@ -260,6 +270,7 @@ public class Account implements Comparable<Account> {
         stock += 1;
         drankTotal -= 1;
         drankThisMonth -= 1;
+        drankThisYear -= 1;
     }
     /**
      * A method to update a account when he bought a crate

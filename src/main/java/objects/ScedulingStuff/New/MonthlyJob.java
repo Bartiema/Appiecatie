@@ -9,6 +9,7 @@ import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
+import java.util.Date;
 import java.util.LinkedList;
 
 public class MonthlyJob implements Job {
@@ -17,10 +18,10 @@ public class MonthlyJob implements Job {
         JobDataMap data = context.getMergedJobDataMap();
         AccountList accounts = (AccountList) data.get("accounts");
         MainController controller = (MainController) data.get("controller");
-        LinkedList<DataNodeList> dataNodeLists = (LinkedList<DataNodeList>) data.get("dataNodeLists");
+        LinkedList<DataNodeList> monthNodeLists = (LinkedList<DataNodeList>) data.get("monthNodeLists");
 
         accounts.updateMonth();
-        for(DataNodeList d : dataNodeLists){
+        for(DataNodeList d : monthNodeLists){
             d.removeAll();
             d.add(new DataNode(0,0));
         }

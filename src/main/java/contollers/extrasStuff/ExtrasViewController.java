@@ -46,7 +46,9 @@ public class ExtrasViewController implements Initializable {
     @FXML
     private VBox container;
     @FXML
-    private Button lineChartButton;
+    private Button lineMonthButton;
+    @FXML
+    private Button lineYearButton;
     @FXML
     private Button tabelButton;
     @FXML
@@ -99,11 +101,14 @@ public class ExtrasViewController implements Initializable {
         }
 
     public void lineChart(ActionEvent actionEvent) {
-        if(container.getChildren().get(0).equals(lineChartPage)) return;
-        container.getChildren().remove(0);
         mainController.sleepTimerUpdate();
-        container.getChildren().add(lineChartPage);
-        lineChartViewController.setData();
+        Button button = (Button) actionEvent.getSource();
+        if (!container.getChildren().get(0).equals(lineChartPage)) {
+            container.getChildren().remove(0);
+            container.getChildren().add(lineChartPage);
+        }
+        if(button.equals(lineMonthButton)) lineChartViewController.setDataMonth();
+        if(button.equals(lineYearButton)) lineChartViewController.setDataYear();
     }
 
     public void tabelButton(ActionEvent actionEvent) throws IllegalAccessException {

@@ -45,7 +45,8 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
     private AccountList accountList;
     private MessageList messages = new MessageList();
-    private LinkedList<DataNodeList> dataNodeLists;
+    private LinkedList<DataNodeList> monthNodeLists;
+    private LinkedList<DataNodeList> yearNodeLists;
     private LinkedList<JarfList> jarfLists;
     private LocalTime timeOfLastAction = LocalTime.now();
     private boolean screenOn = true;
@@ -57,7 +58,8 @@ public class MainController implements Initializable {
     File accountFile = new File("src/main/resources/files/Accounts");
     File messageFile = new File("src/main/resources/files/Messages");
     File transactionFile = new File("src/main/resources/files/Transactions");
-    File LineChartDataFile = new File("src/main/resources/files/LineChartData");
+    File monthChartDataFile = new File("src/main/resources/files/monthChartData");
+    File yearChartDataFile = new File("src/main/resources/files/yearChartData");
     File JarfStatFile = new File("src/main/resources/files/JarfStats");
 
 
@@ -131,7 +133,8 @@ public class MainController implements Initializable {
 
             messages.toRead(messageFile);
 
-            dataNodeLists = DataNodeList.toRead(accountList, LineChartDataFile);
+            monthNodeLists = DataNodeList.toRead(accountList, monthChartDataFile);
+            yearNodeLists = DataNodeList.toRead(accountList, yearChartDataFile);
             jarfLists = JarfList.toRead(JarfStatFile , accountList);
 
         } catch (ParseException | IOException e) {
@@ -157,7 +160,7 @@ public class MainController implements Initializable {
 
         extrasViewController.setAccountList(accountList);
         extrasViewController.setMainController(this);
-        extrasViewController.setDataNodeLists(dataNodeLists);
+        extrasViewController.setDataNodeLists(monthNodeLists);
         extrasViewController.setJarfGildePage(jarfGildePane);
         extrasViewController.setJarfGildeViewController(jarfGildeViewController);
         extrasViewController.setLineChartPage(lineChartPane);
@@ -170,7 +173,7 @@ public class MainController implements Initializable {
 
         instellingenViewController.setAccountList(accountList);
         instellingenViewController.setMainController(this);
-        instellingenViewController.setDataNodeLists(dataNodeLists);
+        instellingenViewController.setDataNodeLists(monthNodeLists);
         instellingenViewController.setJarfLists(jarfLists);
 
         transactionViewController.setAccountList(accountList);
@@ -184,7 +187,8 @@ public class MainController implements Initializable {
         turfKratViewController.setMainController(this);
 
         lineChartViewController.setAccountList(accountList);
-        lineChartViewController.setDataNodeLists(dataNodeLists);
+        lineChartViewController.setMonthNodeLists(monthNodeLists);
+        lineChartViewController.setYearNodeLists(yearNodeLists);
         lineChartViewController.setMainController(this);
 
         birthDayViewController.setAccountList(accountList);
@@ -205,7 +209,8 @@ public class MainController implements Initializable {
             JobDataMap data = new JobDataMap();
             data.put("accounts", accountList);
             data.put("controller", this);
-            data.put("dataNodeLists", dataNodeLists);
+            data.put("monthNodeLists", monthNodeLists);
+            data.put("yearNodeLists", yearNodeLists);
             //Data for display procces
             Runtime rt = Runtime.getRuntime();
             JobDataMap dataMap = new JobDataMap();
@@ -296,13 +301,21 @@ public class MainController implements Initializable {
      */
     public void writeDaily() {
         try{
-            FileWriter lineChartWriter = new FileWriter(LineChartDataFile);
+            FileWriter monthChartWriter = new FileWriter(monthChartDataFile);
             StringBuilder s = new StringBuilder();
-            for(DataNodeList d : dataNodeLists){
+            for(DataNodeList d : monthNodeLists){
                 s.append(d.toWrite());
             }
-            lineChartWriter.write(s.toString());
-            lineChartWriter.close();
+            monthChartWriter.write(s.toString());
+            monthChartWriter.close();
+
+            FileWriter yearChartWriter = new FileWriter(yearChartDataFile);
+            StringBuilder sr = new StringBuilder();
+            for (DataNodeList d : yearNodeLists){
+                s.append(d.toWrite());
+            }
+            yearChartWriter.write(sr.toString());
+            yearChartWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

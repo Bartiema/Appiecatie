@@ -10,9 +10,12 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import objects.AccountStuff.AccountList;
+import objects.lineChartStuff.DataNode;
 import objects.lineChartStuff.DataNodeList;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
@@ -20,7 +23,9 @@ public class LineChartViewController implements Initializable {
 
     private AccountList accountList;
     private MainController mainController;
-    private LinkedList<DataNodeList> dataNodeLists;
+    private LinkedList<DataNodeList> monthNodeLists;
+    private LinkedList<DataNodeList> yearNodeLists;
+    private boolean month;
 
     @FXML
     private VBox container;
@@ -38,13 +43,16 @@ public class LineChartViewController implements Initializable {
     public void setMainController(MainController controller){
         this.mainController = controller;
     }
-    public void setDataNodeLists(LinkedList<DataNodeList> dataNodeLists) {
-        this.dataNodeLists = dataNodeLists;
+    public void setMonthNodeLists(LinkedList<DataNodeList> monthNodeLists) {
+        this.monthNodeLists = monthNodeLists;
+    }
+    public void setYearNodeLists(LinkedList<DataNodeList> yearNodeLists) {
+        this.yearNodeLists = yearNodeLists;
     }
 
-    public void setData() {
+    public void setDataMonth() {
         if(!container.getChildren().isEmpty()) container.getChildren().remove(0);
-
+        month = true;
         NumberAxis YAxis = new NumberAxis();
         YAxis.setLabel("Hoeveelheid bier gezopen");
         NumberAxis XAxis = new NumberAxis();
@@ -56,7 +64,33 @@ public class LineChartViewController implements Initializable {
 
         LineChart lineChart = new LineChart(XAxis, YAxis);
 
-        for(DataNodeList d : dataNodeLists){
+        for(DataNodeList d : monthNodeLists){
+            XYChart.Series series = d.getXYChartSeries();
+            lineChart.getData().add(series);
+
+        }
+
+        lineChart.setMinHeight(670);
+
+
+        container.getChildren().add(lineChart);
+    }
+
+    public void setDataYear() {
+        if(!container.getChildren().isEmpty()) container.getChildren().remove(0);
+        month = false;
+        NumberAxis YAxis = new NumberAxis();
+        YAxis.setLabel("Hoeveelheid bier gezopen");
+        NumberAxis XAxis = new NumberAxis();
+        XAxis.setLabel("Hoeveelste dag in Jaar");
+        XAxis.setAutoRanging(false);
+        XAxis.setTickUnit(1);
+        XAxis.setUpperBound(366);
+        YAxis.setLowerBound(1);
+
+        LineChart lineChart = new LineChart(XAxis, YAxis);
+
+        for(DataNodeList d : yearNodeLists){
             XYChart.Series series = d.getXYChartSeries();
             lineChart.getData().add(series);
 
@@ -69,8 +103,17 @@ public class LineChartViewController implements Initializable {
     }
 
     public void update(ActionEvent event) {
-        for(DataNodeList d : dataNodeLists) d.update();
         mainController.sleepTimerUpdate();
-        setData();
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("D");
+
+        if(month){
+            for(DataNodeList d : monthNodeLists) d.update(d.getDataOwner().getDrankThisMonth(), date.getDate());
+            setDataMonth();
+        }
+        else {
+            for(DataNodeList d : yearNodeLists) d.update(d.getDataOwner().getDrankThisYear(), Integer.parseInt(format.format(date)));
+            setDataYear();
+        }
     }
 }

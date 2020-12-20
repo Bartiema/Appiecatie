@@ -71,27 +71,27 @@ public class DataNodeList {
         return res;
     }
 
+
     public void removeAll(){
         while(!dataNodes.isEmpty()) dataNodes.remove();
     }
 
     public void removeOnDate(int date) {
         for(DataNode d : dataNodes)
-            if (d.getDateInMonth() == date) {
+            if (d.getDateNr() == date) {
                 dataNodes.remove(d);
                 break;
             }
     }
 
-    public void update(){
+    public void update(int drank , int nrDate){
         boolean contains = false;
-        int date = new Date().getDate();
         for(DataNode d : dataNodes)
-            if (d.getDateInMonth() == date) {
+            if (d.getDateNr() == nrDate) {
                 contains = true;
                 break;
             }
-        if(contains) this.removeOnDate(date);
-        this.add(new DataNode(dataOwner.getDrankThisMonth()));
+        if(contains) this.removeOnDate(nrDate);
+        this.add(new DataNode(drank, nrDate));
     }
 }
