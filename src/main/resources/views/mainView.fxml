@@ -39,7 +39,10 @@
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Text layoutX="655.0" layoutY="116.0" opacity="0.25" strokeType="OUTSIDE" strokeWidth="0.0" text="Timothy, B3nni3, Harry, Bibi, Wiski, Brody  (SO naar Yoshi)" />
+            <Text layoutX="655.0" layoutY="116.0" opacity="0.25" strokeType="OUTSIDE" strokeWidth="0.0" text="Timothy, B3nni3, Harry, Bibi, Wiski, Brody  (SO naar Yoshi)">
+               <font>
+                  <Font size="10.0" />
+               </font></Text>
          </children>
       </Pane>
    </children>
