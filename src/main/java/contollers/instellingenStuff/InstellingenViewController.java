@@ -15,9 +15,14 @@ import objects.lineChartStuff.DataNode;
 import objects.lineChartStuff.DataNodeList;
 
 import javax.xml.crypto.Data;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class InstellingenViewController implements Initializable {
 
@@ -181,9 +186,34 @@ public class InstellingenViewController implements Initializable {
 
     public void makeOld(ActionEvent event) {
         Account newOldDude = null;
+        DataNodeList oldDudeList = null;
         for(int i = 0; i<6; i++) if (event.getSource().equals(uitgestemdList.get(i))) newOldDude = accountList.get(i);
         for(int i = 0; i< monthNodeLists.size(); i++) if (monthNodeLists.get(i).getDataOwner().equals(newOldDude)) monthNodeLists.remove(i);
         for(int i = 0; i<jarfLists.size(); i++) if (jarfLists.get(i).getOwner().equals(newOldDude.getName())) jarfLists.remove(i);
+        for(int i = 0; i<yearNodeLists.size(); i++) if (yearNodeLists.get(i).getDataOwner().equals(newOldDude)) oldDudeList = yearNodeLists.get(i);
+
+        Date currDate = new Date();
+        File file = new File("src/main/resources/files/ZuipStats/" + currDate.getYear() + "-ZuipStats.txt");
+        String s = oldDudeList.toWrite();
+        try {
+            if(file.createNewFile()){
+                FileWriter writer = new FileWriter(file);
+                writer.write(s.toString());
+                writer.close();
+            } else {
+                Scanner sc = new Scanner(file);
+                StringBuilder sb = new StringBuilder(s);
+                while (sc.hasNextLine()){
+                    sb.append(sc.nextLine());
+                }
+                sc.close();
+                FileWriter writer = new FileWriter(file);
+                writer.write(sb.toString());
+                writer.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         newOldDude.setOld();
         accountList.sort();
