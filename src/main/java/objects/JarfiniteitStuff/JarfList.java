@@ -51,8 +51,13 @@ public class JarfList {
         return jarfList.size();
     }
 
-    public Jarf getLastJarf(){
-        return new Jarf(owner, jarfList.peek());
+    public Jarf getLastJarf() throws ParseException {
+       if(jarfList.peek() == null){
+           SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+           return new Jarf(owner, format.parse("01-01-0001"));
+       } else {
+           return new Jarf(owner, jarfList.peek());
+       }
     }
 
     public static LinkedList<JarfList> toRead(File file, AccountList accounts) throws FileNotFoundException, ParseException {

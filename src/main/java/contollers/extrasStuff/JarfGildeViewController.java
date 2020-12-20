@@ -17,6 +17,7 @@ import objects.JarfiniteitStuff.Jarf;
 import objects.JarfiniteitStuff.JarfList;
 
 import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
@@ -138,12 +139,16 @@ public class JarfGildeViewController implements Initializable {
     }
 
 
-    public void setData(){
+    public void setData() {
 
         TableView<Jarf> tableView = new TableView<>();
         LinkedList<Jarf> temp = new LinkedList<>();
         for(JarfList j: jarfLists){
-           temp.add(j.getLastJarf());
+            try {
+                temp.add(j.getLastJarf());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
         temp.sort(Jarf::compareTo);
 
@@ -181,7 +186,14 @@ public class JarfGildeViewController implements Initializable {
                         super.updateItem(item, empty);
                         if (!isEmpty()) {
                             this.setFont(new Font(30));
-                            if(item == null){
+                            SimpleDateFormat mat = new SimpleDateFormat("dd-MM-yyyy");
+                            Date nulldate = null;
+                            try {
+                                nulldate = mat.parse("01-01-0001");
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            if (item == null || item.equals(nulldate)) {
                                 setText("");
                             } else {
                                 SimpleDateFormat format = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss", new Locale("NL"));
