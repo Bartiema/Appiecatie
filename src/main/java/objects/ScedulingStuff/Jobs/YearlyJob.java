@@ -25,7 +25,7 @@ public class YearlyJob implements Job {
             LinkedList<DataNodeList> yearNodeList = (LinkedList<DataNodeList>) data.get("yearNodeList");
 
             Date currDate = new Date();
-            File file = new File("src/main/resources/files/ZuipStats/" + currDate.getYear() + "-ZuipStats.txt");
+            File file = new File("src/main/resources/files/ZuipStats/" + 1900 + currDate.getYear() + "-ZuipStats.txt");
 
             StringBuilder s = new StringBuilder();
             for (DataNodeList d: yearNodeList){

@@ -1,21 +1,25 @@
 package contollers.extrasStuff;
 
+import com.sun.javafx.binding.StringFormatter;
 import contollers.MainController;
-import javafx.event.ActionEvent;
+import javafx.css.converter.StringConverter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.VBox;
+import javafx.util.converter.NumberStringConverter;
 import objects.AccountStuff.AccountList;
-import objects.JarfiniteitStuff.JarfList;
 import objects.ScedulingStuff.Iterators.MonthIterator;
 import objects.lineChartStuff.DataNodeList;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
@@ -31,7 +35,7 @@ public class BarChartViewController implements Initializable {
     @FXML
     private VBox container;
     @FXML
-    private Button updateButton;
+    private Slider yearSlider;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -48,7 +52,14 @@ public class BarChartViewController implements Initializable {
         this.yearNodeLists = yearNodeLists;
     }
 
-    public void setData(){
+    public void setData() {
+        int currYear = new Date().getYear();
+        yearSlider.setMax(currYear - 120);
+        yearSlider.setMajorTickUnit(1);
+        makeBarChart(yearNodeLists);
+    }
+
+    public void makeBarChart(LinkedList<DataNodeList> list){
         if(!container.getChildren().isEmpty()) container.getChildren().remove(0);
 
         NumberAxis YAxis = new NumberAxis();
@@ -63,7 +74,7 @@ public class BarChartViewController implements Initializable {
         SimpleDateFormat mat = new SimpleDateFormat("D");
 
 
-        for(DataNodeList d : yearNodeLists){
+        for(DataNodeList d : list){
             XYChart.Series<String, Integer> series = new XYChart.Series<>();
             series.setName(d.getDataOwner().getName());
             MonthIterator monthIterator = new MonthIterator(11);
@@ -79,9 +90,15 @@ public class BarChartViewController implements Initializable {
 
 
         barChart.setMinHeight(670);
-        container.getChildren().add(barChart);
-    }
+        container.getChildren().add(barChart);    }
 
-    public void update(ActionEvent actionEvent) {
+    public void yearUpdate() throws FileNotFoundException, ParseException {
+        if(yearSlider.getValue() == 0) makeBarChart(yearNodeLists);
+        else {
+            int currYear = new Date().getYear();
+            File yearFile = new File("src/main/resources/files/ZuipStats/" + ( 1900 + currYear - yearSlider.getValue()) + "-ZuipStats.txt");
+            LinkedList<DataNodeList> yearList = DataNodeList.toRead(accountList, yearFile);
+            makeBarChart(yearList);
+        }
     }
 }

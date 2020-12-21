@@ -193,7 +193,7 @@ public class InstellingenViewController implements Initializable {
         for(int i = 0; i<yearNodeLists.size(); i++) if (yearNodeLists.get(i).getDataOwner().equals(newOldDude)) oldDudeList = yearNodeLists.get(i);
 
         Date currDate = new Date();
-        File file = new File("src/main/resources/files/ZuipStats/" + currDate.getYear() + "-ZuipStats.txt");
+        File file = new File("src/main/resources/files/ZuipStats/" + 1900 + currDate.getYear() + "-ZuipStats.txt");
         String s = oldDudeList.toWrite();
         try {
             if(file.createNewFile()){
