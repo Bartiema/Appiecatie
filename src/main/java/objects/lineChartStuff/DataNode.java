@@ -3,43 +3,36 @@ package objects.lineChartStuff;
 import javafx.scene.chart.XYChart;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
 public class DataNode {
     private int totalDrank;
-    private int nrInMonth;
+    private int nrDate;
 
     public int getTotalDrank() {
         return totalDrank;
     }
 
-    public int getDateInMonth() {
-        return nrInMonth;
+    public int getDateNr() {
+        return nrDate;
     }
 
     /**
-     * Constructor for Read versions
+     * Constructor
      * @param totalDrank - The Amount Drank
-     * @param nrInMonth - The date of the Month this node is made in
+     * @param nrDate - The date of the Month this node is made in
      */
-    public DataNode(int totalDrank, int nrInMonth) {
+    public DataNode(int totalDrank, int nrDate) {
 
         this.totalDrank = totalDrank;
-        this.nrInMonth = nrInMonth;
+        this.nrDate = nrDate;
     }
 
-    /**
-     * Constructor for new DataNodes
-     * @param totalDrank - The Amount Drank
-     */
-    public DataNode(int totalDrank) {
-        this.totalDrank = totalDrank;
-        this.nrInMonth = new Date().getDate();
-    }
 
     public String toWrite() {
-        return  totalDrank + " - " + nrInMonth;
+        return  totalDrank + " - " + nrDate;
     }
 
     public static DataNode toRead(String line) throws ParseException {
@@ -54,6 +47,6 @@ public class DataNode {
     }
 
     public XYChart.Data getXYChartData() {
-        return new XYChart.Data(nrInMonth ,totalDrank);
+        return new XYChart.Data(nrDate ,totalDrank);
     }
 }

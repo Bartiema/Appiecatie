@@ -221,4 +221,9 @@ public class AccountList implements Iterable<Account>{
         return false;
     }
 
+    public void updateYear(){
+        for(Account a : accounts){
+            a.setDrankThisYear(0);
+        }
+    }
 }

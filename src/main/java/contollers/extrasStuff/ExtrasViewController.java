@@ -43,16 +43,23 @@ public class ExtrasViewController implements Initializable {
     private AnchorPane jarfGraphPage;
     private JarfGraphViewController jarfGraphViewController;
 
+    private AnchorPane barChartPage;
+    private BarChartViewController barChartViewController;
+
     @FXML
     private VBox container;
     @FXML
-    private Button lineChartButton;
+    private Button lineMonthButton;
+    @FXML
+    private Button lineYearButton;
     @FXML
     private Button tabelButton;
     @FXML
     private Button jarfGildeButton;
     @FXML
     private Button jarfGraphButton;
+    @FXML
+    private Button barChartButton;
 
     public void setAccountList(AccountList accountList){
         this.accountList = accountList;
@@ -81,6 +88,12 @@ public class ExtrasViewController implements Initializable {
     public void setJarfGraphViewController(JarfGraphViewController jarfGraphViewController){
         this.jarfGraphViewController = jarfGraphViewController;
     }
+    public void setBarChartPage(AnchorPane barChartPage) {
+        this.barChartPage = barChartPage;
+    }
+    public void setBarChartViewController(BarChartViewController barChartViewController){
+        this.barChartViewController = barChartViewController;
+    }
 
 
     @Override
@@ -99,11 +112,14 @@ public class ExtrasViewController implements Initializable {
         }
 
     public void lineChart(ActionEvent actionEvent) {
-        if(container.getChildren().get(0).equals(lineChartPage)) return;
-        container.getChildren().remove(0);
         mainController.sleepTimerUpdate();
-        container.getChildren().add(lineChartPage);
-        lineChartViewController.setData();
+        Button button = (Button) actionEvent.getSource();
+        if (!container.getChildren().get(0).equals(lineChartPage)) {
+            container.getChildren().remove(0);
+            container.getChildren().add(lineChartPage);
+        }
+        if(button.equals(lineMonthButton)) lineChartViewController.setDataMonth();
+        if(button.equals(lineYearButton)) lineChartViewController.setDataYear();
     }
 
     public void tabelButton(ActionEvent actionEvent) throws IllegalAccessException {
@@ -288,6 +304,15 @@ public class ExtrasViewController implements Initializable {
 
         container.getChildren().add(jarfGraphPage);
         jarfGraphViewController.setData();
+        mainController.sleepTimerUpdate();
+    }
+
+    public void barChart(ActionEvent actionEvent) {
+        if(container.getChildren().get(0).equals(barChartPage)) return;
+        container.getChildren().remove(0);
+
+        container.getChildren().add(barChartPage);
+        barChartViewController.setData();
         mainController.sleepTimerUpdate();
     }
 }

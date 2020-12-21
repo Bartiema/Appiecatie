@@ -47,7 +47,7 @@ public class DataNodeList {
         DataNodeList dataNodeList = null;
 
 
-        while(scanner.hasNext()) {
+        while(scanner.hasNextLine()) {
             String s = scanner.nextLine();
 
             if(accountList.containsBasedOnName(s)){
@@ -71,27 +71,36 @@ public class DataNodeList {
         return res;
     }
 
+
     public void removeAll(){
         while(!dataNodes.isEmpty()) dataNodes.remove();
     }
 
     public void removeOnDate(int date) {
         for(DataNode d : dataNodes)
-            if (d.getDateInMonth() == date) {
+            if (d.getDateNr() == date) {
                 dataNodes.remove(d);
                 break;
             }
     }
 
-    public void update(){
+    public int getDrankOnDate(int date){
+        for (int i = 0; i < dataNodes.size(); i++) {
+            if(dataNodes.get(i).getDateNr() == date) {
+                return dataNodes.get(i).getTotalDrank();
+            }
+        }
+      return 0;
+    }
+
+    public void update(int drank , int nrDate){
         boolean contains = false;
-        int date = new Date().getDate();
         for(DataNode d : dataNodes)
-            if (d.getDateInMonth() == date) {
+            if (d.getDateNr() == nrDate) {
                 contains = true;
                 break;
             }
-        if(contains) this.removeOnDate(date);
-        this.add(new DataNode(dataOwner.getDrankThisMonth()));
+        if(contains) this.removeOnDate(nrDate);
+        this.add(new DataNode(drank, nrDate));
     }
 }

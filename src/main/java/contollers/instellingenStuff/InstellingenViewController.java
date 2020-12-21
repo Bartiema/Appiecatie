@@ -14,15 +14,22 @@ import objects.JarfiniteitStuff.JarfList;
 import objects.lineChartStuff.DataNode;
 import objects.lineChartStuff.DataNodeList;
 
+import javax.xml.crypto.Data;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class InstellingenViewController implements Initializable {
 
     private AccountList accountList;
     private MainController mainController;
-    private LinkedList<DataNodeList> dataNodeLists;
+    private LinkedList<DataNodeList> monthNodeLists;
+    private LinkedList<DataNodeList> yearNodeLists;
     private LinkedList<JarfList> jarfLists;
 
     @FXML
@@ -127,8 +134,11 @@ public class InstellingenViewController implements Initializable {
     public void setMainController(MainController mainController){
         this.mainController = mainController;
     }
-    public void setDataNodeLists(LinkedList<DataNodeList> dataNodeLists) {
-        this.dataNodeLists = dataNodeLists;
+    public void setMonthNodeLists(LinkedList<DataNodeList> monthNodeLists) {
+        this.monthNodeLists = monthNodeLists;
+    }
+    public void setYearNodeLists(LinkedList<DataNodeList> yearNodeLists) {
+        this.yearNodeLists = yearNodeLists;
     }
     public void setJarfLists(LinkedList<JarfList> jarfLists) {
         this.jarfLists = jarfLists;
@@ -155,10 +165,14 @@ public class InstellingenViewController implements Initializable {
 
         mainController.write();
 
-        DataNodeList dataNodeList = new DataNodeList(feut);
+        DataNodeList monthNodeList = new DataNodeList(feut);
         DataNode dataNode = new DataNode(0, 0);
-        dataNodeList.add(dataNode);
-        dataNodeLists.add(dataNodeList);
+        monthNodeList.add(dataNode);
+        monthNodeLists.add(monthNodeList);
+
+        DataNodeList yearNodeList = new DataNodeList(feut);
+        yearNodeList.add(dataNode);
+        yearNodeLists.add(yearNodeList);
 
         JarfList jarfList = new JarfList(feut.getName());
         jarfLists.addLast(jarfList);
@@ -172,9 +186,34 @@ public class InstellingenViewController implements Initializable {
 
     public void makeOld(ActionEvent event) {
         Account newOldDude = null;
+        DataNodeList oldDudeList = null;
         for(int i = 0; i<6; i++) if (event.getSource().equals(uitgestemdList.get(i))) newOldDude = accountList.get(i);
-        for(int i = 0; i<dataNodeLists.size(); i++) if (dataNodeLists.get(i).getDataOwner().equals(newOldDude)) dataNodeLists.remove(i);
+        for(int i = 0; i< monthNodeLists.size(); i++) if (monthNodeLists.get(i).getDataOwner().equals(newOldDude)) monthNodeLists.remove(i);
         for(int i = 0; i<jarfLists.size(); i++) if (jarfLists.get(i).getOwner().equals(newOldDude.getName())) jarfLists.remove(i);
+        for(int i = 0; i<yearNodeLists.size(); i++) if (yearNodeLists.get(i).getDataOwner().equals(newOldDude)) oldDudeList = yearNodeLists.get(i);
+
+        Date currDate = new Date();
+        File file = new File("src/main/resources/files/ZuipStats/" + 1900 + currDate.getYear() + "-ZuipStats.txt");
+        String s = oldDudeList.toWrite();
+        try {
+            if(file.createNewFile()){
+                FileWriter writer = new FileWriter(file);
+                writer.write(s);
+                writer.close();
+            } else {
+                Scanner sc = new Scanner(file);
+                StringBuilder sb = new StringBuilder(s);
+                while (sc.hasNextLine()){
+                    sb.append(sc.nextLine());
+                }
+                sc.close();
+                FileWriter writer = new FileWriter(file);
+                writer.write(sb.toString());
+                writer.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         newOldDude.setOld();
         accountList.sort();

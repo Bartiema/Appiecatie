@@ -1,12 +1,9 @@
 package contollers;
 
-import contollers.extrasStuff.JarfGraphViewController;
+import contollers.extrasStuff.*;
 import contollers.instellingenStuff.BirthDayViewController;
 import contollers.instellingenStuff.InstellingenViewController;
 import contollers.instellingenStuff.TransactionViewController;
-import contollers.extrasStuff.JarfGildeViewController;
-import contollers.extrasStuff.LineChartViewController;
-import contollers.extrasStuff.ExtrasViewController;
 import contollers.turfStuff.BierVerliesViewContoller;
 import contollers.turfStuff.TurfBeerViewController;
 import contollers.turfStuff.TurfKratViewController;
@@ -20,11 +17,13 @@ import javafx.scene.layout.AnchorPane;
 import objects.AccountStuff.AccountList;
 import objects.JarfiniteitStuff.JarfList;
 import objects.MessageList;
-import objects.ScedulingStuff.New.DailyJob;
-import objects.ScedulingStuff.New.MinuteJob;
-import objects.ScedulingStuff.New.MonthlyJob;
-import objects.ScedulingStuff.Old.DayIterator;
-import objects.ScedulingStuff.Old.MonthIterator;
+import objects.ScedulingStuff.Iterators.YearIterator;
+import objects.ScedulingStuff.Jobs.DailyJob;
+import objects.ScedulingStuff.Jobs.MinuteJob;
+import objects.ScedulingStuff.Jobs.MonthlyJob;
+import objects.ScedulingStuff.Iterators.DayIterator;
+import objects.ScedulingStuff.Iterators.MonthIterator;
+import objects.ScedulingStuff.Jobs.YearlyJob;
 import objects.lineChartStuff.DataNodeList;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
@@ -45,7 +44,8 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
     private AccountList accountList;
     private MessageList messages = new MessageList();
-    private LinkedList<DataNodeList> dataNodeLists;
+    private LinkedList<DataNodeList> monthNodeLists;
+    private LinkedList<DataNodeList> yearNodeLists;
     private LinkedList<JarfList> jarfLists;
     private LocalTime timeOfLastAction = LocalTime.now();
     private boolean screenOn = true;
@@ -57,7 +57,8 @@ public class MainController implements Initializable {
     File accountFile = new File("src/main/resources/files/Accounts");
     File messageFile = new File("src/main/resources/files/Messages");
     File transactionFile = new File("src/main/resources/files/Transactions");
-    File LineChartDataFile = new File("src/main/resources/files/LineChartData");
+    File monthChartDataFile = new File("src/main/resources/files/monthChartData");
+    File yearChartDataFile = new File("src/main/resources/files/yearChartData");
     File JarfStatFile = new File("src/main/resources/files/JarfStats");
 
 
@@ -72,6 +73,7 @@ public class MainController implements Initializable {
     FXMLLoader lineChartPageLoader = new FXMLLoader(getClass().getResource("/views/extrasStuff/lineChartView.fxml"));
     FXMLLoader birthDayPageLoader = new FXMLLoader(getClass().getResource("/views/instellingenStuff/birthDayView.fxml"));
     FXMLLoader jarfGraphPageLoader = new FXMLLoader(getClass().getResource("/views/extrasStuff/jarfGraphView.fxml"));
+    FXMLLoader barChartPageLoader = new FXMLLoader(getClass().getResource("/views/extrasStuff/barChartView.fxml"));
 
     //the Panes containing all the extra gui
     private final AnchorPane turfBeerPane = turfBeerPageLoader.load();
@@ -84,6 +86,7 @@ public class MainController implements Initializable {
     private final AnchorPane lineChartPane = lineChartPageLoader.load();
     private final AnchorPane birthDayPane = birthDayPageLoader.load();
     private final AnchorPane jarfGraphPane = jarfGraphPageLoader.load();
+    private final AnchorPane barChartPane = barChartPageLoader.load();
 
     //The controllers of the other Panes
     TurfBeerViewController turfBeerViewController = turfBeerPageLoader.getController();
@@ -96,6 +99,7 @@ public class MainController implements Initializable {
     LineChartViewController lineChartViewController = lineChartPageLoader.getController();
     BirthDayViewController birthDayViewController = birthDayPageLoader.getController();
     JarfGraphViewController jarfGraphViewController = jarfGraphPageLoader.getController();
+    BarChartViewController barChartViewController = barChartPageLoader.getController();
 
 
     //The MessageBoard
@@ -131,7 +135,8 @@ public class MainController implements Initializable {
 
             messages.toRead(messageFile);
 
-            dataNodeLists = DataNodeList.toRead(accountList, LineChartDataFile);
+            monthNodeLists = DataNodeList.toRead(accountList, monthChartDataFile);
+            yearNodeLists = DataNodeList.toRead(accountList, yearChartDataFile);
             jarfLists = JarfList.toRead(JarfStatFile , accountList);
 
         } catch (ParseException | IOException e) {
@@ -157,20 +162,22 @@ public class MainController implements Initializable {
 
         extrasViewController.setAccountList(accountList);
         extrasViewController.setMainController(this);
-        extrasViewController.setDataNodeLists(dataNodeLists);
+        extrasViewController.setDataNodeLists(monthNodeLists);
         extrasViewController.setJarfGildePage(jarfGildePane);
         extrasViewController.setJarfGildeViewController(jarfGildeViewController);
         extrasViewController.setLineChartPage(lineChartPane);
         extrasViewController.setLineChartViewController(lineChartViewController);
         extrasViewController.setJarfGraphPage(jarfGraphPane);
         extrasViewController.setJarfGraphViewController(jarfGraphViewController);
+        extrasViewController.setBarChartPage(barChartPane);
+        extrasViewController.setBarChartViewController(barChartViewController);
 
         bierVerliesViewContoller.setAccountList(accountList);
         bierVerliesViewContoller.setMainController(this);
 
         instellingenViewController.setAccountList(accountList);
         instellingenViewController.setMainController(this);
-        instellingenViewController.setDataNodeLists(dataNodeLists);
+        instellingenViewController.setMonthNodeLists(monthNodeLists);
         instellingenViewController.setJarfLists(jarfLists);
 
         transactionViewController.setAccountList(accountList);
@@ -184,7 +191,8 @@ public class MainController implements Initializable {
         turfKratViewController.setMainController(this);
 
         lineChartViewController.setAccountList(accountList);
-        lineChartViewController.setDataNodeLists(dataNodeLists);
+        lineChartViewController.setMonthNodeLists(monthNodeLists);
+        lineChartViewController.setYearNodeLists(yearNodeLists);
         lineChartViewController.setMainController(this);
 
         birthDayViewController.setAccountList(accountList);
@@ -193,6 +201,10 @@ public class MainController implements Initializable {
         jarfGraphViewController.setAccountList(accountList);
         jarfGraphViewController.setJarfLists(jarfLists);
         jarfGraphViewController.setMainController(this);
+
+        barChartViewController.setAccountList(accountList);
+        barChartViewController.setMainController(this);
+        barChartViewController.setYearNodeLists(yearNodeLists);
 
 
 
@@ -205,7 +217,8 @@ public class MainController implements Initializable {
             JobDataMap data = new JobDataMap();
             data.put("accounts", accountList);
             data.put("controller", this);
-            data.put("dataNodeLists", dataNodeLists);
+            data.put("monthNodeLists", monthNodeLists);
+            data.put("yearNodeLists", yearNodeLists);
             //Data for display procces
             Runtime rt = Runtime.getRuntime();
             JobDataMap dataMap = new JobDataMap();
@@ -217,14 +230,17 @@ public class MainController implements Initializable {
             JobDetail dailyJobDetail = JobBuilder.newJob(DailyJob.class).usingJobData(data).withIdentity("DailyJob","Group1").build();
             JobDetail monthlyJobDetail = JobBuilder.newJob(MonthlyJob.class).usingJobData(data).withIdentity("MonthlyJob","Group2").build();
             JobDetail minuteJobDetail = JobBuilder.newJob(MinuteJob.class).usingJobData(dataMap).withIdentity("MinuteJob","Group3").build();
+            JobDetail yearlyJobDetail = JobBuilder.newJob(YearlyJob.class).usingJobData(data).withIdentity("YearlyJob", "Group4").build();
 
             Trigger dailyTrigger = TriggerBuilder.newTrigger().startAt(new DayIterator().next()).withIdentity("DailyTrigger", "Group1").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInHours(24)).build();
             Trigger monthlyTrigger = TriggerBuilder.newTrigger().startAt(new MonthIterator().next()).withIdentity("MonthlyTrigger", "Group2").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInMonths(1)).build();
             Trigger minuteTrigger = TriggerBuilder.newTrigger().startAt(new Date()).withIdentity("MinuteTrigger", "Group3").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInMinutes(1)).build();
+            Trigger yearlyTrigger = TriggerBuilder.newTrigger().startAt(new YearIterator().next()).withIdentity("YearlyTrigger", "Group4").withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().preserveHourOfDayAcrossDaylightSavings(true).withIntervalInYears(1)).build();
 
             scheduler.scheduleJob(dailyJobDetail, dailyTrigger);
             scheduler.scheduleJob(monthlyJobDetail, monthlyTrigger);
             scheduler.scheduleJob(minuteJobDetail, minuteTrigger);
+            scheduler.scheduleJob(yearlyJobDetail, yearlyTrigger);
         } catch (SchedulerException e) {
             e.printStackTrace();
         }
@@ -296,13 +312,21 @@ public class MainController implements Initializable {
      */
     public void writeDaily() {
         try{
-            FileWriter lineChartWriter = new FileWriter(LineChartDataFile);
+            FileWriter monthChartWriter = new FileWriter(monthChartDataFile);
             StringBuilder s = new StringBuilder();
-            for(DataNodeList d : dataNodeLists){
+            for(DataNodeList d : monthNodeLists){
                 s.append(d.toWrite());
             }
-            lineChartWriter.write(s.toString());
-            lineChartWriter.close();
+            monthChartWriter.write(s.toString());
+            monthChartWriter.close();
+
+            FileWriter yearChartWriter = new FileWriter(yearChartDataFile);
+            StringBuilder sr = new StringBuilder();
+            for (DataNodeList d : yearNodeLists){
+                s.append(d.toWrite());
+            }
+            yearChartWriter.write(sr.toString());
+            yearChartWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,4 +1,4 @@
-package objects.ScedulingStuff.New;
+package objects.ScedulingStuff.Jobs;
 
 import contollers.MainController;
 import objects.AccountStuff.AccountList;
@@ -17,10 +17,10 @@ public class MonthlyJob implements Job {
         JobDataMap data = context.getMergedJobDataMap();
         AccountList accounts = (AccountList) data.get("accounts");
         MainController controller = (MainController) data.get("controller");
-        LinkedList<DataNodeList> dataNodeLists = (LinkedList<DataNodeList>) data.get("dataNodeLists");
+        LinkedList<DataNodeList> monthNodeLists = (LinkedList<DataNodeList>) data.get("monthNodeLists");
 
         accounts.updateMonth();
-        for(DataNodeList d : dataNodeLists){
+        for(DataNodeList d : monthNodeLists){
             d.removeAll();
             d.add(new DataNode(0,0));
         }
