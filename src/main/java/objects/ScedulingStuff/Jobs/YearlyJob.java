@@ -30,6 +30,9 @@ public class YearlyJob implements Job {
             StringBuilder s = new StringBuilder();
             for (DataNodeList d: yearNodeList){
                 s.append(d.toWrite());
+
+                d.removeAll();
+                d.add(new DataNode(0,0));
             }
 
             try {
