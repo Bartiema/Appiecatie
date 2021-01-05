@@ -323,7 +323,7 @@ public class MainController implements Initializable {
             FileWriter yearChartWriter = new FileWriter(yearChartDataFile);
             StringBuilder sr = new StringBuilder();
             for (DataNodeList d : yearNodeLists){
-                s.append(d.toWrite());
+                sr.append(d.toWrite());
             }
             yearChartWriter.write(sr.toString());
             yearChartWriter.close();
