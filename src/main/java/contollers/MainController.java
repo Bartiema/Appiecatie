@@ -49,6 +49,7 @@ public class MainController implements Initializable {
     private LinkedList<JarfList> jarfLists;
     private LocalTime timeOfLastAction = LocalTime.now();
     private boolean screenOn = true;
+    private Runtime rt = Runtime.getRuntime();
 
 
     private Random random = new Random();
@@ -220,7 +221,6 @@ public class MainController implements Initializable {
             data.put("monthNodeLists", monthNodeLists);
             data.put("yearNodeLists", yearNodeLists);
             //Data for display procces
-            Runtime rt = Runtime.getRuntime();
             JobDataMap dataMap = new JobDataMap();
             dataMap.put("runtime", rt);
             dataMap.put("screen", screenOn);
@@ -341,6 +341,16 @@ public class MainController implements Initializable {
             }
             jarfStatWriter.write(s.toString());
             jarfStatWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void screenOff(ActionEvent event){
+        try {
+            Process process = rt.exec("xset dpms force off");
+            screenOn = false;
+            System.out.println("off");
         } catch (IOException e) {
             e.printStackTrace();
         }
