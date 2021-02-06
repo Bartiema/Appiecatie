@@ -212,7 +212,7 @@ public class AccountList implements Iterable<Account>{
     }
 
     public boolean containsBasedOnName(String name) {
-        for(Account a : accounts) if (!a.isOld() && a.getName().equals(name)) return true;
+        for(Account a : accounts) if (a.getName().equals(name)) return true;
         return false;
     }
 

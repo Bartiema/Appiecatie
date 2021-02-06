@@ -54,8 +54,13 @@ public class BarChartViewController implements Initializable {
 
     public void setData() {
         int currYear = new Date().getYear();
-        yearSlider.setMax(currYear - 120);
-        yearSlider.setMajorTickUnit(1);
+        yearSlider.setMax(currYear);
+        yearSlider.setMin(121.0);
+        yearSlider.setMajorTickUnit(2.0);
+        yearSlider.setMinorTickCount(1);
+        yearSlider.setBlockIncrement(1);
+        yearSlider.setValue(yearSlider.getMax());
+        yearSlider.setSnapToTicks(true);
         makeBarChart(yearNodeLists);
     }
 
@@ -81,9 +86,14 @@ public class BarChartViewController implements Initializable {
             int prevMonths = 0;
             for (int i = 0; i < 12; i++) {
                 Date date = monthIterator.next();
-                int drankThatMonth = d.getDrankOnDate(Integer.parseInt(mat.format(date))) - prevMonths;
-                prevMonths = d.getDrankOnDate(Integer.parseInt(mat.format(date)));
-                series.getData().add(new XYChart.Data<String, Integer>(format.format(date) , drankThatMonth));
+                if(d.getDrankOnDate(Integer.parseInt(mat.format(date))) == 0) {
+                    prevMonths = 0;
+                    series.getData().add(new XYChart.Data<String, Integer>(format.format(date) , 0));
+                } else {
+                    int drankThatMonth = d.getDrankOnDate(Integer.parseInt(mat.format(date))) - prevMonths;
+                    prevMonths = d.getDrankOnDate(Integer.parseInt(mat.format(date)));
+                    series.getData().add(new XYChart.Data<String, Integer>(format.format(date), drankThatMonth));
+                }
             }
             barChart.getData().add(series);
         }
@@ -93,10 +103,11 @@ public class BarChartViewController implements Initializable {
         container.getChildren().add(barChart);    }
 
     public void yearUpdate() throws FileNotFoundException, ParseException {
-        if(yearSlider.getValue() == 0) makeBarChart(yearNodeLists);
+        int currYear = new Date().getYear();
+        System.out.println(yearSlider.getValue());
+        if(yearSlider.getValue() == currYear) makeBarChart(yearNodeLists);
         else {
-            int currYear = new Date().getYear();
-            File yearFile = new File("src/main/resources/files/ZuipStats/" + ( 1900 + currYear - yearSlider.getValue()) + "-ZuipStats.txt");
+            File yearFile = new File("src/main/resources/files/ZuipStats/" + (int)(1900 + yearSlider.getValue()) + "-ZuipStats.txt");
             LinkedList<DataNodeList> yearList = DataNodeList.toRead(accountList, yearFile);
             makeBarChart(yearList);
         }

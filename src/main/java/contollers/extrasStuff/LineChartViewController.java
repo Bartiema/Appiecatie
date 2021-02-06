@@ -92,8 +92,12 @@ public class LineChartViewController implements Initializable {
         yearSlider.setDisable(false);
         yearSlider.setOpacity(100);
         int currYear = new Date().getYear();
-        yearSlider.setMax(currYear - 120);
-        yearSlider.setMajorTickUnit(1);
+        yearSlider.setMax(currYear);
+        yearSlider.setMin(121.0);
+        yearSlider.setMajorTickUnit(2.0);
+        yearSlider.setMinorTickCount(1);
+        yearSlider.setBlockIncrement(1);
+        yearSlider.setValue(yearSlider.getMax());
 
         NumberAxis YAxis = new NumberAxis();
         YAxis.setLabel("Hoeveelheid bier gezopen");
@@ -134,33 +138,35 @@ public class LineChartViewController implements Initializable {
     }
 
     public void yearUpdate() throws FileNotFoundException, ParseException {
-        if(yearSlider.getValue() == 0) setDataYear();
-        if(!container.getChildren().isEmpty()) container.getChildren().remove(0);
-
-        NumberAxis YAxis = new NumberAxis();
-        YAxis.setLabel("Hoeveelheid bier gezopen");
-        NumberAxis XAxis = new NumberAxis();
-        XAxis.setLabel("Hoeveelste dag in Jaar");
-        XAxis.setAutoRanging(false);
-        XAxis.setTickUnit(1);
-        XAxis.setUpperBound(366);
-        YAxis.setLowerBound(1);
-
         int currYear = new Date().getYear();
-        File yearFile = new File("src/main/resources/files/ZuipStats/" + ( 1900 + currYear - yearSlider.getValue()) + "-ZuipStats.txt");
-        LinkedList<DataNodeList> lists = DataNodeList.toRead(accountList, yearFile);
+        System.out.println(yearSlider.getValue());
+        if(!container.getChildren().isEmpty()) container.getChildren().remove(0);
+        if(yearSlider.getValue() == currYear+1) setDataYear();
+        else {
+            NumberAxis YAxis = new NumberAxis();
+            YAxis.setLabel("Hoeveelheid bier gezopen");
+            NumberAxis XAxis = new NumberAxis();
+            XAxis.setLabel("Hoeveelste dag in Jaar");
+            XAxis.setAutoRanging(false);
+            XAxis.setTickUnit(1);
+            XAxis.setUpperBound(366);
+            YAxis.setLowerBound(1);
 
-        LineChart lineChart = new LineChart(XAxis, YAxis);
+            File yearFile = new File("src/main/resources/files/ZuipStats/" + (int)(1900 + yearSlider.getValue()) + "-ZuipStats.txt");
+            LinkedList<DataNodeList> lists = DataNodeList.toRead(accountList, yearFile);
 
-        for(DataNodeList d : lists){
-            XYChart.Series series = d.getXYChartSeries();
-            lineChart.getData().add(series);
+            LineChart lineChart = new LineChart(XAxis, YAxis);
 
+            for (DataNodeList d : lists) {
+                XYChart.Series series = d.getXYChartSeries();
+                lineChart.getData().add(series);
+
+            }
+
+            lineChart.setMinHeight(670);
+
+
+            container.getChildren().add(lineChart);
         }
-
-        lineChart.setMinHeight(670);
-
-
-        container.getChildren().add(lineChart);
     }
 }

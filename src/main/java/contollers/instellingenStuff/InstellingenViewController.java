@@ -190,10 +190,13 @@ public class InstellingenViewController implements Initializable {
         for(int i = 0; i<6; i++) if (event.getSource().equals(uitgestemdList.get(i))) newOldDude = accountList.get(i);
         for(int i = 0; i< monthNodeLists.size(); i++) if (monthNodeLists.get(i).getDataOwner().equals(newOldDude)) monthNodeLists.remove(i);
         for(int i = 0; i<jarfLists.size(); i++) if (jarfLists.get(i).getOwner().equals(newOldDude.getName())) jarfLists.remove(i);
-        for(int i = 0; i<yearNodeLists.size(); i++) if (yearNodeLists.get(i).getDataOwner().equals(newOldDude)) oldDudeList = yearNodeLists.get(i);
+        for(int i = 0; i<yearNodeLists.size(); i++) if (yearNodeLists.get(i).getDataOwner().equals(newOldDude)) {
+            oldDudeList = yearNodeLists.get(i);
+            yearNodeLists.remove(i);
+        }
 
         Date currDate = new Date();
-        File file = new File("src/main/resources/files/ZuipStats/" + 1900 + currDate.getYear() + "-ZuipStats.txt");
+        File file = new File("src/main/resources/files/ZuipStats/" + (1900 + currDate.getYear()) + "-ZuipStats.txt");
         String s = oldDudeList.toWrite();
         try {
             if(file.createNewFile()){
