@@ -180,6 +180,7 @@ public class MainController implements Initializable {
         instellingenViewController.setMainController(this);
         instellingenViewController.setMonthNodeLists(monthNodeLists);
         instellingenViewController.setJarfLists(jarfLists);
+        instellingenViewController.setYearNodeLists(yearNodeLists);
 
         transactionViewController.setAccountList(accountList);
         transactionViewController.setMainController(this);
@@ -350,7 +351,6 @@ public class MainController implements Initializable {
         try {
             Process process = rt.exec("xset dpms force off");
             screenOn = false;
-            System.out.println("off");
         } catch (IOException e) {
             e.printStackTrace();
         }
