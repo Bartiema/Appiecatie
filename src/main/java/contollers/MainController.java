@@ -54,11 +54,11 @@ public class MainController implements Initializable {
     private Random random = new Random();
     private int HJcounter = random.nextInt(999);
 
-    File accountFile = new File("src/main/resources/files/Accounts");
+    File accountFile = new File("src/main/resources/files/HuisGenoten");
     File messageFile = new File("src/main/resources/files/Messages");
     File transactionFile = new File("src/main/resources/files/Transactions");
     File monthChartDataFile = new File("src/main/resources/files/monthChartData");
-    File yearChartDataFile = new File("src/main/resources/files/yearChartData");
+    File yearChartDataFile = new File("src/main/resources/files/ThisYearStats");
     File JarfStatFile = new File("src/main/resources/files/JarfStats");
 
 

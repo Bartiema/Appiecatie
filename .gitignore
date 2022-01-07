@@ -3,13 +3,10 @@
 build
 
 # Secret data files
-src/main/resources/files/Accounts
-src/main/resources/files/Transactions
-src/main/resources/files/LineChartData
 src/main/resources/files/JarfStats
-src/main/resources/files/monthChartData
-src/main/resources/files/yearChartData
+src/main/resources/files/ThisYearStats
 src/main/resources/files/ZuipStats
+src/main/resources/files/GenotenStats
 
 #other stuff
 out
