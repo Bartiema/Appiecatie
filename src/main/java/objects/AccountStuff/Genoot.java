@@ -1,6 +1,9 @@
 package objects.AccountStuff;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Genoot {
@@ -25,6 +28,13 @@ public class Genoot {
         this.drankPerMonth = 0;
     }
 
+    /**
+     * Constructor for reading from file
+     * @param name name of person
+     * @param drankTotal total drank by person
+     * @param joinedHouse date of joining house
+     * @param birthDay date of birth
+     */
     public Genoot(String name, int drankTotal, Date joinedHouse, Date birthDay){
         this.name = name;
         this.drankTotal = drankTotal;
@@ -96,5 +106,20 @@ public class Genoot {
 
         double totalMonth = differenceMonth + 12*differenceYear;
         return drankTotal/totalMonth;
+    }
+
+    public Genoot toRead(Scanner scan) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
+        String name = scan.next();
+        int drankTotal = scan.nextInt();
+        Date birthDay = format.parse(scan.next());
+        Date joinedHouse = format.parse(scan.next());
+        return new Genoot(name, drankTotal, joinedHouse, birthDay);
+    }
+
+    public String toWrite() {
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        return this.name + " - " + this.drankTotal + " - " + format.format(this.birthDay) + " - " + format.format(this.joinedHouse);
     }
 }

@@ -1,6 +1,8 @@
 package objects.AccountStuff;
 
+import java.text.ParseException;
 import java.util.Date;
+import java.util.Scanner;
 
 public class HuisGenoot extends Genoot{
     private int stock;
@@ -29,5 +31,33 @@ public class HuisGenoot extends Genoot{
     public HuisGenoot(String name, int drankTotal, Date joinedHouse, Date birthDay, int stock) {
         super(name, drankTotal, joinedHouse, birthDay);
         this.stock = stock;
+    }
+
+    public int getStock(){
+        return this.stock;
+    }
+
+    public void setStock(int stock){
+        this.stock = stock;
+    }
+
+    public TransactionList getTransactionList(){
+        return this.transactionList;
+    }
+
+    public void setTransactionList(TransactionList transactionList){
+        this.transactionList = transactionList;
+    }
+
+    public HuisGenoot toRead(String line) throws ParseException {
+        Scanner scan = new Scanner(line).useDelimiter(" - ");
+        HuisGenoot huisGenoot = (HuisGenoot) super.toRead(scan);
+        huisGenoot.setStock(scan.nextInt());
+        scan.close();
+        return huisGenoot;
+    }
+
+    public String toWrite() {
+        return super.toWrite() + " - " + this.stock;
     }
 }
