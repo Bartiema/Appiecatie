@@ -14,45 +14,4 @@ public class TransactionList {
         transactions = new LinkedList<>();
     }
 
-    public void add(Transaction transaction){
-        transactions.addFirst(transaction);
-        if(size()>200) transactions.removeLast();
-    }
-
-    public int size() {
-        return transactions.size();
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder s = new StringBuilder();
-        for(Transaction t : transactions){
-            s.append(t.toString()).append("\n");
-        }
-        return s.toString();
-    }
-
-    public String toWrite() {
-        StringBuilder s = new StringBuilder();
-        for(Transaction t : transactions){
-            s.append(t.toWrite()).append("\n");
-        }
-        return s.toString();
-    }
-
-    public void toRead(File file , AccountList accounts) throws FileNotFoundException, ParseException {
-        Scanner scanner = new Scanner(file);
-        while(scanner.hasNextLine()){
-            this.add(Transaction.toRead(scanner.nextLine(), accounts));
-        }
-        scanner.close();
-    }
-
-    public List<Transaction> getAll() {
-        return this.transactions;
-    }
-
-    public void sort(){
-        transactions.sort(Transaction::compareTo);
-    }
 }
