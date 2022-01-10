@@ -86,4 +86,11 @@ public class GenotenList {
         }
         return res.toString();
     }
+
+    public boolean containsBasedOnName(String s){
+        for (Genoot g: genotenlist){
+            if (g.getName().equals(s)) return true;
+        }
+        return false;
+    }
 }

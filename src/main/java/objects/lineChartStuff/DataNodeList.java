@@ -1,8 +1,8 @@
 package objects.lineChartStuff;
 
 import javafx.scene.chart.XYChart;
-import objects.AccountStuff.Account;
-import objects.AccountStuff.AccountList;
+import objects.AccountStuff.Genoot;
+import objects.AccountStuff.GenotenList;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,10 +12,10 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class DataNodeList {
-    private Account dataOwner;
+    private Genoot dataOwner;
     private LinkedList<DataNode> dataNodes;
 
-    public Account getDataOwner() {
+    public Genoot getDataOwner() {
         return dataOwner;
     }
 
@@ -23,7 +23,7 @@ public class DataNodeList {
         return dataNodes;
     }
 
-    public DataNodeList(Account account) {
+    public DataNodeList(Genoot account) {
         this.dataOwner = account;
         dataNodes = new LinkedList<>();
     }
@@ -41,7 +41,7 @@ public class DataNodeList {
         return s1.toString();
     }
 
-    public static LinkedList<DataNodeList> toRead(AccountList accountList, File file) throws FileNotFoundException, ParseException {
+    public static LinkedList<DataNodeList> toRead(GenotenList accountList, File file) throws FileNotFoundException, ParseException {
         Scanner scanner = new Scanner(file);
         LinkedList<DataNodeList> res = new LinkedList<>();
         DataNodeList dataNodeList = null;
@@ -52,7 +52,7 @@ public class DataNodeList {
 
             if(accountList.containsBasedOnName(s)){
                 if(dataNodeList!=null) res.add(dataNodeList);
-                for(Account a : accountList) if (s.equals(a.getName())) dataNodeList = new DataNodeList(a);
+                for(Genoot a : accountList.getGenotenlist()) if (s.equals(a.getName())) dataNodeList = new DataNodeList(a);
             } else {
                 dataNodeList.add(DataNode.toRead(s));
             }

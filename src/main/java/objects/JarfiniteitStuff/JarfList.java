@@ -1,7 +1,7 @@
 package objects.JarfiniteitStuff;
 
 import javafx.scene.chart.XYChart;
-import objects.AccountStuff.AccountList;
+import objects.AccountStuff.GenotenList;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -61,7 +61,7 @@ public class JarfList {
        }
     }
 
-    public static LinkedList<JarfList> toRead(File file, AccountList accounts) throws FileNotFoundException, ParseException {
+    public static LinkedList<JarfList> toRead(File file, GenotenList accounts) throws FileNotFoundException, ParseException {
         LinkedList<JarfList> res = new LinkedList<>();
         Scanner sc = new Scanner(file);
         JarfList jarfList = null;
