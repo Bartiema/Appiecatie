@@ -93,4 +93,14 @@ public class GenotenList {
         }
         return false;
     }
+
+    public void calculateBierVerlies(int actualStock, boolean[] selectedAccounts, int nrHuisGenoten) {
+        int losspp = (totalStock - actualStock)/nrHuisGenoten;
+        for (int i = 0; i < 6; i++) {
+            if(selectedAccounts[i]) {
+                HuisGenoot h = (HuisGenoot) genotenlist.get(i);
+                h.bierVerlies(losspp);
+            }
+        }
+    }
 }

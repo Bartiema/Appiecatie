@@ -14,4 +14,7 @@ public class TransactionList {
         transactions = new LinkedList<>();
     }
 
+    public void add(Transaction transaction) {
+        transactions.add(transaction);
+    }
 }

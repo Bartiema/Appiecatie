@@ -63,4 +63,9 @@ public class HuisGenoot extends Genoot{
         calculatePerDay();
         calculatePerMonth();
     }
+
+    public void bierVerlies(int losspp) {
+        transactionList.add(new Transaction(5, stock, stock - losspp));
+        this.stock -= losspp;
+    }
 }

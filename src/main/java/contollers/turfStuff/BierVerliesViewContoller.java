@@ -10,8 +10,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import objects.AccountStuff.Account;
-import objects.AccountStuff.AccountList;
+import objects.AccountStuff.Genoot;
+import objects.AccountStuff.GenotenList;
+import objects.AccountStuff.HuisGenoot;
 import objects.AudioOutputOverHead;
 
 import java.net.URL;
@@ -19,10 +20,10 @@ import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class BierVerliesViewContoller implements Initializable {
-    private AccountList accountList;
+    private GenotenList accountList;
     private MainController mainController;
 
-    private LinkedList<Account> selectedAccounts = new LinkedList<Account>();
+    private boolean[] selectedAccounts;
 //TODO reformat this shit
 
     @FXML
@@ -104,7 +105,7 @@ public class BierVerliesViewContoller implements Initializable {
 
     }
 
-    public void setAccountList(AccountList accountList){
+    public void setAccountList(GenotenList accountList){
         this.accountList = accountList;
     }
     public void setMainController(MainController mainController){
@@ -120,8 +121,8 @@ public class BierVerliesViewContoller implements Initializable {
         nameLabel5.setText(accountList.get(5).getName());
         totalStock.setText(String.valueOf(accountList.getTotalStock()));
 
-        selectedAccounts = new LinkedList<Account>();
-        for(int i = 0; i<6; i++) selectedAccounts.add(null);
+        selectedAccounts = new boolean[6];
+        for(int i = 0; i<6; i++) selectedAccounts[i] = false;
 
         krattenPane.setBorder(new Border(new BorderStroke(Paint.valueOf("000000") , BorderStrokeStyle.SOLID, null, BorderWidths.DEFAULT)));
         pintenPane.setBorder(new Border(new BorderStroke(Paint.valueOf("ffffff") , BorderStrokeStyle.SOLID, null, BorderWidths.DEFAULT)));
@@ -178,7 +179,7 @@ public class BierVerliesViewContoller implements Initializable {
     }
 
     public void everyoneButton(ActionEvent event){
-        for(int i = 0; i<6; i++) selectedAccounts.set(i, accountList.get(i));
+        for(int i = 0; i<6; i++) selectedAccounts[i] = true;
         namePane0.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
         namePane1.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
         namePane2.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
@@ -191,51 +192,51 @@ public class BierVerliesViewContoller implements Initializable {
     public void namePanePress(MouseEvent mouseEvent) {
         Pane pressed = (Pane)mouseEvent.getSource();
         if(pressed.equals(namePane0)){
-            if(selectedAccounts.get(0)!=null){
-                selectedAccounts.set(0, null);
+            if(selectedAccounts[0]){
+                selectedAccounts[0] = false;
                 namePane0.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
             } else {
-                selectedAccounts.set(0, accountList.get(0));
+                selectedAccounts[0] = true;
                 namePane0.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
             }
         } else if(pressed.equals(namePane1)){
-            if(selectedAccounts.get(1)!=null){
-                selectedAccounts.set(1, null);
+            if(selectedAccounts[1]){
+                selectedAccounts[1] = false;
                 namePane1.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
             } else {
-                selectedAccounts.set(1, accountList.get(1));
+                selectedAccounts[1] = true;
                 namePane1.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
             }
         } else if(pressed.equals(namePane2)){
-            if(selectedAccounts.get(2)!=null){
-                selectedAccounts.set(2, null);
+            if(selectedAccounts[2]){
+                selectedAccounts[2] = false;
                 namePane2.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
             } else {
-                selectedAccounts.set(2, accountList.get(2));
+                selectedAccounts[2] = true;
                 namePane2.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
             }
         } else if(pressed.equals(namePane3)){
-            if(selectedAccounts.get(3)!=null){
-                selectedAccounts.set(3, null);
+            if(selectedAccounts[3]){
+                selectedAccounts[3] = false;
                 namePane3.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
             } else {
-                selectedAccounts.set(3, accountList.get(3));
+                selectedAccounts[3] = true;
                 namePane3.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
             }
         } else if(pressed.equals(namePane4)){
-            if(selectedAccounts.get(4)!=null){
-                selectedAccounts.set(4, null);
+            if(selectedAccounts[4]){
+                selectedAccounts[4] = false;
                 namePane4.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
             } else {
-                selectedAccounts.set(4, accountList.get(4));
+                selectedAccounts[4] = true;
                 namePane4.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
             }
         } else if(pressed.equals(namePane5)){
-            if(selectedAccounts.get(5)!=null){
-                selectedAccounts.set(5, null);
+            if(selectedAccounts[5]){
+                selectedAccounts[5] = false;
                 namePane5.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
             } else {
-                selectedAccounts.set(5, accountList.get(5));
+                selectedAccounts[5] = true;
                 namePane5.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
             }
         }
@@ -243,15 +244,11 @@ public class BierVerliesViewContoller implements Initializable {
     }
 
     public void confirmBierverlies(ActionEvent event){
-        selectedAccounts.remove(null);
-        selectedAccounts.remove(null);
-        selectedAccounts.remove(null);
-        selectedAccounts.remove(null);
-        selectedAccounts.remove(null);
-        selectedAccounts.remove(null);
-        if(selectedAccounts.size()==0) return;
-
-
+        int nrHuisGenoten = 0;
+        for (int i = 0; i < 6; i++) {
+            if(selectedAccounts[i]) nrHuisGenoten++;
+        }
+        if (nrHuisGenoten == 0) return;
         int nrKratten = 0;
         int nrPinten = 0;
         if(!krattenField.getText().equals("")){
@@ -261,9 +258,9 @@ public class BierVerliesViewContoller implements Initializable {
         }
         int actualStock = nrKratten*24 + nrPinten;
 
-        accountList.calculateBierVerlies(actualStock,selectedAccounts);
-        accountList.updateAll();
-        accountList.updateTotalStock();
+        accountList.calculateBierVerlies(actualStock, selectedAccounts, nrHuisGenoten);
+        accountList.tableUpdate();
+        accountList.setTotalStock();
 
         namePane0.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         namePane1.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
@@ -272,8 +269,7 @@ public class BierVerliesViewContoller implements Initializable {
         namePane4.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         namePane5.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
 
-        selectedAccounts = new LinkedList<Account>();
-        for(int i = 0; i<6; i++) selectedAccounts.add(null);
+        for(int i = 0; i<6; i++) selectedAccounts[i] = false;
 
         totalStock.setText(String.valueOf(accountList.getTotalStock()));
         krattenField.setText("");
