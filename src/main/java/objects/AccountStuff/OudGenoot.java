@@ -45,13 +45,11 @@ public class OudGenoot extends Genoot{
         return getDrankTotal()/totalMonth;
     }
 
-    public OudGenoot toRead(String line) throws ParseException {
+    public static OudGenoot toRead(Scanner scan) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 
-        Scanner scan = new Scanner(line).useDelimiter(" - ");
-        OudGenoot oudGenoot = (OudGenoot) super.toRead(scan);
+        OudGenoot oudGenoot = (OudGenoot) Genoot.toRead(scan);
         oudGenoot.setLeftHouse(format.parse(scan.next()));
-        scan.close();
         return oudGenoot;
     }
 

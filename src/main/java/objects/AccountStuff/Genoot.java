@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class Genoot {
+public class Genoot implements Comparable<Genoot> {
     private String name;
     private int drankTotal;
     private Date joinedHouse;
@@ -108,7 +108,7 @@ public class Genoot {
         return drankTotal/totalMonth;
     }
 
-    public Genoot toRead(Scanner scan) throws ParseException {
+    public static Genoot toRead(Scanner scan) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 
         String name = scan.next();
@@ -121,5 +121,10 @@ public class Genoot {
     public String toWrite() {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         return this.name + " - " + this.drankTotal + " - " + format.format(this.birthDay) + " - " + format.format(this.joinedHouse);
+    }
+
+    @Override
+    public int compareTo(Genoot g){
+        return joinedHouse.compareTo(g.joinedHouse);
     }
 }

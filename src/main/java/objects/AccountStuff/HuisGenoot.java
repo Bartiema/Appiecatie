@@ -49,15 +49,18 @@ public class HuisGenoot extends Genoot{
         this.transactionList = transactionList;
     }
 
-    public HuisGenoot toRead(String line) throws ParseException {
-        Scanner scan = new Scanner(line).useDelimiter(" - ");
-        HuisGenoot huisGenoot = (HuisGenoot) super.toRead(scan);
+    public static HuisGenoot toRead(Scanner scan) throws ParseException {
+        HuisGenoot huisGenoot = (HuisGenoot) Genoot.toRead(scan);
         huisGenoot.setStock(scan.nextInt());
-        scan.close();
         return huisGenoot;
     }
 
     public String toWrite() {
         return super.toWrite() + " - " + this.stock;
+    }
+
+    public void update() {
+        calculatePerDay();
+        calculatePerMonth();
     }
 }
