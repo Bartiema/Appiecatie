@@ -10,17 +10,15 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import objects.AccountStuff.AccountList;
+import objects.AccountStuff.GenotenList;
+import objects.AccountStuff.HuisGenoot;
 import objects.AudioOutputOverHead;
 
 import java.net.URL;
-import java.util.LinkedList;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class TurfKratViewController implements Initializable {
-    private AccountList accountList;
+    private GenotenList accountList;
     private MainController mainController;
     //The Names and Stocks of the Bierview
     private LinkedList<Label> accountNameList = new LinkedList<>();
@@ -135,7 +133,7 @@ public class TurfKratViewController implements Initializable {
         misKratButtonList.add(misKrat5);
     }
 
-    public void setAccountList(AccountList accountList){
+    public void setAccountList(GenotenList accountList){
         this.accountList = accountList;
     }
     public void setMainController(MainController controller){
@@ -153,7 +151,10 @@ public class TurfKratViewController implements Initializable {
      * a method setting all the Stocks in the view
      */
     public void setAllStocks(){
-        for(int i = 0; i<6;i++) accountStockList.get(i).setText(String.valueOf(accountList.get(i).getStock()));
+        for(int i = 0; i<6;i++) {
+            HuisGenoot h = (HuisGenoot) accountList.get(i);
+            accountStockList.get(i).setText(String.valueOf(h.getStock()));
+        }
         totalStock.setText(String.valueOf(accountList.getTotalStock()));
         setPositiveTimer();
     }
@@ -165,8 +166,9 @@ public class TurfKratViewController implements Initializable {
         mainController.resetMessageBoard();
         for(int i = 0; i<6 ; i++){
             if(event.getSource().equals(misKratButtonList.get(i))){
-                accountList.misKrat(i);
-                accountStockList.get(i).setText(String.valueOf(accountList.get(i).getStock()));
+                HuisGenoot h = (HuisGenoot) accountList.get(i);
+                h.kratMisTurf();
+                accountStockList.get(i).setText(String.valueOf(h.getStock()));
             }
         }
         mainController.getMessageBoard().setText("Zieke mega-feut die je bent");
@@ -186,8 +188,9 @@ public class TurfKratViewController implements Initializable {
         mainController.resetMessageBoard();
         for( int i = 0; i<6; i++){
             if(event.getSource().equals(kratKoopButtonList.get(i))){
-                accountList.kratKoop(i);
-                accountStockList.get(i).setText(String.valueOf(accountList.get(i).getStock()));
+                HuisGenoot h = (HuisGenoot) accountList.get(i);
+                h.kratTurf();
+                accountStockList.get(i).setText(String.valueOf(h.getStock()));
             }
         }
         mainController.getMessageBoard().setText("Mooie lul die je bent");
@@ -207,8 +210,9 @@ public class TurfKratViewController implements Initializable {
         Background redBackground = new Background(new BackgroundFill(Color.RED, null, null));
         Background whiteBackground = new Background(new BackgroundFill(Color.WHITE, null, null));
         for(int i = 0; i<6; i++){
-            if(accountList.get(i).getStock()>=0) accountPaneList.get(i).setBackground(whiteBackground);
-            if(accountList.get(i).getStock()<0) accountPaneList.get(i).setBackground(redBackground);
+            HuisGenoot h = (HuisGenoot) accountList.get(i);
+            if(h.getStock()>=0) accountPaneList.get(i).setBackground(whiteBackground);
+            if(h.getStock()<0) accountPaneList.get(i).setBackground(redBackground);
         }
     }
 

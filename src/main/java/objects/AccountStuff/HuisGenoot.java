@@ -67,13 +67,26 @@ public class HuisGenoot extends Genoot{
     public void bierVerlies(int losspp) {
         transactionList.add(new Transaction(5, stock, stock - losspp));
         this.stock -= losspp;
+        setDrankTotal(getDrankTotal()+losspp);
     }
 
     public void beerTurf() {
         transactionList.add(new Transaction(1, stock, stock--));
+        setDrankTotal(getDrankTotal()+1);
     }
 
     public void beerMisTurf() {
         transactionList.add(new Transaction(2, stock, stock++));
+        setDrankTotal(getDrankTotal()-1);
+    }
+
+    public void kratTurf() {
+        transactionList.add(new Transaction(3, stock, stock + 24));
+        stock += 24;
+    }
+
+    public void kratMisTurf() {
+        transactionList.add(new Transaction(4, stock , stock-24));
+        stock -= 24;
     }
 }
