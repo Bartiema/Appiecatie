@@ -68,4 +68,12 @@ public class HuisGenoot extends Genoot{
         transactionList.add(new Transaction(5, stock, stock - losspp));
         this.stock -= losspp;
     }
+
+    public void beerTurf() {
+        transactionList.add(new Transaction(1, stock, stock--));
+    }
+
+    public void beerMisTurf() {
+        transactionList.add(new Transaction(2, stock, stock++));
+    }
 }

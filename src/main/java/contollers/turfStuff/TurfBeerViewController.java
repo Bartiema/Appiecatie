@@ -6,12 +6,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import objects.AccountStuff.AccountList;
+import objects.AccountStuff.GenotenList;
+import objects.AccountStuff.HuisGenoot;
 import objects.AudioOutputOverHead;
 
 import java.net.URL;
@@ -22,11 +22,8 @@ import java.util.TimerTask;
 
 public class TurfBeerViewController implements Initializable {
 
-    private AccountList accountList;
+    private GenotenList accountList;
     private MainController mainController;
-    //Zuiplevel slider
-    @FXML
-    private Slider levelSlider;
 
     //The Names and Stocks of the Bierview
     private LinkedList<Label> accountNameList = new LinkedList<>();
@@ -146,7 +143,7 @@ public class TurfBeerViewController implements Initializable {
         misBeerButtonList.add(misBeer5);
     }
 
-    public void setAccountList(AccountList accountList){
+    public void setAccountList(GenotenList accountList){
         this.accountList = accountList;
     }
     public void setMainController(MainController controller){
@@ -164,7 +161,10 @@ public class TurfBeerViewController implements Initializable {
      * a method setting all the Stocks in the view
      */
     public void setAllStocks(){
-        for(int i = 0; i<6;i++) accountStockList.get(i).setText(String.valueOf(accountList.get(i).getStock()));
+        for(int i = 0; i<6;i++) {
+            HuisGenoot h = (HuisGenoot) accountList.get(i);
+            accountStockList.get(i).setText(String.valueOf(h.getStock()));
+        }
         totalStock.setText(String.valueOf(accountList.getTotalStock()));
         HJlabel.setText(String.valueOf(mainController.getHJcounter()));
         setPositiveTimer();
@@ -178,12 +178,12 @@ public class TurfBeerViewController implements Initializable {
         mainController.resetMessageBoard();
         for(int i = 0; i<6 ; i++){
             if(event.getSource().equals(beerDrankButtonList.get(i))){
-                accountList.beerDrank(i);
-                if(accountList.get(i).getStock()<0)  mainController.getMessageBoard().setText("Ga bier kopen met je hoofd");
-                accountStockList.get(i).setText(String.valueOf(accountList.get(i).getStock()));
+                HuisGenoot h = (HuisGenoot) accountList.get(i);
+                h.beerTurf();
+                if(h.getStock()<0)  mainController.getMessageBoard().setText("Ga bier kopen met je hoofd");
+                accountStockList.get(i).setText(String.valueOf(h.getStock()));
             }
         }
-        if(mainController.randomise((int)levelSlider.getValue())) mainController.getMessageBoard().setText("Trek een Spies Amice");
         totalStock.setText(String.valueOf(accountList.getTotalStock()));
 
         mainController.write();
@@ -201,8 +201,9 @@ public class TurfBeerViewController implements Initializable {
         mainController.resetMessageBoard();
         for(int i = 0; i<6 ; i++){
             if(event.getSource().equals(misBeerButtonList.get(i))){
-                accountList.misBeer(i);
-                accountStockList.get(i).setText(String.valueOf(accountList.get(i).getStock()));
+                HuisGenoot h = (HuisGenoot) accountList.get(i);
+                h.beerMisTurf();
+                accountStockList.get(i).setText(String.valueOf(h.getStock()));
             }
         }
         totalStock.setText(String.valueOf(accountList.getTotalStock()));
@@ -222,8 +223,9 @@ public class TurfBeerViewController implements Initializable {
         Background redBackground = new Background(new BackgroundFill(Color.RED, null, null));
         Background whiteBackground = new Background(new BackgroundFill(Color.WHITE, null, null));
         for(int i = 0; i<6; i++){
-            if(accountList.get(i).getStock()>=0) accountPaneList.get(i).setBackground(whiteBackground);
-            if(accountList.get(i).getStock()<0) accountPaneList.get(i).setBackground(redBackground);
+            HuisGenoot h = (HuisGenoot) accountList.get(i);
+            if(h.getStock()>=0) accountPaneList.get(i).setBackground(whiteBackground);
+            if(h.getStock()<0) accountPaneList.get(i).setBackground(redBackground);
         }
     }
 
